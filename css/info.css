@@ -1,0 +1,195 @@
+a,
+a:link,
+a:visited,
+a:hover,
+a:active,
+a:link {
+  color: #fff;
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.6s;
+  padding: 40px 100px;
+  z-index: 100000;
+}
+header.sticky {
+  padding: 5px 100px;
+  height: 60px;
+  background: #fff;
+}
+header.sticky .logo,
+header.sticky ul li a {
+  color: #000;
+}
+
+header .logo {
+  position: relative;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: 0.6s;
+}
+header .logo:hover {
+  color: #e67e22;
+}
+header ul {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header ul li {
+  position: relative;
+  list-style: none;
+}
+header ul li a {
+  position: relative;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  color: #2c3e50;
+  font-weight: bold;
+  transition: color 0.6s ease;
+  -webkit-transition: color 0.6s ease;
+  -moz-transition: color 0.6s ease;
+  -o-transition: color 0.6s ease;
+  margin: 0 15px;
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-weight: 500px;
+}
+header ul li a:hover {
+  color: #e67e22;
+}
+.hamburger {
+  display: none;
+}
+body {
+  position: relative;
+  background: url("../img/bginfo.jpg") no-repeat center center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+
+.box {
+  font-family: "Montserrat", sans-serif;
+  width: 500px;
+  padding: 40px;
+  text-align: center;
+  margin: auto;
+  margin-top: 10%;
+  color: #fff;
+}
+.box img {
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  transition: 0.6s;
+  cursor: pointer;
+}
+.box img:hover {
+  transform: scale(0.9);
+}
+.box h1 {
+  font-family: "Montserrat", sans-serif;
+  padding: 20px;
+  font-size: 40px;
+  letter-spacing: 4px;
+  font-weight: bold;
+}
+.box h5 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 25px;
+  font-weight: 100;
+  letter-spacing: 3px;
+}
+.box p {
+  margin: 30px 0;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+.box li {
+  display: inline-block;
+  margin: 6px;
+  list-style: none;
+}
+.box li a {
+  color: #fff;
+  font-size: 60px;
+  transition: all ease-in-out 250ms;
+}
+.box li a .fa-github:hover {
+  color: #000;
+}
+.box li a .fa-twitter:hover {
+  color: #1da1f2;
+}
+.box li a .fa-facebook:hover {
+  color: #4267b2;
+}
+.box li a .fa-instagram:hover {
+  color: #b814f8;
+}
+@media (max-width: 768px) {
+  .logo {
+    padding-top: 5px;
+    position: fixed !important;
+    left: 20px;
+    top: 15px;
+  }
+  .hamburger {
+    position: fixed !important;
+    right: 15px !important;
+    top: 15px !important;
+    padding-top: 10px;
+    padding-right: 10px;
+    display: unset;
+  }
+  .hamburger div {
+    width: 1.5rem;
+    height: 0.2rem;
+    margin: 0.2rem;
+    background-color: #fff;
+  }
+  .top-nav ul {
+    display: block;
+    transform: translateX(160%);
+  }
+  .top-nav ul li {
+    margin: 5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .show {
+    transform: translateX(-15%) !important;
+  }
+  .uzunluk {
+    height: 100% !important;
+    background-color: #fff;
+  }
+  .uzunluk a {
+    color: #000 !important;
+  }
+  .siyah div {
+    background-color: #000 !important;
+  }
+  .sticky div div {
+    background-color: #000 !important;
+  }
+}
