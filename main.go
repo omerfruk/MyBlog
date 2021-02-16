@@ -40,7 +40,7 @@ func main() {
 		Model:       gorm.Model{},
 		Title:       "Merhaba",
 		User:        "Ben Ömer Faruk",
-		Information: "İzmirin konak ilçesinde ",
+		Information: "İzmirin konak ilçesinde doğdum  ",
 	}
 
 	// eger db de Omer.User adlı bir veri eşleşmesi varsa onu tekrardan oluşturma
@@ -204,7 +204,7 @@ func main() {
 	}
 	/********************************************************************************************************/
 	if hardwareTemp:=db.Where("title=?",Hardware.Title,"text=?",Hardware.Text).First(&Hardware);hardwareTemp.Error!=nil{
-		db.Create(&Developer)
+		db.Create(&Hardware)
 	}
 	if hardwareTemp:=db.Where("title=?",Hardware2.Title,"text=?",Hardware2.Text).First(&Hardware2);hardwareTemp.Error!=nil{
 		db.Create(&Hardware2)
