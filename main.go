@@ -39,7 +39,7 @@ func main() {
 	Omer := Admin{
 		Model:       gorm.Model{},
 		Title:       "Merhaba",
-		User:        "Ömer Faruk",
+		User:        "Ben Ömer Faruk",
 		Information: "İzmirin konak ilçesinde ",
 	}
 
@@ -66,13 +66,13 @@ func main() {
 		Text:  "bilgisayarla alakalı veri 3",
 	}
 	db.AutoMigrate(&Research{})
-	if computerTemp := db.Where("Area=?",Computer.Area,"Title=?",Computer.Title,"Text=?",Computer.Text).First(&Computer);computerTemp.Error!=nil{
+	if computerTemp := db.Where("Title=?",Computer.Title,"Text=?",Computer.Text).First(&Computer);computerTemp.Error!=nil{
 		db.Create(&Computer)
 	}
-	if computerTemp := db.Where("Area=?",Computer2.Area,"Title=?",Computer2.Title,"Text=?",Computer2.Text).First(&Computer2);computerTemp.Error!=nil{
+	if computerTemp := db.Where("Title=?",Computer2.Title,"Text=?",Computer2.Text).First(&Computer2);computerTemp.Error!=nil{
 		db.Create(&Computer2)
 	}
-	if computerTemp := db.Where("Area=?",Computer3.Area,"Title=?",Computer3.Title,"Text=?",Computer3.Text).First(&Computer3);computerTemp.Error!=nil{
+	if computerTemp := db.Where("Title=?",Computer3.Title,"Text=?",Computer3.Text).First(&Computer3);computerTemp.Error!=nil{
 		db.Create(&Computer3)
 	}
 
@@ -101,9 +101,12 @@ func main() {
 		// Render index template
 		return c.Render("Researches", fiber.Map{
 			"Info":  "Hello, Computer!",
-			"dene":  "computer1",
-			"dene2": "computer2",
-			"dene3": "computer3",
+			"explanation":  Computer.Title,
+			"explanation2": Computer2.Title,
+			"explanation3": Computer3.Title,
+			"Text":Computer.Text,
+			"Text2":Computer2.Text,
+			"Text3":Computer3.Text,
 		})
 	})
 	app.Get("/Researches-Network", func(c *fiber.Ctx) error {
