@@ -1,11 +1,40 @@
 package main
 
 import (
+	"fmt"
+	"MyBlog/structure"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
+
+
+)
+const (
+	HOST = "localhost"
+	DATABASE = "blog"
+	USER = "postgres"
+	PASSWORD = "123"
 )
 
 func main() {
+	vt := fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=disable", HOST, USER, PASSWORD, DATABASE)
+	db, err := gorm.Open(postgres.Open(vt), &gorm.Config{})
+	if err !=nil{
+		fmt.Println(err)
+	}
+	// postgres şemaları burdaki olaylardan haberdar olacak
+	db.AutoMigrate(&struct.Admin{})
+	Omer := Admin {
+		Model:       gorm.Model{},
+		Title:       "Merhaba",
+		User:        "Ömer Faruk",
+		Information: "İzmirin konak ilçesinde ",
+	}
+	// eger db de Omer.User adlı bir veri eşleşmesi varsa onu tekrardan oluşturma
+	if result :=db.Where("User=?",Omer.User);result.Error!=nil{
+		db.Create(&Omer)
+	}
 	// Initialize standard Go html template engine
 	engine := html.New("./", ".html")
 
@@ -22,7 +51,9 @@ func main() {
 	app.Get("/info", func(c *fiber.Ctx) error {
 		// Render index template
 		return c.Render("info", fiber.Map{
-			"Info": "Hello, Info!",
+			"Giris":Omer.Title,
+			"Name": Omer.User,
+			"Information":Omer.Information,
 		})
 	})
 	app.Get("/Researches-Computer", func(c *fiber.Ctx) error {
