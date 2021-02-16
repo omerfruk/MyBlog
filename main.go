@@ -65,6 +65,24 @@ func main() {
 		Title: "bilgisayar 3",
 		Text:  "bilgisayarla alakalı veri 3",
 	}
+	Network:=Research{
+		Model: gorm.Model{},
+		Area:  "Network",
+		Title: "Network",
+		Text:  "Network ile ilgili bilgi",
+	}
+	Network2:=Research{
+		Model: gorm.Model{},
+		Area:  "Network",
+		Title: "Network2",
+		Text:  "Network2 ile ilgili bilgi",
+	}
+	Network3:=Research{
+		Model: gorm.Model{},
+		Area:  "Network",
+		Title: "Network3",
+		Text:  "Network3 ile ilgili bilgi",
+	}
 	db.AutoMigrate(&Research{})
 	if computerTemp := db.Where("Title=?",Computer.Title,"Text=?",Computer.Text).First(&Computer);computerTemp.Error!=nil{
 		db.Create(&Computer)
@@ -74,6 +92,15 @@ func main() {
 	}
 	if computerTemp := db.Where("Title=?",Computer3.Title,"Text=?",Computer3.Text).First(&Computer3);computerTemp.Error!=nil{
 		db.Create(&Computer3)
+	}
+	if networkTemp :=db.Where("title=?",Network.Title,"text=?",Network.Text).First(&Network);networkTemp.Error!=nil{
+		db.Create(&Network)
+	}
+	if networkTemp :=db.Where("title=?",Network2.Title,"text=?",Network2.Text).First(&Network2);networkTemp.Error!=nil{
+		db.Create(&Network2)
+	}
+	if networkTemp :=db.Where("title=?",Network3.Title,"text=?",Network3.Text).First(&Network3);networkTemp.Error!=nil{
+		db.Create(&Network3)
 	}
 
 	// Initialize standard Go html template engine
@@ -113,9 +140,12 @@ func main() {
 		// Render index template
 		return c.Render("Researches", fiber.Map{
 			"Info":  "Hello, Network!",
-			"dene":  "Network1",
-			"dene2": "Network2",
-			"dene3": "Network3",
+			"explanation":  Network.Title,
+			"explanation2": Network2.Title,
+			"explanation3": Network3.Title,
+			"Text":Network.Text,
+			"Text2":Network2.Text,
+			"Text3":Network3.Text,
 		})
 	})
 	app.Get("/Researches-User", func(c *fiber.Ctx) error {
