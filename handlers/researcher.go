@@ -5,10 +5,8 @@ import (
 )
 
 func ResearchersAll(c *fiber.Ctx) error {
-	return c.JSON(fiber.Map{
-		"Area" : "Area",
-		"Title":"Title",
-		"Text":"Text",
+	return c.Render("index.html",fiber.Map{
+
 	})
 }
 

@@ -1,18 +1,26 @@
 package main
 
 import (
-
+	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/omerfruk/my-blog/database"
 	"github.com/omerfruk/my-blog/models"
+	"log"
 )
 
 
 func main() {
+ 	app :=fiber.New()
+ 	app.Use(cors.New())
 
 	database.ConnectAndMigrate()
 
 
-	CreateUser("omer","dsadsa",true)
+	log.Fatal(app.Listen(":4747"))
+
+	//CreateUser("omer","dsadsa",true)
+
+
 	//app.Static("/", "./")
 	//app.Get("/", func(c *fiber.Ctx) error {
 	//	// Render index template
