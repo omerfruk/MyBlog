@@ -3,23 +3,25 @@ package main
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
+	"github.com/gofiber/template/html"
 	"github.com/omerfruk/my-blog/database"
 	"github.com/omerfruk/my-blog/models"
+	"github.com/omerfruk/my-blog/routers"
 	"log"
 )
 
-
 func main() {
- 	app :=fiber.New()
- 	app.Use(cors.New())
+	engine := html.New("views", ".html")
+	app := fiber.New(fiber.Config{Views: engine})
+	app.Use(cors.New())
 
 	database.ConnectAndMigrate()
 
+	routers.Router(app)
 
 	log.Fatal(app.Listen(":4747"))
 
 	//CreateUser("omer","dsadsa",true)
-
 
 	//app.Static("/", "./")
 	//app.Get("/", func(c *fiber.Ctx) error {
@@ -107,28 +109,27 @@ func main() {
 	//})
 }
 
-func CreateResearch (area  string,title string,text  string){
-	temp:=new(models.Research)
-	temp.Area=area
-	temp.Text=text
-	temp.Title=title
+func CreateResearch(area string, title string, text string) {
+	temp := new(models.Research)
+	temp.Area = area
+	temp.Text = text
+	temp.Title = title
 
-	if researchTemp := database.DB().Where("title=? and text=?",temp.Title,temp.Text).First(&temp); researchTemp.Error!=nil{
+	if researchTemp := database.DB().Where("title=? and text=?", temp.Title, temp.Text).First(&temp); researchTemp.Error != nil {
 		database.DB().Create(&temp)
 	}
 }
-func CreateUser(name string,info string,isAdmin bool)  {
-	temp:=new(models.User)
-	temp.Fullname=name
-	temp.Information=info
-	if isAdmin == true{
-		temp.Authority=models.Admin
-	}else
-	{
-		temp.Authority=models.Basic
+func CreateUser(name string, info string, isAdmin bool) {
+	temp := new(models.User)
+	temp.Fullname = name
+	temp.Information = info
+	if isAdmin == true {
+		temp.Authority = models.Admin
+	} else {
+		temp.Authority = models.Basic
 	}
 
-	if UserTemp:=database.DB().Where("fullname=?",temp.Fullname).First(&temp); UserTemp.Error!=nil{
+	if UserTemp := database.DB().Where("fullname=?", temp.Fullname).First(&temp); UserTemp.Error != nil {
 		database.DB().Create(&temp)
 	}
 }
