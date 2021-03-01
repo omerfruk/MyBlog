@@ -1,0 +1,92 @@
+[
+  {
+    "Area":  "computer",
+    "Title": "bilgisayar 1",
+    "Text":  "bilgisayarla alakalı veri 1"
+  },
+  {
+    "Area":  "computer ",
+    "Title": "bilgisayar 2",
+    "Text":  "bilgisayarla alakalı veri 2"
+  },
+  {
+    "Area":  "computer ",
+    "Title": "bilgisayar 3",
+    "Text":  "bilgisayarla alakalı veri 3"
+  },
+  {
+    "Area":  "Network",
+    "Title": "Network 1",
+    "Text":  "Network ile ilgili bilgi 1"
+  },
+  {
+    "Area":  "Network",
+    "Title": "Network2",
+    "Text":  "Network ile ilgili bilgi 2"
+  },
+  {
+    "Area":  "Network",
+    "Title": "Network 3",
+    "Text":  "Network ile ilgili bilgi 3"
+  },
+  {
+    "Area":  "User",
+    "Title": "User 1",
+    "Text":  "User ile ilgili bilgi 1"
+  },
+  {
+    "Area":  "User",
+    "Title": "User 2",
+    "Text":  "User ile ilgili bilgi 2"
+  },
+  {
+    "Area":  "User",
+    "Title": "User 3",
+    "Text":  "User ile ilgili bilgi 3"
+  },
+  {
+    "Area":  "Developer",
+    "Title": "Developer 1",
+    "Text":  "Developer ile ilgili bilgi 1"
+  },
+  {
+    "Area":  "Developer",
+    "Title": "Developer 2",
+    "Text":  "Developer ile ilgili bilgi 2"
+  },
+  {
+    "Area":  "Developer",
+    "Title": "Developer 3",
+    "Text":  "Developer ile ilgili bilgi 3"
+  },
+  {
+    "Area":  "Hardware",
+    "Title": "Hardware 1",
+    "Text":  "Hardware ile ilgili bilgi 1"
+  },
+  {
+    "Area":  "Hardware",
+    "Title": "Hardware 2",
+    "Text":  "Hardware ile ilgili bilgi 2"
+  },
+  {
+    "Area":  "Hardware",
+    "Title": "Hardware 3",
+    "Text":  "Hardware ile ilgili bilgi 3"
+  },
+  {
+    "Area":  "Security",
+    "Title": "Security 1",
+    "Text":  "Security ile ilgili bilgi 1"
+  },
+  {
+    "Area":  "Security",
+    "Title": "Security 2",
+    "Text":  "Security ile ilgili bilgi 2"
+  },
+  {
+    "Area":  "Security",
+    "Title": "Security 3",
+    "Text":  "Security ile ilgili bilgi 3"
+  }
+]
