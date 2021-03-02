@@ -20,8 +20,8 @@ const (
 
 type User struct {
 	gorm.Model
+	Header      string    `json:"header"`
 	Fullname    string    `json:"fullname"`
 	Information string    `json:"information"`
 	Authority   Authority `json:"authority"`
 }
-

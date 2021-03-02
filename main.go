@@ -18,10 +18,11 @@ func main() {
 	database.ConnectAndMigrate()
 
 	routers.Router(app)
-
+	//service.CreateUser("Merhabalar","Ömer Faruk","Izmir dogumlu bir insanım",true)
+	//CreateResearch("coumputer","network1","aaaa")
 	log.Fatal(app.Listen(":4747"))
 
-	//CreateUser("omer","dsadsa",true)
+
 
 	//app.Static("/", "./")
 	//app.Get("/", func(c *fiber.Ctx) error {
@@ -119,17 +120,4 @@ func CreateResearch(area string, title string, text string) {
 		database.DB().Create(&temp)
 	}
 }
-func CreateUser(name string, info string, isAdmin bool) {
-	temp := new(models.User)
-	temp.Fullname = name
-	temp.Information = info
-	if isAdmin == true {
-		temp.Authority = models.Admin
-	} else {
-		temp.Authority = models.Basic
-	}
 
-	if UserTemp := database.DB().Where("fullname=?", temp.Fullname).First(&temp); UserTemp.Error != nil {
-		database.DB().Create(&temp)
-	}
-}

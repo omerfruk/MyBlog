@@ -1,14 +1,13 @@
 package handlers
 
 import (
-	"fmt"
 	"github.com/gofiber/fiber/v2"
+	"github.com/omerfruk/my-blog/service"
 )
 
 func ResearchersAll(c *fiber.Ctx) error {
-	fmt.Println("geldi")
 	return c.Render("researcher", fiber.Map{
-		"Info":         "Hello, "+c.Params("key")+"!",
+		"Info": "Hello, " + c.Params("key") + "!",
 		//		"explanation":  ,
 		//		"explanation2": ,
 		//		"explanation3": ,
@@ -19,16 +18,15 @@ func ResearchersAll(c *fiber.Ctx) error {
 
 }
 func IndexRender(c *fiber.Ctx) error {
-	fmt.Println("geldi")
 	return c.Render("index", fiber.Map{
 		"title": "homapages",
 	})
 }
 func InfoRender(c *fiber.Ctx) error {
-	fmt.Println("geldi")
+	user := service.GetUser("Ömer Faruk")
 	return c.Render("info", fiber.Map{
-		"Giris":       "Omer.Title",
-		"Name":        " Omer.User",
-		"Information": "Omer.Information",
+		"Giris":   	   user.Header,
+		"Name":        user.Fullname,
+		"Information": user.Information,
 	})
 }
