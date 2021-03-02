@@ -25,8 +25,10 @@ func IndexRender(c *fiber.Ctx) error {
 func InfoRender(c *fiber.Ctx) error {
 	user := service.GetUser("Ömer Faruk")
 	return c.Render("info", fiber.Map{
-		"Giris":   	   user.Header,
+		"ID":          user.ID,
+		"Giris":       user.Header,
 		"Name":        user.Fullname,
 		"Information": user.Information,
+		"Authority":   user.Authority,
 	})
 }

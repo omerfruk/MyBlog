@@ -18,7 +18,8 @@ func main() {
 	database.ConnectAndMigrate()
 
 	routers.Router(app)
-	//service.CreateUser("Merhabalar","Ömer Faruk","Izmir dogumlu bir insanım",true)
+	//service.CreateUser("Merhabalar","Ömer Faruk tasdemir","Izmir dogumlu bir insanım",true)
+	//service.UpdateUser()
 	//CreateResearch("coumputer","network1","aaaa")
 	log.Fatal(app.Listen(":4747"))
 
