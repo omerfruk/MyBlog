@@ -6,9 +6,13 @@ import (
 
 type Research struct {
 	gorm.Model
-	Area  string `json:"area"`
-	Title string `json:"title"`
-	Text  string `json:"text"`
+	Area  string `json:"Area"`
+	Title string `json:"Title"`
+	Text  string `json:"Text"`
+}
+
+type ReserchStr struct {
+	ResearchStr []Research `json:"research"`
 }
 
 type Authority int
@@ -25,3 +29,4 @@ type User struct {
 	Information string    `json:"information"`
 	Authority   Authority `json:"authority"`
 }
+

@@ -5,87 +5,87 @@
     "Text":  "bilgisayarla alakalı veri 1"
   },
   {
-    "Area":  "computer ",
+    "Area":  "computer",
     "Title": "bilgisayar 2",
     "Text":  "bilgisayarla alakalı veri 2"
   },
   {
-    "Area":  "computer ",
+    "Area":  "computer",
     "Title": "bilgisayar 3",
     "Text":  "bilgisayarla alakalı veri 3"
   },
   {
-    "Area":  "Network",
+    "Area":  "network",
     "Title": "Network 1",
     "Text":  "Network ile ilgili bilgi 1"
   },
   {
-    "Area":  "Network",
+    "Area":  "network",
     "Title": "Network2",
     "Text":  "Network ile ilgili bilgi 2"
   },
   {
-    "Area":  "Network",
+    "Area":  "network",
     "Title": "Network 3",
     "Text":  "Network ile ilgili bilgi 3"
   },
   {
-    "Area":  "User",
+    "Area":  "user",
     "Title": "User 1",
     "Text":  "User ile ilgili bilgi 1"
   },
   {
-    "Area":  "User",
+    "Area":  "user",
     "Title": "User 2",
     "Text":  "User ile ilgili bilgi 2"
   },
   {
-    "Area":  "User",
+    "Area":  "user",
     "Title": "User 3",
     "Text":  "User ile ilgili bilgi 3"
   },
   {
-    "Area":  "Developer",
+    "Area":  "developer",
     "Title": "Developer 1",
     "Text":  "Developer ile ilgili bilgi 1"
   },
   {
-    "Area":  "Developer",
+    "Area":  "developer",
     "Title": "Developer 2",
     "Text":  "Developer ile ilgili bilgi 2"
   },
   {
-    "Area":  "Developer",
+    "Area":  "developer",
     "Title": "Developer 3",
     "Text":  "Developer ile ilgili bilgi 3"
   },
   {
-    "Area":  "Hardware",
+    "Area":  "hardware",
     "Title": "Hardware 1",
     "Text":  "Hardware ile ilgili bilgi 1"
   },
   {
-    "Area":  "Hardware",
+    "Area":  "hardware",
     "Title": "Hardware 2",
     "Text":  "Hardware ile ilgili bilgi 2"
   },
   {
-    "Area":  "Hardware",
+    "Area":  "hardware",
     "Title": "Hardware 3",
     "Text":  "Hardware ile ilgili bilgi 3"
   },
   {
-    "Area":  "Security",
+    "Area":  "security",
     "Title": "Security 1",
     "Text":  "Security ile ilgili bilgi 1"
   },
   {
-    "Area":  "Security",
+    "Area":  "security",
     "Title": "Security 2",
     "Text":  "Security ile ilgili bilgi 2"
   },
   {
-    "Area":  "Security",
+    "Area":  "security",
     "Title": "Security 3",
     "Text":  "Security ile ilgili bilgi 3"
   }
