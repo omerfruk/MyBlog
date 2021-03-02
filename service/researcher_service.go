@@ -1,9 +1,18 @@
 package service
 
 import (
+	"fmt"
 	"github.com/omerfruk/my-blog/database"
 	"github.com/omerfruk/my-blog/models"
 )
+func GetResearch(title string)models.Research{
+	var research models.Research
+	err := database.DB().Where("title=?",title).First(&research).Error
+	if err != nil{
+		fmt.Println(err)
+	}
+	return research
+}
 
 func CreateResearch(area string, title string, text string) {
 	temp := new(models.Research)
