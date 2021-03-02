@@ -5,7 +5,6 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/template/html"
 	"github.com/omerfruk/my-blog/database"
-	"github.com/omerfruk/my-blog/models"
 	"github.com/omerfruk/my-blog/routers"
 	"log"
 )
@@ -18,20 +17,8 @@ func main() {
 	database.ConnectAndMigrate()
 
 	routers.Router(app)
-	//service.CreateUser("Merhabalar","Ömer Faruk tasdemir","Izmir dogumlu bir insanım",true)
-	//service.UpdateUser()
-	//CreateResearch("coumputer","network1","aaaa")
+
 	log.Fatal(app.Listen(":4747"))
-
-
-
-	//app.Static("/", "./")
-	//app.Get("/", func(c *fiber.Ctx) error {
-	//	// Render index template
-	//	return c.Render("index", fiber.Map{
-	//		"Main": "Hello, main!",
-	//	})
-	//})
 
 	//app.Get("/info", func(c *fiber.Ctx) error {
 	//	// Render index template
@@ -102,23 +89,7 @@ func main() {
 	//		"Text3":        Security3.Text,
 	//	})
 	//})
-
-	//app.Get("/deneme", func(c *fiber.Ctx) error {
-	//	// Render index template
-	//	return c.Render("deneme", fiber.Map{
-	//		"Title": "Hello, World!",
-	//	})
-	//})
 }
 
-func CreateResearch(area string, title string, text string) {
-	temp := new(models.Research)
-	temp.Area = area
-	temp.Text = text
-	temp.Title = title
 
-	if researchTemp := database.DB().Where("title=? and text=?", temp.Title, temp.Text).First(&temp); researchTemp.Error != nil {
-		database.DB().Create(&temp)
-	}
-}
 
