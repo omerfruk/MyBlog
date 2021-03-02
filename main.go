@@ -18,7 +18,7 @@ func main() {
 	database.ConnectAndMigrate()
 
 	routers.Router(app)
-	
+
 	log.Fatal(app.Listen(":4747"))
 
 	//CreateUser("omer","dsadsa",true)
