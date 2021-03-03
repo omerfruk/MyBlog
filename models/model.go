@@ -6,10 +6,10 @@ import (
 
 type Topbar struct {
 	gorm.Model
-	Logo   string
-	Home string
-	Future string
-	Port string
+	Logo    string
+	Home    string
+	Future  string
+	Port    string
 	Contact string
 }
 
@@ -22,16 +22,16 @@ type Entry struct {
 }
 type Instructions struct {
 	gorm.Model
-	Title string `json:"title"`
-	Info  string `json:"info"`
-	Intro []intro
+	Title     string `json:"title"`
+	Info      string `json:"info"`
+	LeftIntro string `json:"left_intro"`
+	MidIntro  string `json:"mid_intro"`
+	RghtIntro string `json:"rght_intro"`
+	LeftDesc  string `json:"left_desc"`
+	MidDesc   string `json:"mid_desc"`
+	RghtDesc  string `json:"rght_desc"`
 }
-type intro struct {
-	gorm.Model
-	optinal        string
-	desc           string
-	InstructionsId uint8
-}
+
 type Portfolio struct {
 	gorm.Model
 	ImgSrc       string `json:"img_src"`

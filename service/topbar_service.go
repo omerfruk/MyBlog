@@ -25,7 +25,7 @@ func DeleteTopBar(logo string) {
 
 func GetTopBar(logo string) models.Topbar {
 	var temp models.Topbar
-	err := database.DB().Where("logo = ? ", logo).Find(&logo).Error
+	err := database.DB().Where("logo = ? ", logo).Find(&temp).Error
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -35,10 +35,12 @@ func GetTopBar(logo string) models.Topbar {
 func UpdateTopBar(oldLogo string,logo string, home string, future string, port string, contact string)  {
 	var temp models.Topbar
 	database.DB().Where("logo = ?",oldLogo).Find(&temp)
+
 	temp.Logo=logo
 	temp.Home=home
 	temp.Future=future
 	temp.Port=port
 	temp.Contact=contact
+
 	database.DB().Save(&temp)
 }
