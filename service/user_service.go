@@ -30,7 +30,6 @@ func CreateUser(header string, name string, info string, isAdmin bool) {
 	} else {
 		temp.Authority = models.Basic
 	}
-
 	if UserTemp := database.DB().Where("fullname=?", temp.Fullname).First(&temp); UserTemp.Error != nil {
 		database.DB().Create(&temp)
 	}

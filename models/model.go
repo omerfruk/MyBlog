@@ -7,13 +7,12 @@ import (
 type Topbar struct {
 	gorm.Model
 	Logo   string
-	Option []option
+	Home string
+	Future string
+	Port string
+	Contact string
 }
-type option struct {
-	gorm.Model
-	Otion    string
-	TopbarId uint8
-}
+
 type Entry struct {
 	gorm.Model
 	ImgSrc     string `json:"img_src"`

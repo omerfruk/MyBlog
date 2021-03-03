@@ -15,3 +15,6 @@ func CreatePortfolio(imgsrc string,title string, desc string)  {
 		database.DB().Create(&temp)
 	}
 }
+func GetPortfolio()  {
+	
+}
