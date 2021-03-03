@@ -14,13 +14,13 @@
   </head>
   <body>
     <header >
-      <a href="#" class="logo text-center">ÖmFar.</a>
+      <a href="#" class="logo text-center">{{.logo}}</a>
       <nav class="top-nav"> 
       <ul >
-        <li ><a class="kapan"  href="#cover">home</a></li>
-        <li ><a class="kapan1"  class="kapan1" href="#future">future</a></li>
-        <li ><a class="kapan2" class="kapan2" href="#portfolio">portfolio</a></li>
-        <li ><a class="kapan3"  class="kapan3" href="#contact">contact</a></li>
+        <li ><a class="kapan"  href="#cover">{{.home}}</a></li>
+        <li ><a class="kapan1"  class="kapan1" href="#future">{{.future}}</a></li>
+        <li ><a class="kapan2" class="kapan2" href="#portfolio">{{.portfolio}}</a></li>
+        <li ><a class="kapan3"  class="kapan3" href="#contact">{{.contact}}</a></li>
       </ul>
     </nav>
       <div class="hamburger">
@@ -46,10 +46,10 @@
   <div class="container">
     <div class="future-top text-center wow fadeInDown" data-wow-duration="3s">
       <h3>
-        Let's learn something about technology
+        {{.headerIntro}}
       </h3>
       <p>
-        The most efficient thing which is invented by people is book
+        {{.textIntro}}
       </p>
     </div>
     <div class="future-content text-center">
@@ -58,26 +58,24 @@
           <div class="item-circle">
             <i class="fas fa-laptop fa-2x" aria-hidden="true"></i> 
           </div>
-          <h4>Computer</h4>
+          <h4>{{.LI}}</h4>
           <p>
-            It is certain that the development progress of the computer without pausing, from the past to the present, 
-            will continue exponentially. So where are we in this technology?
+            {{.LD}}
           </p>
         </div>
         <div class="col-sm-4 wow fadeInUp" data-wow-duration="2s">
           <div class="item-circle">
             <i class="fas fa-globe fa-2x" aria-hidden="true"></i>
           </div>
-          <h4>Web</h4>
-          <p>We can go from one side of the world to the other with one click. 
-            So how do we make this journey?</p>
+          <h4>{{.MI}}</h4>
+          <p>{{.MD}}</p>
         </div>
         <div class="col-sm-4 wow fadeInUp" data-wow-duration="2s">
           <div class="item-circle">
             <i class="fas fa-users fa-2x" aria-hidden="true"></i>
           </div>
-          <h4>Users</h4>
-          <p>We, I mean the users, can shape the progress of technology. It sounds amazing right?</p>
+          <h4>{{.RI}}</h4>
+          <p>{{.RD}}</p>
         </div>
       </div>
     </div>

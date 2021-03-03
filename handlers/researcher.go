@@ -70,15 +70,34 @@ func ResearchersAllJson(c *fiber.Ctx) error {
 }
 
 func IndexRender(c *fiber.Ctx) error {
+	topbar := service.GetTopBar("ÖmFar.")
 	entry := service.GetEntry("WELCOME TO MY PAGE")
+	intro := service.GetInstructions("Let's learn something about technology")
 	footer := service.GetFooter("OMER FARUK TASDEMIR")
+
 	return c.Render("index", fiber.Map{
 		"title": "homapages",
+
+		"logo":      topbar.Logo,
+		"home":      topbar.Home,
+		"future":    topbar.Future,
+		"portfolio": topbar.Port,
+		"contact":   topbar.Contact,
+
 
 		"firs_img":     entry.ImgSrc,
 		"entry_header": entry.Header,
 		"entry_text":   entry.Text,
 		"entry_button": entry.ButtonText,
+
+		"headerIntro": intro.Title,
+		"textIntro":   intro.Info,
+		"LI":          intro.LeftIntro,
+		"MI":          intro.MidIntro,
+		"RI":          intro.RghtIntro,
+		"LD":          intro.LeftDesc,
+		"MD":          intro.MidDesc,
+		"RD":          intro.RghtDesc,
 
 		"footer_img":        footer.ImgSrc,
 		"footer_name":       footer.FullName,
