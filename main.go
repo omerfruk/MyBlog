@@ -6,7 +6,6 @@ import (
 	"github.com/gofiber/template/html"
 	"github.com/omerfruk/my-blog/database"
 	"github.com/omerfruk/my-blog/routers"
-	"github.com/omerfruk/my-blog/service"
 	"log"
 )
 
@@ -30,7 +29,9 @@ func main() {
 	service.CreateFooter("../img/fotom.jpg","ÖMER FARUK TASDEMIR","Developer","https://www.instagram.com/omer_fruk/?hl=tr","https://www.facebook.com/omerrf/","https://github.com/omerfruk","https://twitter.com/home?lang=tr")
 	*/
 
-	service.CreateTopBar("ÖmFar." ,[4]op{{"Abbed"}, {"Ahmed"}, {"Ghassan"}})
+	/*metodlarla verileri oluşlturup db den çekiccez
+	instructions daha yapılmadı hem models ten duzenle hem servisi yap
+	*/
 
 	log.Fatal(app.Listen(":4747"))
 
