@@ -6,6 +6,7 @@ import (
 	"github.com/gofiber/template/html"
 	"github.com/omerfruk/my-blog/database"
 	"github.com/omerfruk/my-blog/routers"
+	"log"
 )
 
 func main() {
@@ -14,7 +15,6 @@ func main() {
 	app.Use(cors.New())
 	//db baglantıları ve migrate işlemi
 	database.ConnectAndMigrate()
-
 	routers.Router(app)
 	// create islemleri
 	/*service.CreateEntry("../img/bgCover.jpg","WELCOME TO MY PAGE","IT'S NICE TO MEET YOU","KNOW ME")
@@ -29,7 +29,7 @@ func main() {
 
 	service.CreateFooter("../img/fotom.jpg","ÖMER FARUK TASDEMİR","Developer","https://www.instagram.com/omer_fruk/?hl=tr","https://www.facebook.com/omerrf/","https://github.com/omerfruk","https://twitter.com/home?lang=tr")
 */
-	//log.Fatal(app.Listen(":4747"))
+	log.Fatal(app.Listen(":4747"))
 
 	//app.Get("/info", func(c *fiber.Ctx) error {
 	//	// Render index template

@@ -68,8 +68,13 @@ func ResearchersAllJson(c *fiber.Ctx) error {
 }
 
 func IndexRender(c *fiber.Ctx) error {
+	entry:=service.GetEntry("WELCOME TO MY PAGE")
 	return c.Render("index", fiber.Map{
 		"title": "homapages",
+		"firs_img":	entry.ImgSrc,
+		"entry_header":entry.Header,
+		"entry_text":entry.Text,
+		"entry_button":entry.ButtonText,
 	})
 }
 func InfoRender(c *fiber.Ctx) error {
