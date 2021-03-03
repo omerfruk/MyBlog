@@ -44,5 +44,12 @@ func ConnectAndMigrate() {
 func Migrate() {
 	// postgres şemaları burdaki olaylardan haberdar olacak
 	db.AutoMigrate(&models.User{})
+	db.AutoMigrate(&models.Topbar{})
+	db.AutoMigrate(&models.Instructions{})
+	db.AutoMigrate(&models.FooterBar{})
+	db.AutoMigrate(&models.Portfolio{})
+	db.AutoMigrate(&models.Entry{})
+	db.AutoMigrate(&models.Research{})
+
 }
 

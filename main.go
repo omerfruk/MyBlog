@@ -6,19 +6,29 @@ import (
 	"github.com/gofiber/template/html"
 	"github.com/omerfruk/my-blog/database"
 	"github.com/omerfruk/my-blog/routers"
-	"github.com/omerfruk/my-blog/service"
 )
 
 func main() {
 	engine := html.New("views", ".html")
 	app := fiber.New(fiber.Config{Views: engine})
 	app.Use(cors.New())
-
+	//db baglantıları ve migrate işlemi
 	database.ConnectAndMigrate()
 
-	service.CreateUser("maraba ","ömer","işte",false)
 	routers.Router(app)
-	service.CreateEntry("../img/bgCover.jpg","Hoşgeldiniz","Tanıştıgımıza memnun olduk","hakkımda")
+	// create islemleri
+	/*service.CreateEntry("../img/bgCover.jpg","WELCOME TO MY PAGE","IT'S NICE TO MEET YOU","KNOW ME")
+
+	service.CreatePortfolio("../img/computer.jpg","Computer","what is a computer and where are we in this")
+	service.CreatePortfolio("../img/network.jpg","Network","How they get us all around with a click")
+	service.CreatePortfolio("../img/user.jpg","User","Well, who are we users ")
+	service.CreatePortfolio("../img/developer.jpg","Developer","what do developers do?")
+	service.CreatePortfolio("../img/hardware.jpg","Hardware","what's the hardware? who are hardwareist")
+	service.CreatePortfolio("../img/securty.jpg","Securty","who constitute our security?")
+
+
+	service.CreateFooter("../img/fotom.jpg","ÖMER FARUK TASDEMİR","Developer","https://www.instagram.com/omer_fruk/?hl=tr","https://www.facebook.com/omerrf/","https://github.com/omerfruk","https://twitter.com/home?lang=tr")
+*/
 	//log.Fatal(app.Listen(":4747"))
 
 	//app.Get("/info", func(c *fiber.Ctx) error {

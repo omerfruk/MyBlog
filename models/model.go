@@ -11,7 +11,7 @@ type Topbar struct {
 }
 type option struct {
 	gorm.Model
-	Option string
+	Otion string
 	TopbarId uint8
 }
 type Entry struct {
