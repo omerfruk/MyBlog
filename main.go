@@ -17,7 +17,8 @@ func main() {
 	database.ConnectAndMigrate()
 
 	routers.Router(app)
-
+	//service.CreateTopBar("DeneMe","Anasayfa","Bilgilendirme","Arastirmalar","Iletisim")
+	//service.CreateEntry("../img/bgCover.jpg","Hoşgeldiniz","Tanıştıgımıza memnun olduk","hakkımda")
 	log.Fatal(app.Listen(":4747"))
 
 	//app.Get("/info", func(c *fiber.Ctx) error {
