@@ -69,6 +69,7 @@ const (
 
 type User struct {
 	gorm.Model
+	ImgSrc		string
 	Header      string    `json:"header"`
 	Fullname    string    `json:"fullname"`
 	Information string    `json:"information"`

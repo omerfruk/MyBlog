@@ -74,7 +74,9 @@ func IndexRender(c *fiber.Ctx) error {
 	entry := service.GetEntry("WELCOME TO MY PAGE")
 	intro := service.GetInstructions("Let's learn something about technology")
 	footer := service.GetFooter("OMER FARUK TASDEMIR")
+	portfolio := service.GetPortfolio()
 
+	fmt.Println(portfolio)
 	return c.Render("index", fiber.Map{
 		"title": "homapages",
 
@@ -109,12 +111,26 @@ func IndexRender(c *fiber.Ctx) error {
 	})
 }
 func InfoRender(c *fiber.Ctx) error {
+	topbar := service.GetTopBar("ÖmFar.")
 	user := service.GetUser("Ömer Faruk")
+	footer := service.GetFooter("OMER FARUK TASDEMIR")
+
 	return c.Render("info", fiber.Map{
-		"ID":          user.ID,
+		"logo":      topbar.Logo,
+		"home":      topbar.Home,
+		"future":    topbar.Future,
+		"portfolio": topbar.Port,
+		"contact":   topbar.Contact,
+
+		"img":         user.ImgSrc,
 		"Giris":       user.Header,
 		"Name":        user.Fullname,
 		"Information": user.Information,
 		"Authority":   user.Authority,
+
+		"insta":footer.InstaSrc,
+		"face":footer.FaccSrc,
+		"git":footer.GitSrc,
+		"tw":footer.TwSrec,
 	})
 }

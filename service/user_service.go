@@ -20,9 +20,10 @@ func GetUser(name string) models.User {
 	return user
 }
 
-func CreateUser(header string, name string, info string, isAdmin bool) {
+func CreateUser(img string,header string, name string, info string, isAdmin bool) {
 	temp := new(models.User)
 	temp.Header = header
+	temp.ImgSrc=img
 	temp.Fullname = name
 	temp.Information = info
 	if isAdmin == true {

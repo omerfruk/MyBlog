@@ -31,6 +31,8 @@ func main() {
 	service.CreateTopBar("ÖmFar.","home","future","researcher","contact")
 
 	service.CreateInstructions("Let's learn something about technology","The most efficient thing which is invented by people is book","Computer","Web","Users","It is certain that the development progress of the computer without pausing, from the past to the present,\nwill continue exponentially. So where are we in this technology?","We can go from one side of the world to the other with one click. \nSo how do we make this journey?","We, I mean the users, can shape the progress of technology. It sounds amazing right?")
+
+	service.CreateUser("../img/fotom.jpg","Merhabalar","Ömer Faruk","Izmir dogumlu bir insanım",true)
 	*/
 	log.Fatal(app.Listen(":4747"))
 

@@ -16,9 +16,10 @@ func CreatePortfolio(imgsrc string,title string, desc string)  {
 		database.DB().Create(&temp)
 	}
 }
-func GetPortfolio(title string) models.Portfolio {
-	var temp models.Portfolio
-	err := database.DB().Where("title = ? ",title).Find(&temp).Error
+
+func GetPortfolio() []models.Portfolio {
+	var temp []models.Portfolio
+	err := database.DB().Find(&temp).Error
 	if err != nil{
 		fmt.Println(err)
 	}
