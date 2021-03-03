@@ -26,9 +26,11 @@ func main() {
 	service.CreatePortfolio("../img/hardware.jpg","Hardware","what's the hardware? who are hardwareist")
 	service.CreatePortfolio("../img/securty.jpg","Securty","who constitute our security?")
 
+	service.CreateFooter("../img/fotom.jpg","ÖMER FARUK TASDEMIR","Developer","https://www.instagram.com/omer_fruk/?hl=tr","https://www.facebook.com/omerrf/","https://github.com/omerfruk","https://twitter.com/home?lang=tr")
+	*/
 
-	service.CreateFooter("../img/fotom.jpg","ÖMER FARUK TASDEMİR","Developer","https://www.instagram.com/omer_fruk/?hl=tr","https://www.facebook.com/omerrf/","https://github.com/omerfruk","https://twitter.com/home?lang=tr")
-*/
+
+
 	log.Fatal(app.Listen(":4747"))
 
 	//app.Get("/info", func(c *fiber.Ctx) error {

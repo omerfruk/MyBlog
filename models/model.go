@@ -11,7 +11,7 @@ type Topbar struct {
 }
 type option struct {
 	gorm.Model
-	Otion string
+	Otion    string
 	TopbarId uint8
 }
 type Entry struct {
@@ -23,14 +23,14 @@ type Entry struct {
 }
 type Instructions struct {
 	gorm.Model
-	Title        string    `json:"title"`
-	Info         string    `json:"info"`
+	Title string `json:"title"`
+	Info  string `json:"info"`
 	Intro []intro
 }
 type intro struct {
 	gorm.Model
-	optinal string
-	desc string
+	optinal        string
+	desc           string
 	InstructionsId uint8
 }
 type Portfolio struct {
