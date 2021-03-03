@@ -1,6 +1,7 @@
 package service
 
 import (
+	"fmt"
 	"github.com/omerfruk/my-blog/database"
 	"github.com/omerfruk/my-blog/models"
 )
@@ -15,6 +16,23 @@ func CreatePortfolio(imgsrc string,title string, desc string)  {
 		database.DB().Create(&temp)
 	}
 }
-func GetPortfolio()  {
-	
+func GetPortfolio(title string) models.Portfolio {
+	var temp models.Portfolio
+	err := database.DB().Where("title = ? ",title).Find(&temp).Error
+	if err != nil{
+		fmt.Println(err)
+	}
+	return temp
+}
+func DeletePortfolio(title string)  {
+	var temp models.Portfolio
+	database.DB().Where("title = ?",title).Delete(&temp)
+}
+func UpdatePortfolio(oldTitle string,imgsrc string,title string, desc string)  {
+	var temp models.Portfolio
+	database.DB().Where("title = ?" , oldTitle).Find(&temp)
+	temp.ImgSrc=imgsrc
+	temp.Title=title
+	temp.Descriptions=desc
+	database.DB().Save(&temp)
 }
