@@ -4,13 +4,30 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gofiber/fiber/v2"
+	"github.com/omerfruk/my-blog/database"
 	"github.com/omerfruk/my-blog/models"
 	"github.com/omerfruk/my-blog/service"
 	"io/ioutil"
 	"os"
 )
-
+//db den okuyup sayfaya yansıtmak için
 func ResearchersAll(c *fiber.Ctx) error {
+	var res []models.Research
+	area:=c.Params("key")
+	database.DB().Where("area = ? ",area).Find(&res)
+	//fmt.Println(res)
+	return c.Render("researcher",fiber.Map{
+		"Info":         "Hello, " + area + " !",
+		"explanation":  res[0].Title,
+		"explanation2":	res[1].Title,
+		"explanation3": res[2].Title,
+		"Text":         res[0].Text,
+		"Text2":        res[1].Text,
+		"Text3":        res[2].Text,
+	})
+}
+//json dosyasından okumak için
+func ResearchersAllJson(c *fiber.Ctx) error {
 	var research []models.Research
 	jsonFile, err := os.Open("fakedata/fake_data.json")
 	if err != nil {
@@ -24,43 +41,32 @@ func ResearchersAll(c *fiber.Ctx) error {
 	if err != nil {
 		fmt.Println(err)
 	}
-	/*var titles []string
-	var text []string
-	j:=0*/
+	var titles [3]string
+	var text [3]string
+	j:=0
+	area:=c.Params("key")
 	for i := 0; i < len(research); i++ {
-		if research[i].Area == c.Params("key") {
-			fmt.Println(research[i].Area)
-		/*	titles[j] = research[i].Title
-			fmt.Println(titles[i])
+		if research[i].Area == area {
+			//fmt.Println(research[i].Area)
+			titles[j] = research[i].Title
+			//fmt.Println(titles[j])
 			text[j] = research[i].Text
-			fmt.Println(text[i])
-			j++*/
+			//fmt.Println(text[j])
+			j++
 		}
 	}
 	return c.Render("researcher", fiber.Map{
-		"Info":         "Hello, " + c.Params("key") + "!",
-		/*"explanation":  titles[0],
+		"Info":         "Hello, " + area + " !",
+		"explanation":  titles[0],
 		"explanation2": titles[1],
 		"explanation3": titles[2],
 		"Text":         text[0],
 		"Text2":        text[1],
-		"Text3":        text[2],*/
+		"Text3":        text[2],
 	})
 
 }
 
-/*func Unmurshal(key string) *models.Research {
-
-	var need models.Research
-	for i:=0;i<len(research);i++ {
-		if key == research[i].Title{
-			need = research[i]
-			fmt.Println(need)
-			return &need
-		}
-	}
-	return &need
-}*/
 func IndexRender(c *fiber.Ctx) error {
 	return c.Render("index", fiber.Map{
 		"title": "homapages",
