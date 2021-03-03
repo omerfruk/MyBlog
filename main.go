@@ -6,7 +6,7 @@ import (
 	"github.com/gofiber/template/html"
 	"github.com/omerfruk/my-blog/database"
 	"github.com/omerfruk/my-blog/routers"
-	"log"
+	"github.com/omerfruk/my-blog/service"
 )
 
 func main() {
@@ -16,10 +16,10 @@ func main() {
 
 	database.ConnectAndMigrate()
 
+	service.CreateUser("maraba ","ömer","işte",false)
 	routers.Router(app)
-	//service.CreateTopBar("DeneMe","Anasayfa","Bilgilendirme","Arastirmalar","Iletisim")
-	//service.CreateEntry("../img/bgCover.jpg","Hoşgeldiniz","Tanıştıgımıza memnun olduk","hakkımda")
-	log.Fatal(app.Listen(":4747"))
+	service.CreateEntry("../img/bgCover.jpg","Hoşgeldiniz","Tanıştıgımıza memnun olduk","hakkımda")
+	//log.Fatal(app.Listen(":4747"))
 
 	//app.Get("/info", func(c *fiber.Ctx) error {
 	//	// Render index template
