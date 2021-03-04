@@ -76,22 +76,20 @@ func IndexRender(c *fiber.Ctx) error {
 	footer := service.GetFooter("OMER FARUK TASDEMIR")
 	portfolio := service.GetPortfolio()
 
-	fmt.Println(portfolio)
 	return c.Render("index", fiber.Map{
 		"title": "homapages",
-
+		//topbar bolumu
 		"logo":      topbar.Logo,
 		"home":      topbar.Home,
 		"future":    topbar.Future,
 		"portfolio": topbar.Port,
 		"contact":   topbar.Contact,
-
-
+		//giris bolumu
 		"firs_img":     entry.ImgSrc,
 		"entry_header": entry.Header,
 		"entry_text":   entry.Text,
 		"entry_button": entry.ButtonText,
-
+		//informations bolumu
 		"headerIntro": intro.Title,
 		"textIntro":   intro.Info,
 		"LI":          intro.LeftIntro,
@@ -100,7 +98,26 @@ func IndexRender(c *fiber.Ctx) error {
 		"LD":          intro.LeftDesc,
 		"MD":          intro.MidDesc,
 		"RD":          intro.RghtDesc,
-
+		//portfolio bolumu
+		"LPImg":     portfolio[0].ImgSrc,
+		"LPHeader":  portfolio[0].Title,
+		"LPDesc":    portfolio[0].Descriptions,
+		"MPImg":     portfolio[1].ImgSrc,
+		"MPHeader":  portfolio[1].Title,
+		"MPDesc":    portfolio[1].Descriptions,
+		"RPImg":     portfolio[2].ImgSrc,
+		"RPHeader":  portfolio[2].Title,
+		"RPDesc":    portfolio[2].Descriptions,
+		"DLPImg":    portfolio[3].ImgSrc,
+		"DLPHeader": portfolio[3].Title,
+		"DLPDesc":   portfolio[3].Descriptions,
+		"DMPImg":    portfolio[4].ImgSrc,
+		"DMPHeader": portfolio[4].Title,
+		"DMPDesc":   portfolio[4].Descriptions,
+		"DRPImg":    portfolio[5].ImgSrc,
+		"DRPHeader": portfolio[5].Title,
+		"DRPDesc":   portfolio[5].Descriptions,
+		//footerBar bölümü
 		"footer_img":        footer.ImgSrc,
 		"footer_name":       footer.FullName,
 		"footer_employment": footer.Employment,
@@ -116,21 +133,22 @@ func InfoRender(c *fiber.Ctx) error {
 	footer := service.GetFooter("OMER FARUK TASDEMIR")
 
 	return c.Render("info", fiber.Map{
+		//topBar bölümü
 		"logo":      topbar.Logo,
 		"home":      topbar.Home,
 		"future":    topbar.Future,
 		"portfolio": topbar.Port,
 		"contact":   topbar.Contact,
-
+		//usere bolumu
 		"img":         user.ImgSrc,
 		"Giris":       user.Header,
 		"Name":        user.Fullname,
 		"Information": user.Information,
 		"Authority":   user.Authority,
-
-		"insta":footer.InstaSrc,
-		"face":footer.FaccSrc,
-		"git":footer.GitSrc,
-		"tw":footer.TwSrec,
+		//footerBar bolumunden cekilenler
+		"insta": footer.InstaSrc,
+		"face":  footer.FaccSrc,
+		"git":   footer.GitSrc,
+		"tw":    footer.TwSrec,
 	})
 }
