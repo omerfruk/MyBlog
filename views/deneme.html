@@ -1,5 +1,16 @@
-<!DOCTYPE html>
-<body>
-    <h1>{{.Title }}</h1>
-</body>
-</html>
+{{range $indis, $portfolio := .}}
+<div class="col-sm-4">
+  <div class="card wow fadeInLeft" data-wow-duration="2s">
+    <img src="{{$portfolio.ImgSrc}}" alt="portfolio1" />
+    <div class="card-block">
+      <h4 class="card-title">{{$portfolio.Title}}</h4>
+      <p class="card-subtitle text-muted">
+        {{$portfolio.Descriptions}}<br />
+        <br /><a href="researcher/computer" class="badge badge-primary"
+          >Read more</a
+        >
+      </p>
+    </div>
+  </div>
+</div>
+{{end}}

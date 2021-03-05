@@ -13,11 +13,13 @@ func Router(app *fiber.App) {
 	app.Get("/info", handlers.InfoRender)
 
 	res := app.Group("/researcher/:key",handlers.ResearchersAll)                // /researcher
-	res.Get("/computer", handlers.ResearchersAll)  // /researcher/Computer
-	res.Get("/network", handlers.ResearchersAll)   // /researcher/Network
-	res.Get("/user", handlers.ResearchersAll)      // /researcher/User
-	res.Get("/developer", handlers.ResearchersAll) // /researcher/Developer
-	res.Get("/hardware", handlers.ResearchersAll)  // /researcher/Hardware
-	res.Get("/security", handlers.ResearchersAll)  // /researcher/Security
+	res.Get("/Computer", handlers.ResearchersAll)  // /researcher/Computer
+	res.Get("/User", handlers.ResearchersAll)      // /researcher/User
+	res.Get("/Network", handlers.ResearchersAll)   // /researcher/Network
+	res.Get("/Developer", handlers.ResearchersAll) // /researcher/Developer
+	res.Get("/Hardware", handlers.ResearchersAll)  // /researcher/Hardware
+	res.Get("/Security", handlers.ResearchersAll)  // /researcher/Security
+
+
 
 }

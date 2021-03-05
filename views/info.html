@@ -2,70 +2,106 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/font-awesome.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/info.css">
+    <link rel="stylesheet" href="../css/font-awesome.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+      integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../css/info.css" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+    />
   </head>
- <body>
-    <header >
-        <a href="/" class="logo text-center ">{{.logo}}</a>
-        <nav class="top-nav">
-        <ul >
-          <li ><a class="kapan" href="/#cover">{{.home}}</a></li>
-          <li ><a class="kapan1" href="/#future">{{.future}}</a></li>
-          <li ><a class="kapan2" href="/#portfolio">{{.portfolio}}</a></li>
-          <li ><a class="kapan3" href="/#contact">{{.contact}}</a></li>
+  <body>
+    <header>
+      <a href="/" class="logo text-center">{{.logo}}</a>
+      <nav class="top-nav">
+        <ul>
+          <li><a class="kapan" href="/#cover">{{.home}}</a></li>
+          <li><a class="kapan1" href="/#future">{{.future}}</a></li>
+          <li><a class="kapan2" href="/#portfolio">{{.portfolio}}</a></li>
+          <li><a class="kapan3" href="/#contact">{{.contact}}</a></li>
         </ul>
-    </nav>
-    <div class="hamburger">
+      </nav>
+      <div class="hamburger">
         <div></div>
         <div></div>
         <div></div>
-    </div>
+      </div>
     </header>
     <div class="box">
-        <img src={{.img}}>
-        <h1>{{.Giris}}</h1>
-        <h5>{{.Name}}</h5>
-        <p>{{.Information}}</p>
+      <img src="{{.img}}" />
+      <h1>{{.Giris}}</h1>
+      <h5>{{.Name}}</h5>
+      <p>{{.Information}}</p>
 
-        <ul class="social-icons">
-            <li class="social-icon">
-                <a href={{.insta}} target="_blank"><i class="fab fa-instagram"></i></a>
-            </li>
-            <li class="social-icon">
-                <a href={{.face}} target="_blank" ><i class="fab fa-facebook"></i></a>
-            </li>
-            <li class="social-icon">
-                <a href={{.git}} target="_blank"><i class="fab fa-github"></i></a>
-            </li>
-            <li class="social-icon">
-                <a href={{.tw}} target="_blank"><i class="fab fa-twitter"></i></a>
-            </li>
-            </ul>
+      <ul class="social-icons">
+        <li class="social-icon">
+          <a href="{{.insta}}" target="_blank"
+            ><i class="fab fa-instagram"></i
+          ></a>
+        </li>
+        <li class="social-icon">
+          <a href="{{.face}}" target="_blank"
+            ><i class="fab fa-facebook"></i
+          ></a>
+        </li>
+        <li class="social-icon">
+          <a href="{{.git}}" target="_blank"><i class="fab fa-github"></i></a>
+        </li>
+        <li class="social-icon">
+          <a href="{{.tw}}" target="_blank"><i class="fab fa-twitter"></i></a>
+        </li>
+      </ul>
     </div>
-            <script src="../js/wow.js"></script>
-            <script>
-            new WOW().init();
-            </script>
-             <script src="../js/topBar.js"></script>
-            <script src="https://kit.fontawesome.com/7a0094710f.js" crossorigin="anonymous"></script>
-            <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-            <script type="text/javascript">
-                window.addEventListener("scroll",function(){
-                    var header = document.querySelector("header");
-                    header.classList.toggle("sticky",window.scrollY > 0);
-             })
-            </script>
+    <script src="../js/wow.js"></script>
+    <script>
+      new WOW().init();
+    </script>
+    <script src="../js/topBar.js"></script>
+    <script
+      src="https://kit.fontawesome.com/7a0094710f.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+      integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+      integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+      integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript">
+      window.addEventListener("scroll", function () {
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+      });
+    </script>
   </body>
 </html>

@@ -18,13 +18,9 @@ func ResearchersAll(c *fiber.Ctx) error {
 	database.DB().Where("area = ? ", area).Find(&res)
 	//fmt.Println(res)
 	return c.Render("researcher", fiber.Map{
+		"res": area,
 		"Info":         "Hello, " + area + " !",
-		"explanation":  res[0].Title,
-		"explanation2": res[1].Title,
-		"explanation3": res[2].Title,
-		"Text":         res[0].Text,
-		"Text2":        res[1].Text,
-		"Text3":        res[2].Text,
+
 	})
 }
 
@@ -69,6 +65,7 @@ func ResearchersAllJson(c *fiber.Ctx) error {
 
 }
 
+
 func IndexRender(c *fiber.Ctx) error {
 	topbar := service.GetTopBar("ÖmFar.")
 	entry := service.GetEntry("WELCOME TO MY PAGE")
@@ -77,13 +74,16 @@ func IndexRender(c *fiber.Ctx) error {
 	portfolio := service.GetPortfolio()
 
 	return c.Render("index", fiber.Map{
+
+		"portfolio": portfolio,
+
 		"title": "homapages",
 		//topbar bolumu
-		"logo":      topbar.Logo,
-		"home":      topbar.Home,
-		"future":    topbar.Future,
-		"portfolio": topbar.Port,
-		"contact":   topbar.Contact,
+		"logo":    topbar.Logo,
+		"home":    topbar.Home,
+		"future":  topbar.Future,
+		"prtfl":   topbar.Port,
+		"contact": topbar.Contact,
 		//giris bolumu
 		"firs_img":     entry.ImgSrc,
 		"entry_header": entry.Header,
@@ -98,25 +98,6 @@ func IndexRender(c *fiber.Ctx) error {
 		"LD":          intro.LeftDesc,
 		"MD":          intro.MidDesc,
 		"RD":          intro.RghtDesc,
-		//portfolio bolumu
-		"LPImg":     portfolio[0].ImgSrc,
-		"LPHeader":  portfolio[0].Title,
-		"LPDesc":    portfolio[0].Descriptions,
-		"MPImg":     portfolio[1].ImgSrc,
-		"MPHeader":  portfolio[1].Title,
-		"MPDesc":    portfolio[1].Descriptions,
-		"RPImg":     portfolio[2].ImgSrc,
-		"RPHeader":  portfolio[2].Title,
-		"RPDesc":    portfolio[2].Descriptions,
-		"DLPImg":    portfolio[3].ImgSrc,
-		"DLPHeader": portfolio[3].Title,
-		"DLPDesc":   portfolio[3].Descriptions,
-		"DMPImg":    portfolio[4].ImgSrc,
-		"DMPHeader": portfolio[4].Title,
-		"DMPDesc":   portfolio[4].Descriptions,
-		"DRPImg":    portfolio[5].ImgSrc,
-		"DRPHeader": portfolio[5].Title,
-		"DRPDesc":   portfolio[5].Descriptions,
 		//footerBar bölümü
 		"footer_img":        footer.ImgSrc,
 		"footer_name":       footer.FullName,

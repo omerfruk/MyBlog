@@ -242,6 +242,7 @@ h2 {
   font-size: 14px;
 }
 .card {
+  margin-bottom: 15px;
   border-style: none;
 }
 .portfolio-content .row {
