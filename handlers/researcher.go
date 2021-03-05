@@ -78,50 +78,37 @@ func IndexRender(c *fiber.Ctx) error {
 	portfolio := service.GetPortfolio()
 	type Anasayfa struct {
 		Portfolio []models.Portfolio
-		Research models.Research
+
+		Entry models.Entry
+		Topbar models.Topbar
+		Intro models.Instructions
+		Footer models.FooterBar
 	}
 	a := Anasayfa{
 		Portfolio: portfolio,
+		Entry:     entry,
+		Topbar:    topbar,
+		Intro:     intro,
+		Footer:   footer,
 	}
-	return c.Render("index", fiber.Map{
+	fmt.Println(a.Footer.ImgSrc)
+	return c.Render("index", a)}
 
-		"portfolio": portfolio,
-
-		"title": "homapages",
-		//topbar bolumu
-		"logo":    topbar.Logo,
-		"home":    topbar.Home,
-		"future":  topbar.Future,
-		"prtfl":   topbar.Port,
-		"contact": topbar.Contact,
-		//giris bolumu
-		"firs_img":     entry.ImgSrc,
-		"entry_header": entry.Header,
-		"entry_text":   entry.Text,
-		"entry_button": entry.ButtonText,
-		//informations bolumu
-		"headerIntro": intro.Title,
-		"textIntro":   intro.Info,
-		"LI":          intro.LeftIntro,
-		"MI":          intro.MidIntro,
-		"RI":          intro.RghtIntro,
-		"LD":          intro.LeftDesc,
-		"MD":          intro.MidDesc,
-		"RD":          intro.RghtDesc,
-		//footerBar bölümü
-		"footer_img":        footer.ImgSrc,
-		"footer_name":       footer.FullName,
-		"footer_employment": footer.Employment,
-		"footer_insta":      footer.InstaSrc,
-		"footer_facc":       footer.FaccSrc,
-		"footer_git":        footer.GitSrc,
-		"footer_tw":         footer.TwSrec,
-	})
-}
+//info Render bolumu
 func InfoRender(c *fiber.Ctx) error {
 	topbar := service.GetTopBar("ÖmFar.")
 	user := service.GetUser("Ömer Faruk")
 	footer := service.GetFooter("OMER FARUK TASDEMIR")
+	type Info struct {
+		Topbar models.Topbar
+		User models.User
+		Footer models.FooterBar
+	}
+	a:= Info{
+		Topbar: topbar,
+		User:   user,
+		Footer: footer,
+	}
 
 	return c.Render("info", fiber.Map{
 		//topBar bölümü

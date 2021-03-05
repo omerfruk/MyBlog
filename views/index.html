@@ -31,18 +31,24 @@
   </head>
   <body>
     <header>
-      <a href="#" class="logo text-center">{{.logo}}</a>
+      <a href="#" class="logo text-center">{{.Topbar.Logo}}</a>
       <nav class="top-nav">
         <ul>
-          <li><a class="kapan" href="#cover">{{.home}}</a></li>
+          <li><a class="kapan" href="#cover">{{.Topbar.Home}}</a></li>
           <li>
-            <a class="kapan1" class="kapan1" href="#future">{{.future}}</a>
+            <a class="kapan1" class="kapan1" href="#future"
+              >{{.Topbar.Future}}</a
+            >
           </li>
           <li>
-            <a class="kapan2" class="kapan2" href="#portfolio">{{.prtfl}}</a>
+            <a class="kapan2" class="kapan2" href="#portfolio"
+              >{{.Topbar.Port}}</a
+            >
           </li>
           <li>
-            <a class="kapan3" class="kapan3" href="#contact">{{.contact}}</a>
+            <a class="kapan3" class="kapan3" href="#contact"
+              >{{.Topbar.Contact}}</a
+            >
           </li>
         </ul>
       </nav>
@@ -55,10 +61,10 @@
     <section id="cover">
       <div class="row text-center">
         <div class="col-sm-12">
-          <h1>{{.entry_header}}</h1>
+          <h1>{{.Entry.Header}}</h1>
         </div>
         <div class="col-sm-12">
-          <h2>{{.entry_text}}</h2>
+          <h2>{{.Entry.Text}}</h2>
         </div>
         <div class="col-sm-12">
           <a href="info"
@@ -67,7 +73,7 @@
               class="btn btn-warning btn-lg wow fadeIn"
               data-wow-duration="2s"
             >
-              {{.entry_button}}
+              {{.Entry.ButtonText}}
             </button></a
           >
         </div>
@@ -79,8 +85,8 @@
           class="future-top text-center wow fadeInDown"
           data-wow-duration="3s"
         >
-          <h3>{{.headerIntro}}</h3>
-          <p>{{.textIntro}}</p>
+          <h3>{{.Intro.Title}}</h3>
+          <p>{{.Intro.Info}}</p>
         </div>
         <div class="future-content text-center">
           <div class="row">
@@ -88,22 +94,22 @@
               <div class="item-circle">
                 <i class="fas fa-laptop fa-2x" aria-hidden="true"></i>
               </div>
-              <h4>{{.LI}}</h4>
-              <p>{{.LD}}</p>
+              <h4>{{.Intro.LeftIntro}}</h4>
+              <p>{{.Intro.LeftDesc}}</p>
             </div>
             <div class="col-sm-4 wow fadeInUp" data-wow-duration="2s">
               <div class="item-circle">
                 <i class="fas fa-globe fa-2x" aria-hidden="true"></i>
               </div>
-              <h4>{{.MI}}</h4>
-              <p>{{.MD}}</p>
+              <h4>{{.Intro.MidIntro}}</h4>
+              <p>{{.Intro.MidDesc}}</p>
             </div>
             <div class="col-sm-4 wow fadeInUp" data-wow-duration="2s">
               <div class="item-circle">
                 <i class="fas fa-users fa-2x" aria-hidden="true"></i>
               </div>
-              <h4>{{.RI}}</h4>
-              <p>{{.RD}}</p>
+              <h4>{{.Intro.RghtIntro}}</h4>
+              <p>{{.Intro.RghtDesc}}</p>
             </div>
           </div>
         </div>
@@ -119,7 +125,7 @@
           <p>bişeyle bişeyler allahım nasıl şeyler ama</p>
         </div>
         <div class="row portfolio-content text-center">
-          {{range $indis, $portfolio := .portfolio}}
+          {{range $indis, $portfolio := .Portfolio}}
           <div class="col-sm-4">
             <div class="card wow fadeIn" data-wow-duration="2s">
               <img src="{{$portfolio.ImgSrc}}" alt="portfolio1" />
@@ -213,9 +219,9 @@
       <div class="container">
         <div class="row">
           <div class="box">
-            <img src="{{.footer_img}}" />
-            <h1>{{.footer_name}}</h1>
-            <h5>{{.footer_employment}}</h5>
+            <img src="{{.Footer.ImgSrc}}" />
+            <h1>{{.Footer.FullName}}</h1>
+            <h5>{{.Footer.Employment}}</h5>
           </div>
         </div>
         <div class="row">
@@ -226,22 +232,22 @@
           <div class="col-sm-4 text-center">
             <ul class="social-icons">
               <li class="social-icon">
-                <a href="{{.footer_insta}}" target="_blank"
+                <a href="{{.Footer.InstaSrc}}" target="_blank"
                   ><i class="fab fa-instagram"></i
                 ></a>
               </li>
               <li class="social-icon">
-                <a href="{{.footer_facc}}" target="_blank"
+                <a href="{{.Footer.FaccSrc}}" target="_blank"
                   ><i class="fab fa-facebook"></i
                 ></a>
               </li>
               <li class="social-icon">
-                <a href="{{.footer_git}}" target="_blank"
+                <a href="{{.Footer.GitSrc}}" target="_blank"
                   ><i class="fab fa-github"></i
                 ></a>
               </li>
               <li class="social-icon">
-                <a href="{{.footer_tw}}" target="_blank"
+                <a href="{{.Footer.TwSrec}}" target="_blank"
                   ><i class="fab fa-twitter"></i
                 ></a>
               </li>
