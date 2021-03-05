@@ -104,29 +104,11 @@ func InfoRender(c *fiber.Ctx) error {
 		User models.User
 		Footer models.FooterBar
 	}
-	a:= Info{
+	I:= Info{
 		Topbar: topbar,
 		User:   user,
 		Footer: footer,
 	}
-
-	return c.Render("info", fiber.Map{
-		//topBar bölümü
-		"logo":      topbar.Logo,
-		"home":      topbar.Home,
-		"future":    topbar.Future,
-		"portfolio": topbar.Port,
-		"contact":   topbar.Contact,
-		//usere bolumu
-		"img":         user.ImgSrc,
-		"Giris":       user.Header,
-		"Name":        user.Fullname,
-		"Information": user.Information,
-		"Authority":   user.Authority,
-		//footerBar bolumunden cekilenler
-		"insta": footer.InstaSrc,
-		"face":  footer.FaccSrc,
-		"git":   footer.GitSrc,
-		"tw":    footer.TwSrec,
-	})
+	fmt.Println(I.Footer.InstaSrc)
+	return c.Render("info",I)
 }

@@ -33,13 +33,13 @@
   </head>
   <body>
     <header>
-      <a href="/" class="logo text-center">{{.logo}}</a>
+      <a href="/" class="logo text-center">{{.Topbar.Logo}}</a>
       <nav class="top-nav">
         <ul>
-          <li><a class="kapan" href="/#cover">{{.home}}</a></li>
-          <li><a class="kapan1" href="/#future">{{.future}}</a></li>
-          <li><a class="kapan2" href="/#portfolio">{{.portfolio}}</a></li>
-          <li><a class="kapan3" href="/#contact">{{.contact}}</a></li>
+          <li><a class="kapan" href="/#cover">{{.Topbar.Home}}</a></li>
+          <li><a class="kapan1" href="/#future">{{.Topbar.Future}}</a></li>
+          <li><a class="kapan2" href="/#portfolio">{{.Topbar.Port}}</a></li>
+          <li><a class="kapan3" href="/#contact">{{.Topbar.Contact}}</a></li>
         </ul>
       </nav>
       <div class="hamburger">
@@ -49,27 +49,31 @@
       </div>
     </header>
     <div class="box">
-      <img src="{{.img}}" />
-      <h1>{{.Giris}}</h1>
-      <h5>{{.Name}}</h5>
-      <p>{{.Information}}</p>
+      <img src="{{.User.ImgSrc}}" />
+      <h1>{{.User.Header}}</h1>
+      <h5>{{.User.Fullname}}</h5>
+      <p>{{.User.Information}}</p>
 
       <ul class="social-icons">
         <li class="social-icon">
-          <a href="{{.insta}}" target="_blank"
+          <a href="{{.Footer.InstaSrc}}" target="_blank"
             ><i class="fab fa-instagram"></i
           ></a>
         </li>
         <li class="social-icon">
-          <a href="{{.face}}" target="_blank"
+          <a href="{{.Footer.FaccSrc}}" target="_blank"
             ><i class="fab fa-facebook"></i
           ></a>
         </li>
         <li class="social-icon">
-          <a href="{{.git}}" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="{{.Footer.GitSrc}}" target="_blank"
+            ><i class="fab fa-github"></i
+          ></a>
         </li>
         <li class="social-icon">
-          <a href="{{.tw}}" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="{{.Footer.TwSrec}}" target="_blank"
+            ><i class="fab fa-twitter"></i
+          ></a>
         </li>
       </ul>
     </div>
