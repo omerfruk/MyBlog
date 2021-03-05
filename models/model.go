@@ -51,9 +51,9 @@ type FooterBar struct {
 }
 type Research struct {
 	gorm.Model
-	Area  string `json:"Area"`
-	Title string `json:"Title"`
-	Text  string `json:"Text"`
+	Area  string `json:"area"`
+	Title string `json:"title"`
+	Text  string `json:"text"`
 }
 
 type ReserchStr struct {

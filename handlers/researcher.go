@@ -4,23 +4,21 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gofiber/fiber/v2"
-	"github.com/omerfruk/my-blog/database"
 	"github.com/omerfruk/my-blog/models"
 	"github.com/omerfruk/my-blog/service"
 	"io/ioutil"
 	"os"
+	"strings"
 )
 
 //db den okuyup sayfaya yansıtmak için
 func ResearchersAll(c *fiber.Ctx) error {
-	var res []models.Research
+	var res  [] models.Research
 	area := c.Params("key")
-	database.DB().Where("area = ? ", area).Find(&res)
-	//fmt.Println(res)
-	return c.Render("researcher", fiber.Map{
-		"res": area,
-		"Info":         "Hello, " + area + " !",
-
+	temp:=strings.ToLower(area)
+	res = service.GetResearch(temp)
+	return c.Render("researcher",fiber.Map{
+		"res": res,
 	})
 }
 
@@ -65,6 +63,12 @@ func ResearchersAllJson(c *fiber.Ctx) error {
 
 }
 
+/*func DenemeRender(c *fiber.Ctx)error{
+	key :=c.Params("key")
+	var res = service.GetResearch(key)
+
+	return c.Render("deneme",res)
+}*/
 
 func IndexRender(c *fiber.Ctx) error {
 	topbar := service.GetTopBar("ÖmFar.")
@@ -72,7 +76,13 @@ func IndexRender(c *fiber.Ctx) error {
 	intro := service.GetInstructions("Let's learn something about technology")
 	footer := service.GetFooter("OMER FARUK TASDEMIR")
 	portfolio := service.GetPortfolio()
-
+	type Anasayfa struct {
+		Portfolio []models.Portfolio
+		Research models.Research
+	}
+	a := Anasayfa{
+		Portfolio: portfolio,
+	}
 	return c.Render("index", fiber.Map{
 
 		"portfolio": portfolio,
