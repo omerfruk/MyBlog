@@ -76,15 +76,7 @@ func IndexRender(c *fiber.Ctx) error {
 	intro := service.GetInstructions("Let's learn something about technology")
 	footer := service.GetFooter("OMER FARUK TASDEMIR")
 	portfolio := service.GetPortfolio()
-	type Anasayfa struct {
-		Portfolio []models.Portfolio
-
-		Entry models.Entry
-		Topbar models.Topbar
-		Intro models.Instructions
-		Footer models.FooterBar
-	}
-	a := Anasayfa{
+	a := models.Anasayfa{
 		Portfolio: portfolio,
 		Entry:     entry,
 		Topbar:    topbar,
@@ -99,12 +91,8 @@ func InfoRender(c *fiber.Ctx) error {
 	topbar := service.GetTopBar("ÖmFar.")
 	user := service.GetUser("Ömer Faruk")
 	footer := service.GetFooter("OMER FARUK TASDEMIR")
-	type Info struct {
-		Topbar models.Topbar
-		User models.User
-		Footer models.FooterBar
-	}
-	I:= Info{
+
+	I:= models.Info{
 		Topbar: topbar,
 		User:   user,
 		Footer: footer,

@@ -32,6 +32,20 @@ type Instructions struct {
 	RghtDesc  string `json:"rght_desc"`
 }
 
+type Anasayfa struct {
+	Portfolio []Portfolio
+	Entry Entry
+	Topbar Topbar
+	Intro Instructions
+	Footer FooterBar
+}
+
+type Info struct {
+	Topbar Topbar
+	User User
+	Footer FooterBar
+}
+
 type Portfolio struct {
 	gorm.Model
 	ImgSrc       string `json:"img_src"`
