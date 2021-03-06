@@ -66,6 +66,8 @@ func ResearchersAllJson(c *fiber.Ctx) error {
 
 }
 //login sayfasının renderi
+
+
 func Login(c *fiber.Ctx) error {
 
 	return c.Render("login", true)
@@ -83,7 +85,7 @@ func SingUpPost(c *fiber.Ctx)  error {
 		fmt.Println(err)
 	}
 	service.SingUPUser(request.Phone,request.FullName,request.Email,request.Password)
-	return c.Render("login", c.Next())
+	return c.Redirect("/login")
 }
 
 func LogControl(c *fiber.Ctx) error {
@@ -98,23 +100,16 @@ func LogControl(c *fiber.Ctx) error {
 	if err !=nil{
 		if(errors.Is(err,gorm.ErrRecordNotFound)){
 			fmt.Println("boyle bi uye yok")
-			return c.Render("index",c.Next())
+			return c.Redirect("/")
 		}
 	}
-	return c.Render("admin",c.Next())
+	return c.Redirect("/admin")
 }
 
 func AdminPage(c *fiber.Ctx) error{
 
-	return c.Render("admin", true)
+	return c.Render("admin",true)
 }
-
-/*func DenemeRender(c *fiber.Ctx)error{
-	key :=c.Params("key")
-	var res = service.GetResearch(key)
-
-	return c.Render("deneme",res)
-}*/
 
 func IndexRender(c *fiber.Ctx) error {
 	topbar := service.GetTopBar("ÖmFar.")
