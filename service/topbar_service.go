@@ -6,13 +6,14 @@ import (
 	"github.com/omerfruk/my-blog/models"
 )
 
-func CreateTopBar(logo string, home string, future string, port string, contact string) {
+func CreateTopBar(logo string, home string, future string, port string, contact string,log string) {
 	temp := models.Topbar{
 		Logo:    logo,
 		Home:    home,
 		Future:  future,
 		Port:    port,
 		Contact: contact,
+		Login: log,
 	}
 	if tempCont := database.DB().Where("Logo = ? ", temp.Logo).First(&temp); tempCont.Error != nil {
 		database.DB().Create(&temp)
@@ -32,7 +33,7 @@ func GetTopBar(logo string) models.Topbar {
 	return temp
 }
 
-func UpdateTopBar(oldLogo string,logo string, home string, future string, port string, contact string)  {
+func UpdateTopBar(oldLogo string,logo string, home string, future string, port string, contact string,log string)  {
 	var temp models.Topbar
 	database.DB().Where("logo = ?",oldLogo).Find(&temp)
 
@@ -41,6 +42,7 @@ func UpdateTopBar(oldLogo string,logo string, home string, future string, port s
 	temp.Future=future
 	temp.Port=port
 	temp.Contact=contact
+	temp.Login=logo
 
 	database.DB().Save(&temp)
 }

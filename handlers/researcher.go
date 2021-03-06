@@ -63,6 +63,10 @@ func ResearchersAllJson(c *fiber.Ctx) error {
 
 }
 
+func Login(c *fiber.Ctx)error {
+
+	return c.Render("login",true)
+}
 /*func DenemeRender(c *fiber.Ctx)error{
 	key :=c.Params("key")
 	var res = service.GetResearch(key)

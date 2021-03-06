@@ -11,6 +11,7 @@ type Topbar struct {
 	Future  string
 	Port    string
 	Contact string
+	Login   string
 }
 
 type Entry struct {
@@ -34,15 +35,15 @@ type Instructions struct {
 
 type Anasayfa struct {
 	Portfolio []Portfolio
-	Entry Entry
-	Topbar Topbar
-	Intro Instructions
-	Footer FooterBar
+	Entry     Entry
+	Topbar    Topbar
+	Intro     Instructions
+	Footer    FooterBar
 }
 
 type Info struct {
 	Topbar Topbar
-	User User
+	User   User
 	Footer FooterBar
 }
 
@@ -83,7 +84,8 @@ const (
 
 type User struct {
 	gorm.Model
-	ImgSrc		string
+	ImgSrc      string    `json:"img_src"`
+	Mail        string    `json:"mail"`
 	Header      string    `json:"header"`
 	Fullname    string    `json:"fullname"`
 	Information string    `json:"information"`
