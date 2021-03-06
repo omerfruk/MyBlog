@@ -13,6 +13,10 @@ type Topbar struct {
 	Contact string
 	Login   string
 }
+type RequestBody struct {
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}
 
 type Entry struct {
 	gorm.Model
@@ -86,6 +90,7 @@ type User struct {
 	gorm.Model
 	ImgSrc      string    `json:"img_src"`
 	Mail        string    `json:"mail"`
+	Password    string    `json:"password"`
 	Header      string    `json:"header"`
 	Fullname    string    `json:"fullname"`
 	Information string    `json:"information"`

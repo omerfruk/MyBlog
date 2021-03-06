@@ -12,6 +12,8 @@ func Router(app *fiber.App) {
 	app.Get("/", handlers.IndexRender)
 	app.Get("/info", handlers.InfoRender)
 	app.Get("/login",handlers.Login)
+	app.Post("/login",handlers.LogControl)
+	app.Get("/login/admin",handlers.AdminPage)
 
 	res := app.Group("/researcher/:key",handlers.ResearchersAll)                // /researcher
 	res.Get("/Computer", handlers.ResearchersAll)  // /researcher/Computer

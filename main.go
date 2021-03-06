@@ -6,6 +6,7 @@ import (
 	"github.com/gofiber/template/html"
 	"github.com/omerfruk/my-blog/database"
 	"github.com/omerfruk/my-blog/routers"
+	"github.com/omerfruk/my-blog/service"
 	"log"
 )
 
@@ -28,15 +29,16 @@ func main() {
 
 	service.CreateFooter("../img/fotom.jpg","ÖMER FARUK TASDEMIR","Developer","https://www.instagram.com/omer_fruk/?hl=tr","https://www.facebook.com/omerrf/","https://github.com/omerfruk","https://twitter.com/home?lang=tr")
 
-	service.CreateTopBar("ÖmFar.","home","future","researcher","contact")
-
 	service.CreateInstructions("Let's learn something about technology","The most efficient thing which is invented by people is book","Computer","Web","Users","It is certain that the development progress of the computer without pausing, from the past to the present,\nwill continue exponentially. So where are we in this technology?","We can go from one side of the world to the other with one click. \nSo how do we make this journey?","We, I mean the users, can shape the progress of technology. It sounds amazing right?")
 
-	service.CreateUser("../img/fotom.jpg","Merhabalar","Ömer Faruk","Izmir dogumlu bir insanım",true)
+	service.CreateTopBar("ÖmFar.","home","future","researcher","contact","Login")
+
+
 	*/
+	service.CreateUser("../img/fotom.jpg","Merhabalar","Ömer Faruk","Izmir dogumlu bir insanım",true)
 	log.Fatal(app.Listen(":4747"))
 
-	
+
 }
 
 

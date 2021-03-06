@@ -25,10 +25,11 @@
           <div class="col-lg-7 px-5 pt-5">
             <h1 class="font-weight-bold py-3">Log-in</h1>
             <h4>Sing into your account</h4>
-            <form>
+            <form method="POST" action="/login">
               <div class="form-row">
                 <div class="col-lg-7">
                   <input
+                    name="email"
                     type="email"
                     placeholder="Email Adress"
                     class="form-control my-3 p-4"
@@ -38,6 +39,7 @@
               <div class="form-row">
                 <div class="col-lg-7">
                   <input
+                    name="password"
                     type="password"
                     placeholder="********"
                     class="form-control my-3 p-4"
@@ -46,7 +48,7 @@
               </div>
               <div class="form-row">
                 <div class="col-lg-7">
-                  <button type="button" class="btn1 mt-3 mb-5">Login</button>
+                  <button type="submit" class="btn1 mt-3 mb-5">Login</button>
                 </div>
               </div>
               <a href="#">Forgot Password</a>

@@ -2,22 +2,25 @@ package handlers
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/gofiber/fiber/v2"
+	"github.com/omerfruk/my-blog/database"
 	"github.com/omerfruk/my-blog/models"
 	"github.com/omerfruk/my-blog/service"
 	"io/ioutil"
 	"os"
+	"gorm.io/gorm"
 	"strings"
 )
 
 //db den okuyup sayfaya yansıtmak için
 func ResearchersAll(c *fiber.Ctx) error {
-	var res  [] models.Research
+	var res []models.Research
 	area := c.Params("key")
-	temp:=strings.ToLower(area)
+	temp := strings.ToLower(area)
 	res = service.GetResearch(temp)
-	return c.Render("researcher",fiber.Map{
+	return c.Render("researcher", fiber.Map{
 		"res": res,
 	})
 }
@@ -63,10 +66,33 @@ func ResearchersAllJson(c *fiber.Ctx) error {
 
 }
 
-func Login(c *fiber.Ctx)error {
+func Login(c *fiber.Ctx) error {
 
-	return c.Render("login",true)
+	return c.Render("login", true)
 }
+func LogControl(c *fiber.Ctx) error {
+	var request models.RequestBody
+	var temp models.User
+	err := c.BodyParser(&request)
+	if err != nil {
+		fmt.Println(err)
+	}
+	//fmt.Println(request.Email + "   " + request.Password)
+	err=database.DB().Where("mail = ? and password = ?", request.Email, request.Password).First(&temp).Error
+	if err !=nil{
+		if(errors.Is(err,gorm.ErrRecordNotFound)){
+			fmt.Println("boyle bi uye yok")
+			return c.Render("index",c.Next())
+		}
+	}
+	return c.Render("admin",c.Next())
+}
+
+func AdminPage(c *fiber.Ctx) error{
+
+	return c.Render("admin", true)
+}
+
 /*func DenemeRender(c *fiber.Ctx)error{
 	key :=c.Params("key")
 	var res = service.GetResearch(key)
@@ -85,10 +111,10 @@ func IndexRender(c *fiber.Ctx) error {
 		Entry:     entry,
 		Topbar:    topbar,
 		Intro:     intro,
-		Footer:   footer,
+		Footer:    footer,
 	}
-	fmt.Println(a.Footer.ImgSrc)
-	return c.Render("index", a)}
+	return c.Render("index", a)
+}
 
 //info Render bolumu
 func InfoRender(c *fiber.Ctx) error {
@@ -96,11 +122,11 @@ func InfoRender(c *fiber.Ctx) error {
 	user := service.GetUser("Ömer Faruk")
 	footer := service.GetFooter("OMER FARUK TASDEMIR")
 
-	I:= models.Info{
+	I := models.Info{
 		Topbar: topbar,
 		User:   user,
 		Footer: footer,
 	}
 	fmt.Println(I.Footer.InstaSrc)
-	return c.Render("info",I)
+	return c.Render("info", I)
 }
