@@ -12,15 +12,68 @@
       integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
       crossorigin="anonymous"
     />
-
-    <title>Hello, world!</title>
+    <link rel="stylesheet" href="../css/singup.css" />
+    <title>Sing In</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <section class="Form my-4 mx-5">
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="col-lg-5 p-0">
+            <img src="../img/singup.jpg" class="img-fluid" alt="" />
+          </div>
+          <div class="col-lg-7 px-5 pt-5">
+            <h1 class="font-weight-bold py-3">Sing-in</h1>
+            <h4>Sign up now</h4>
+            <form method="POST" action="/singup">
+              <div class="form-row">
+                <div class="col-lg-7">
+                  <input
+                    name="Fullname"
+                    type="text"
+                    placeholder="Full Name"
+                    class="form-control my-3 p-4"
+                  />
+                </div>
+                <div class="col-lg-7">
+                  <input
+                    name="phone"
+                    type="text"
+                    placeholder="Phone Number"
+                    class="form-control my-3 p-4"
+                  />
+                </div>
+                <div class="col-lg-7">
+                  <input
+                    name="email"
+                    type="email"
+                    placeholder="Email Adress"
+                    class="form-control my-3 p-4"
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-lg-7">
+                  <input
+                    name="password"
+                    type="password"
+                    placeholder="********"
+                    class="form-control my-3 p-4"
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-lg-7">
+                  <button type="submit" class="btn1 mt-3 mb-5">Sing UP</button>
+                </div>
+              </div>
+              <a href="/login">Already have an account?</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"

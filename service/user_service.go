@@ -19,7 +19,17 @@ func GetUser(name string) models.User {
 	}
 	return user
 }
-
+func SingUPUser(phone string, name string,email string, pass string)  {
+	temp :=new(models.User)
+	temp.Information=phone
+	temp.Fullname=name
+	temp.Mail=email
+	temp.Password=pass
+	temp.Authority=models.Basic
+	if UserTemp := database.DB().Where("email=?", temp.Mail).First(&temp); UserTemp.Error != nil {
+		database.DB().Create(&temp)
+	}
+}
 func CreateUser(img string,header string, name string, info string, isAdmin bool) {
 	temp := new(models.User)
 	temp.Header = header

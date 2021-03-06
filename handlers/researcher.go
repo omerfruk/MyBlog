@@ -65,11 +65,27 @@ func ResearchersAllJson(c *fiber.Ctx) error {
 	})
 
 }
-
+//login sayfasının renderi
 func Login(c *fiber.Ctx) error {
 
 	return c.Render("login", true)
 }
+//gingup render
+func SingUp(c *fiber.Ctx) error {
+
+	return c.Render("singup", true)
+}
+//sing up post render
+func SingUpPost(c *fiber.Ctx)  error {
+	var request models.RequestSingUp
+	err := c.BodyParser(&request)
+	if err != nil {
+		fmt.Println(err)
+	}
+	service.SingUPUser(request.Phone,request.FullName,request.Email,request.Password)
+	return c.Render("login", c.Next())
+}
+
 func LogControl(c *fiber.Ctx) error {
 	var request models.RequestBody
 	var temp models.User
