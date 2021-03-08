@@ -15,99 +15,82 @@
     <title>Admin</title>
   </head>
   <body>
-    <form>
-      <div class="container den">
-        <div class="jumbotron">
-          <div class="card">
-            <div class="card-body">
-              <tr>
-                <th>
-                  <div class="float-end">
-                    <form action="/getUser" method="GET">
-                      <button
-                        name="getuser"
-                        type="submit"
-                        class="btn btn-primary rounded-pill mx-2 my-4"
-                        style="width: 160px"
-                      >
-                        Get User
-                      </button>
-                    </form>
-                  </div>
-                </th>
-                <th><h4 class="my-4">Users</h4></th>
-              </tr>
-              <table class="table table-dark table-hover table-bordered">
-                <thead>
-                  <tr>
-                    <th scope="col">Index</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                    <th><div class="float-end">ACTIONS</div></th>
-                  </tr>
-                </thead>
-                {{range $index, $deger := .}}
-                <tbody>
-                  <tr>
-                    <th>{{$index}}</th>
-                    <td>{{$deger.Fullname}}</td>
-                    <td>{{$deger.Information}}</td>
-                    <td>{{$deger.Mail}}</td>
-                    <td>
-                      <div class="float-end ">
-                        <form
-                          action="/editUser/{{$deger.Fullname}}"
-                          method="post"
-                        >
+    <div class="container den">
+      <div class="jumbotron">
+        <div class="card">
+          <div class="card-body">
+            <tr>
+              <th>
+                <div class="float-end"></div>
+              </th>
+              <th><h4 class="my-4">Users</h4></th>
+            </tr>
+            <table class="table table-dark table-hover table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">Index</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                  <th><div class="float-end">ACTIONS</div></th>
+                </tr>
+              </thead>
+              {{range $index, $deger := .}}
+              <tbody>
+                <tr>
+                  <th>{{$index}}</th>
+                  <td>{{$deger.Fullname}}</td>
+                  <td>{{$deger.Information}}</td>
+                  <td>{{$deger.Mail}}</td>
+                  <td>
+                    <div class="float-end">
+                      <form action="/edit/{{$deger.ID}}" method="POST">
                         <input
-                        name="Fullname"
-                        type="text"
-                        placeholder="Full Name"
-                        class="form-control my-3 p-4"
-                      />
-                      <input
-                        name="phone"
-                        type="text"
-                        placeholder="Phone Number"
-                        class="form-control my-3 p-4"
-                      />
-                      <input
-                        name="email"
-                        type="email"
-                        placeholder="Email Adress"
-                        class="form-control my-3 p-4"
-                      />
-                          <button
-                            type="submit"
-                            class="btn btn-primary rounded-pill"
-                            style="width: 80px"
-                          >
-                            Edit
-                          </button>
-                        <form
-                          action="/deletUser/{{$deger.Fullname}}"
-                          method="post"
+                          name="Fullname"
+                          type="text"
+                          placeholder="Full Name"
+                          class="form-control my-3 p-4"
+                        />
+                        <input
+                          name="phone"
+                          type="text"
+                          placeholder="Phone Number"
+                          class="form-control my-3 p-4"
+                        />
+                        <input
+                          name="email"
+                          type="email"
+                          placeholder="Email Adress"
+                          class="form-control my-3 p-4"
+                        />
+                        <button
+                          type="submit"
+                          class="btn btn-primary rounded-pill"
+                          style="width: 80px"
                         >
-                          <button
-                            type="submit"
-                            class="btn btn-danger rounded-pill"
-                            style="width: 80px"
-                          >
-                            Delete
-                          </button>
-                        </form>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-                {{end}}
-              </table>
-            </div>
+                          Edit
+                        </button>
+                      </form>
+                      <form action="/delete/{{$deger.ID}}" method="POST">
+                        <button
+                          type="submit"
+                          class="btn btn-danger rounded-pill"
+                          style="width: 80px"
+                        >
+                          Delete
+                        </button>
+                      </form>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+              {{end}}
+            </table>
           </div>
         </div>
       </div>
-    </form>
+    </div>
+
     <script>
       // Get the modal
       var modal = document.getElementById("id01");

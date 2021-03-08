@@ -8,9 +8,9 @@ import (
 	"github.com/omerfruk/my-blog/database"
 	"github.com/omerfruk/my-blog/models"
 	"github.com/omerfruk/my-blog/service"
+	"gorm.io/gorm"
 	"io/ioutil"
 	"os"
-	"gorm.io/gorm"
 	"strings"
 )
 
@@ -118,8 +118,8 @@ func AdminPage(c *fiber.Ctx) error{
 
 func EditUser(c *fiber.Ctx) error {
 	key:=c.Params("key")
-	fmt.Println(key)
 	var request models.RequestSingUp
+
 	err := c.BodyParser(&request)
 	if err != nil {
 		fmt.Println(err)
@@ -137,16 +137,7 @@ func DltUSer(c *fiber.Ctx)error {
 	return c.Redirect("/admin")
 }
 
-func GetUser(c *fiber.Ctx)error  {
-	var temp []models.User
-	err:=database.DB().Find(&temp).Error
-	if err != nil{
-		fmt.Println(err)
-	}
-	fmt.Println(temp)
 
-	return c.Render("/admin",temp)
-}
 
 func IndexRender(c *fiber.Ctx) error {
 	topbar := service.GetTopBar("ÖmFar.")

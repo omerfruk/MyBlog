@@ -53,16 +53,21 @@ func CreateUser(img string,header string, name string, info string, isAdmin bool
 		database.DB().Create(&temp)
 	}
 }
-func DeleteUser(name string) {
+func DeleteUser(id string) {
 	temp := new(models.User)
-	database.DB().Where("fullname=?", name).Delete(&temp)
+	database.DB().Where("id=?", id).Delete(&temp)
 }
-func UpdateUser(oldName string,mail string, name string, info string)  {
+func UpdateUser(id string, mail string, name string, info string) {
 	var temp models.User
-	database.DB().Where("fullname=?",oldName).Find(&temp)
-	temp.Information=info
-	temp.Fullname=name
-	temp.Mail=mail
-	database.DB().Save(&temp)
+
+	database.DB().Where("id=?",id).Find(&temp)
+		temp.Information=info
+		temp.Fullname=name
+		temp.Mail=mail
+		database.DB().Save(&temp)
+
+
+
+
 
 }
