@@ -31,6 +31,7 @@ func GetTopBar(logo string) models.Topbar {
 		fmt.Println(err)
 	}
 	return temp
+
 }
 
 func UpdateTopBar(oldLogo string,logo string, home string, future string, port string, contact string,log string)  {

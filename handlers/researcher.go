@@ -107,8 +107,45 @@ func LogControl(c *fiber.Ctx) error {
 }
 
 func AdminPage(c *fiber.Ctx) error{
+	var temp []models.User
+	err:=database.DB().Find(&temp).Error
+	if err != nil{
+		fmt.Println(err)
+	}
+	//fmt.Println(temp)
+	return c.Render("admin",temp)
+}
 
-	return c.Render("admin",true)
+func EditUser(c *fiber.Ctx) error {
+	key:=c.Params("key")
+	fmt.Println(key)
+	var request models.RequestBody
+	err := c.BodyParser(&request)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(request)
+ return c.Redirect("/admin")
+}
+
+func DltUSer(c *fiber.Ctx)error {
+	key:=c.Params("key")
+	fmt.Println(key)
+
+	service.DeleteUser(key)
+
+	return c.Redirect("/admin")
+}
+
+func GetUser(c *fiber.Ctx)error  {
+	var temp []models.User
+	err:=database.DB().Find(&temp).Error
+	if err != nil{
+		fmt.Println(err)
+	}
+	fmt.Println(temp)
+
+	return c.Render("/admin",temp)
 }
 
 func IndexRender(c *fiber.Ctx) error {

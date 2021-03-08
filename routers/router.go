@@ -14,8 +14,11 @@ func Router(app *fiber.App) {
 	app.Get("/login",handlers.Login)
 	app.Post("/login",handlers.LogControl)
 	app.Get("/singup",handlers.SingUp)
-	app.Post("singup",handlers.SingUpPost)
+	app.Post("/singup",handlers.SingUpPost)
 	app.Get("/admin",handlers.AdminPage)
+	app.Post("/deletUser/:key",handlers.DltUSer)
+	app.Post("/editUser/:key",handlers.EditUser)
+	app.Get("/getUser",handlers.GetUser)
 
 	res := app.Group("/researcher/:key",handlers.ResearchersAll)                // /researcher
 	res.Get("/Computer", handlers.ResearchersAll)  // /researcher/Computer

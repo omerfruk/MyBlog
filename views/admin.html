@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/admin.css" />
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
@@ -14,58 +15,111 @@
     <title>Admin</title>
   </head>
   <body>
-    <div class="container">
-      <div class="jumbotron">
-        <div class="card">
-          <div class="card-header">Featured</div>
-          <div class="card-body">
-            <div class="float-end">
-              <button
-                class="btn btn-primary rounded-pill mx-2 my-4"
-                style="width: 160px"
-              >
-                Get User
-              </button>
+    <form>
+      <div class="container den">
+        <div class="jumbotron">
+          <div class="card">
+            <div class="card-body">
+              <tr>
+                <th>
+                  <div class="float-end">
+                    <form action="/getUser" method="GET">
+                      <button
+                        name="getuser"
+                        type="submit"
+                        class="btn btn-primary rounded-pill mx-2 my-4"
+                        style="width: 160px"
+                      >
+                        Get User
+                      </button>
+                    </form>
+                  </div>
+                </th>
+                <th><h4 class="my-4">Users</h4></th>
+              </tr>
+              <table class="table table-dark table-hover table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Index</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                    <th><div class="float-end">ACTIONS</div></th>
+                  </tr>
+                </thead>
+                {{range $index, $deger := .}}
+                <tbody>
+                  <tr>
+                    <th scope="row">{{$index}}</th>
+                    <td>{{$deger.Fullname}}</td>
+                    <td>{{$deger.Information}}</td>
+                    <td>{{$deger.Mail}}</td>
+                    <td>
+                      <div class="float-end">
+                       
+                        <form
+                          action="/editUser/{{$deger.Fullname}}"
+                          method="post"
+                        >
+                        <input
+                        name="Fullname"
+                        type="text"
+                        placeholder="Full Name"
+                        class="form-control my-3 p-4"
+                      />
+                      <input
+                        name="phone"
+                        type="text"
+                        placeholder="Phone Number"
+                        class="form-control my-3 p-4"
+                      />
+                      <input
+                        name="email"
+                        type="email"
+                        placeholder="Email Adress"
+                        class="form-control my-3 p-4"
+                      />
+                          <button
+                            type="submit"
+                            class="btn btn-primary rounded-pill"
+                            style="width: 80px"
+                          >
+                            Edit
+                          </button>
+                        <form
+                          action="/deletUser/{{$deger.Fullname}}"
+                          method="post"
+                        >
+                          <button
+                            type="submit"
+                            class="btn btn-danger rounded-pill"
+                            style="width: 80px"
+                          >
+                            Delete
+                          </button>
+                        </form>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+                {{end}}
+              </table>
             </div>
-            <table class="table table-dark table-hover table-bordered">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
-                  <th><div class="float-end">ACTIONS</div></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>
-                    <div class="float-end">
-                      <button
-                        class="btn btn-primary rounded-pill"
-                        style="width: 80px"
-                      >
-                        Edit
-                      </button>
-                      <button
-                        class="btn btn-danger rounded-pill"
-                        style="width: 80px"
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
           </div>
         </div>
       </div>
-    </div>
+    </form>
+    <script>
+      // Get the modal
+      var modal = document.getElementById("id01");
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"

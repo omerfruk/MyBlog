@@ -35,8 +35,9 @@ func main() {
 
 
 	*/
-	service.CreateUser("../img/fotom.jpg","Merhabalar","Ömer Faruk","Izmir dogumlu bir insanım",true)
-	log.Fatal(app.Listen(":4747"))
+	//service.CreateUser("../img/fotom.jpg","Merhabalar","Ömer Faruk","Izmir dogumlu bir insanım",true)
+	service.CreatePortfolio("../img/game.jpg","Game","Of course, the game everyone wants!")
+		log.Fatal(app.Listen(":4747"))
 
 
 }

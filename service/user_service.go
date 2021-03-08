@@ -19,6 +19,14 @@ func GetUser(name string) models.User {
 	}
 	return user
 }
+func GetUserAll() models.User {
+	var user models.User
+	err := database.DB().First(&user).Error
+	if err != nil {
+		fmt.Println(err)
+	}
+	return user
+}
 func SingUPUser(phone string, name string,email string, pass string)  {
 	temp :=new(models.User)
 	temp.Information=phone

@@ -7,7 +7,7 @@ import (
 )
 func GetResearch(area string) [] models.Research{
 	var research [] models.Research
-	err := database.DB().Where("area =?", area).Find(&research).Error
+	err := database.DB().Where("area = ?", area ).Find(&research).Error
 	if err != nil{
 		fmt.Println(err)
 	}
