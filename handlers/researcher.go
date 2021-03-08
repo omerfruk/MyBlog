@@ -119,12 +119,12 @@ func AdminPage(c *fiber.Ctx) error{
 func EditUser(c *fiber.Ctx) error {
 	key:=c.Params("key")
 	fmt.Println(key)
-	var request models.RequestBody
+	var request models.RequestSingUp
 	err := c.BodyParser(&request)
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(request)
+	service.UpdateUser(key,request.Email,request.FullName,request.Phone)
  return c.Redirect("/admin")
 }
 

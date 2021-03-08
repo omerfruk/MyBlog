@@ -57,12 +57,12 @@ func DeleteUser(name string) {
 	temp := new(models.User)
 	database.DB().Where("fullname=?", name).Delete(&temp)
 }
-func UpdateUser(oldName string,header string, name string, info string)  {
+func UpdateUser(oldName string,mail string, name string, info string)  {
 	var temp models.User
 	database.DB().Where("fullname=?",oldName).Find(&temp)
 	temp.Information=info
 	temp.Fullname=name
-	temp.Header=header
+	temp.Mail=mail
 	database.DB().Save(&temp)
 
 }

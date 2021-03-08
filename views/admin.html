@@ -50,13 +50,12 @@
                 {{range $index, $deger := .}}
                 <tbody>
                   <tr>
-                    <th scope="row">{{$index}}</th>
+                    <th>{{$index}}</th>
                     <td>{{$deger.Fullname}}</td>
                     <td>{{$deger.Information}}</td>
                     <td>{{$deger.Mail}}</td>
                     <td>
-                      <div class="float-end">
-                       
+                      <div class="float-end ">
                         <form
                           action="/editUser/{{$deger.Fullname}}"
                           method="post"
