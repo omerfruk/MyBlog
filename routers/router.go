@@ -8,26 +8,23 @@ import (
 func Router(app *fiber.App) {
 
 	app.Static("/", "./")
-
 	app.Get("/", handlers.IndexRender)
 	app.Get("/info", handlers.InfoRender)
-	app.Get("/login",handlers.Login)
-	app.Post("/login",handlers.LogControl)
-	app.Get("/singup",handlers.SingUp)
-	app.Post("/singup",handlers.SingUpPost)
-	app.Get("/admin",handlers.AdminPage)
-	app.Post("/delete/:key",handlers.DltUSer)
-	app.Post("/edit/:key",handlers.EditUser)
+	app.Get("/login", handlers.Login)
+	app.Post("/login", handlers.LogControl)
+	//app.Get("/restricted", handlers.Restricted)
+	app.Get("/singup", handlers.SingUp)
+	app.Post("/singup", handlers.SingUpPost)
+	app.Get("/admin", handlers.AdminPage)
+	app.Post("/delete/:key", handlers.DltUSer)
+	app.Post("/edit/:key", handlers.EditUser)
 
-
-	res := app.Group("/researcher/:key",handlers.ResearchersAll)                // /researcher
-	res.Get("/Computer", handlers.ResearchersAll)  // /researcher/Computer
-	res.Get("/User", handlers.ResearchersAll)      // /researcher/User
-	res.Get("/Network", handlers.ResearchersAll)   // /researcher/Network
-	res.Get("/Developer", handlers.ResearchersAll) // /researcher/Developer
-	res.Get("/Hardware", handlers.ResearchersAll)  // /researcher/Hardware
-	res.Get("/Security", handlers.ResearchersAll)  // /researcher/Security
-
-
+	res := app.Group("/researcher/:key", handlers.ResearchersAll) // /researcher
+	res.Get("/Computer", handlers.ResearchersAll)                 // /researcher/Computer
+	res.Get("/User", handlers.ResearchersAll)                     // /researcher/User
+	res.Get("/Network", handlers.ResearchersAll)                  // /researcher/Network
+	res.Get("/Developer", handlers.ResearchersAll)                // /researcher/Developer
+	res.Get("/Hardware", handlers.ResearchersAll)                 // /researcher/Hardware
+	res.Get("/Security", handlers.ResearchersAll)                 // /researcher/Security
 
 }
