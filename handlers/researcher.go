@@ -5,12 +5,15 @@ import (
 	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/session"
+	"github.com/gofiber/fiber/v2/utils"
+	"github.com/gofiber/storage/postgres"
 	"github.com/omerfruk/my-blog/database"
 	"github.com/omerfruk/my-blog/models"
 	"github.com/omerfruk/my-blog/service"
 	"io/ioutil"
 	"os"
 	"strings"
+	"time"
 )
 
 //db den okuyup sayfaya yansıtmak için
@@ -89,6 +92,13 @@ func SingUpPost(c *fiber.Ctx) error {
 	return c.Redirect("/login")
 }
 
+var store = session.New(session.Config{
+	Expiration:   24 * time.Hour,
+	CookieName:   "session_id",
+	KeyGenerator: utils.UUID,
+	Storage:      postgres.New(),
+})
+
 func LogControl(c *fiber.Ctx) error {
 	var request models.RequestBody
 	var temp models.User
@@ -101,7 +111,17 @@ func LogControl(c *fiber.Ctx) error {
 	if err != nil {
 		return c.SendStatus(fiber.StatusUnauthorized)
 	}
-	return c.Redirect("/admin")
+	sess, err := store.Get(c)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(sess)
+	defer sess.Save()
+	name := sess.Get("temp")
+	sess.Get("temp")
+	sess.Set("temp", temp.Fullname)
+
+	return c.SendString(fmt.Sprintf("Welcome %v", name))
 }
 
 // jwt token olusturuldu uretimi
@@ -210,7 +230,6 @@ func InfoRender(c *fiber.Ctx) error {
 }
 
 func Session(c *fiber.Ctx) error {
-	store := session.New()
 	sess, err := store.Get(c)
 	if err != nil {
 		panic(err)
