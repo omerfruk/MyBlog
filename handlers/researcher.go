@@ -228,29 +228,3 @@ func InfoRender(c *fiber.Ctx) error {
 	fmt.Println(I.Footer.InstaSrc)
 	return c.Render("info", I)
 }
-
-func Session(c *fiber.Ctx) error {
-	sess, err := store.Get(c)
-	if err != nil {
-		panic(err)
-	}
-
-	// save session
-	defer sess.Save()
-
-	// Get value
-	//name := sess.Get("name")
-
-	// Set key/value
-	sess.Set("name", "john")
-
-	// Delete key
-	sess.Delete("name")
-
-	// Destroy session
-	if err := sess.Destroy(); err != nil {
-		panic(err)
-	}
-	fmt.Println(sess)
-	return c.Render("/", true)
-}
