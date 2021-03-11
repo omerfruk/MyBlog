@@ -15,6 +15,7 @@ func Router(app *fiber.App) {
 	app.Get("/singup", handlers.SingUp)
 	app.Post("/singup", handlers.SingUpPost)
 	app.Get("/admin", handlers.AdminPage)
+	app.Get("/down", handlers.DownPage)
 	app.Post("/delete/:key", handlers.DltUSer)
 	app.Post("/edit/:key", handlers.EditUser)
 
