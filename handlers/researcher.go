@@ -6,7 +6,6 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/session"
 	"github.com/gofiber/fiber/v2/utils"
-	"github.com/gofiber/storage/postgres"
 	"github.com/omerfruk/my-blog/database"
 	"github.com/omerfruk/my-blog/models"
 	"github.com/omerfruk/my-blog/service"
@@ -71,7 +70,15 @@ func ResearchersAllJson(c *fiber.Ctx) error {
 //login sayfasının renderi
 
 func Login(c *fiber.Ctx) error {
-
+	sess, err := store.Get(c)
+	if err != nil {
+		fmt.Println(err)
+	}
+	if sess.Get("temp") != nil {
+		fmt.Println("girdi")
+	} else {
+		fmt.Println("gelmedi")
+	}
 	return c.Render("login", true)
 }
 
@@ -93,10 +100,20 @@ func SingUpPost(c *fiber.Ctx) error {
 }
 
 var store = session.New(session.Config{
-	Expiration:   24 * time.Hour,
+	Expiration:   1 * time.Minute,
 	CookieName:   "session_id",
 	KeyGenerator: utils.UUID,
-	Storage:      postgres.New(),
+
+	//storage problemi olusuyor sonrasında bununla ilgilenilecek
+	/*Storage: postgres.New(postgres.Config{
+		Host:       "localhost",
+		Port:       5432,
+		Username:   "postgres",
+		Password:   "123",
+		Database:   "blog",
+		Table:      "fiber_storage",
+		GCInterval: 10 * time.Hour,
+	}),*/
 })
 
 func LogControl(c *fiber.Ctx) error {
@@ -111,15 +128,19 @@ func LogControl(c *fiber.Ctx) error {
 	if err != nil {
 		return c.SendStatus(fiber.StatusUnauthorized)
 	}
+
 	sess, err := store.Get(c)
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(sess)
+
+	fmt.Println(sess.ID())
 	defer sess.Save()
+
+	fmt.Println(sess)
+	sess.Set("temp", temp.Fullname)
 	name := sess.Get("temp")
 	sess.Get("temp")
-	sess.Set("temp", temp.Fullname)
 
 	return c.SendString(fmt.Sprintf("Welcome %v", name))
 }
