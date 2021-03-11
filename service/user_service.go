@@ -13,7 +13,7 @@ type userService struct {
 
 func GetUser(name string) models.User {
 	var user models.User
-	err := database.DB().Where("fullname=?", name).First(&user).Error
+	err := database.DB().Where("authority=?", 2).First(&user).Error
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -27,21 +27,21 @@ func GetUserAll() models.User {
 	}
 	return user
 }
-func SingUPUser(phone string, name string,email string, pass string)  {
-	temp :=new(models.User)
-	temp.Information=phone
-	temp.Fullname=name
-	temp.Mail=email
-	temp.Password=pass
-	temp.Authority=models.Basic
+func SingUPUser(phone string, name string, email string, pass string) {
+	temp := new(models.User)
+	temp.Information = phone
+	temp.Fullname = name
+	temp.Mail = email
+	temp.Password = pass
+	temp.Authority = models.Basic
 	if UserTemp := database.DB().Where("email=?", temp.Mail).First(&temp); UserTemp.Error != nil {
 		database.DB().Create(&temp)
 	}
 }
-func CreateUser(img string,header string, name string, info string, isAdmin bool) {
+func CreateUser(img string, header string, name string, info string, isAdmin bool) {
 	temp := new(models.User)
 	temp.Header = header
-	temp.ImgSrc=img
+	temp.ImgSrc = img
 	temp.Fullname = name
 	temp.Information = info
 	if isAdmin == true {
@@ -60,14 +60,10 @@ func DeleteUser(id string) {
 func UpdateUser(id string, mail string, name string, info string) {
 	var temp models.User
 
-	database.DB().Where("id=?",id).Find(&temp)
-		temp.Information=info
-		temp.Fullname=name
-		temp.Mail=mail
-		database.DB().Save(&temp)
-
-
-
-
+	database.DB().Where("id=?", id).Find(&temp)
+	temp.Information = info
+	temp.Fullname = name
+	temp.Mail = mail
+	database.DB().Save(&temp)
 
 }
