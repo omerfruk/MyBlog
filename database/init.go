@@ -32,8 +32,6 @@ func Connect() {
 	}
 	sqlDB, _ := db.DB()
 	sqlDB.SetMaxOpenConns(10)
-
-
 }
 
 func ConnectAndMigrate() {
@@ -52,4 +50,3 @@ func Migrate() {
 	db.AutoMigrate(&models.Research{})
 
 }
-
