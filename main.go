@@ -6,7 +6,6 @@ import (
 	"github.com/gofiber/template/html"
 	"github.com/omerfruk/my-blog/database"
 	"github.com/omerfruk/my-blog/routers"
-	"github.com/omerfruk/my-blog/service"
 	"log"
 )
 
@@ -35,12 +34,12 @@ func main() {
 
 
 	*/
-	//service.CreateUser("../img/fotom.jpg","Merhabalar","Ömer Faruk","Izmir dogumlu bir insanım",true)
-	service.CreatePortfolio("../img/game.jpg","Game","Of course, the game everyone wants!")
-		log.Fatal(app.Listen(":4747"))
-
+	/*service.CreateUser("","selamlar","Serhat","055451357851",false)
+	service.CreateUser("","naber","ibrahim ","0551231",false)
+	service.CreateUser("","iyilik","musa","055451123",false)
+	service.CreateUser("","senden naber","emrullah","055412351",false)
+	service.CreateUser("","iyilik","osman","055412351",false)*/
+	//service.CreatePortfolio("../img/game.jpg","Game","Of course, the game everyone wants!")
+	log.Fatal(app.Listen(":4747"))
 
 }
-
-
-
