@@ -1,63 +1,298 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+a,
+a:link,
+a:visited,
+a:hover,
+a:active,
+a:link {
+  color: #fff;
 }
-body {
-  background-color: rgb(219, 226, 226);
-}
-
-.sidebar {
-  text-align: center;
-  align-items: center;
-  height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
+header {
+  position: fixed;
   top: 0;
   left: 0;
-  background-color: #111; /* Black*/
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
-}
-
-/* The sidebar links */
-.sidebar a {
-  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 8px 8px 8px 32px;
+  transition: 0.6s;
+  padding: 40px 100px;
+  z-index: 100000;
+}
+header.sticky {
+  padding: 5px 100px;
+  height: 60px;
+  background: #fff;
+}
+header.sticky .logo,
+header.sticky ul li a {
+  color: #000;
+}
+
+header .logo {
+  position: relative;
+  font-weight: 700;
+  color: #fff;
   text-decoration: none;
-  font-size: 25px;
-  color: #818181;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: 0.6s;
+}
+header .logo:hover {
+  color: #e67e22;
+}
+header ul {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header ul li {
+  position: relative;
+  list-style: none;
+}
+header ul li a {
+  position: relative;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  color: #2c3e50;
+  font-weight: bold;
+  transition: color 0.6s ease;
+  -webkit-transition: color 0.6s ease;
+  -moz-transition: color 0.6s ease;
+  -o-transition: color 0.6s ease;
+  margin: 0 15px;
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-weight: 500px;
+}
+header ul li a:hover {
+  color: #e67e22;
+}
+.hamburger {
+  display: none;
+}
+body {
+  position: relative;
+  background: url("../img/dark-sky.jpg") no-repeat center center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+.formControl {
   display: block;
-  transition: 0.3s;
+  width: 150px;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #000;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-
-/* When you mouse over the navigation links, change their color */
-.sidebar a:hover {
-  color: #f1f1f1;
+h1 {
+  font-size: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 15px;
 }
-
-/* Position and style the close button (top right corner) */
-.sidebar .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-/* The button used to open the sidebar */
-.openbtn {
-  font-size: 20px;
-  cursor: pointer;
-  background-color: #111;
-  color: white;
-  padding: 10px 15px;
+.btn1 {
   border: none;
+  outline: none;
+  height: 50px;
+  width: 100%;
+  background-color: #1a3300;
+  color: white;
+  transition: 0.5s;
+  border-radius: 8px;
+
+  font-weight: bold;
+}
+.btn1:hover {
+  background-color: white;
+  border: 1px solid;
+  color: #1a3300;
+}
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+.tbl-header {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.tbl-content {
+  height: 170px;
+  overflow-x: auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+th {
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  color: #fff;
+  text-transform: uppercase;
+}
+td {
+  padding: 15px;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 300;
+  font-size: 12px;
+  color: #fff;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.1);
 }
 
-.openbtn:hover {
-  background-color: #444;
+section {
+  margin-top: 7%;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+/* follow me template */
+.made-with-love {
+  margin-top: 40px;
+  padding: 10px;
+  clear: left;
+  text-align: center;
+  font-size: 16px;
+  font-family: arial;
+  color: #fff;
+}
+.made-with-love i {
+  font-style: normal;
+  color: #f50057;
+  font-size: 14px;
+  position: relative;
+  top: 2px;
+}
+.made-with-love a {
+  color: #fff;
+  text-decoration: none;
+}
+.made-with-love a:hover {
+  text-decoration: underline;
+}
+
+/* for custom scrollbar for webkit browser*/
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.box {
+  font-family: "Montserrat", sans-serif;
+  width: 500px;
+  padding: 40px;
+  text-align: center;
+  margin: auto;
+  margin-top: 10%;
+  color: #fff;
+}
+
+.box h1 {
+  font-family: "Montserrat", sans-serif;
+  padding: 20px;
+  font-size: 40px;
+  letter-spacing: 4px;
+  font-weight: bold;
+}
+.box h5 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 25px;
+  font-weight: 100;
+  letter-spacing: 3px;
+}
+.box p {
+  margin: 30px 0;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+.box li {
+  display: inline-block;
+  margin: 6px;
+  list-style: none;
+}
+.box li a {
+  color: #fff;
+  font-size: 60px;
+  transition: all ease-in-out 250ms;
+}
+.box li a .fa-github:hover {
+  color: #000;
+}
+.box li a .fa-twitter:hover {
+  color: #1da1f2;
+}
+.box li a .fa-facebook:hover {
+  color: #4267b2;
+}
+.box li a .fa-instagram:hover {
+  color: #b814f8;
+}
+@media (max-width: 768px) {
+  .logo {
+    padding-top: 5px;
+    position: fixed !important;
+    left: 20px;
+    top: 15px;
+  }
+  .hamburger {
+    position: fixed !important;
+    right: 15px !important;
+    top: 15px !important;
+    padding-top: 10px;
+    padding-right: 10px;
+    display: unset;
+  }
+  .hamburger div {
+    width: 1.5rem;
+    height: 0.2rem;
+    margin: 0.2rem;
+    background-color: #fff;
+  }
+  .top-nav ul {
+    display: block;
+    transform: translateX(160%);
+  }
+  .top-nav ul li {
+    margin: 5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .show {
+    transform: translateX(-15%) !important;
+  }
+  .uzunluk {
+    height: 100% !important;
+    background-color: #fff;
+  }
+  .uzunluk a {
+    color: #000 !important;
+  }
+  .siyah div {
+    background-color: #000 !important;
+  }
+  .sticky div div {
+    background-color: #000 !important;
+  }
 }
