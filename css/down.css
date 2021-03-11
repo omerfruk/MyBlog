@@ -40,3 +40,23 @@ html {
   padding: 20px;
   text-align: center;
 }
+.btn1 {
+  border: none;
+  top: 70%;
+  left: 37.6%;
+  outline: none;
+  position: absolute;
+  height: 50px;
+  width: 25%;
+  background-color: black;
+  color: #e67e22;
+  border-radius: 4px;
+  transition: 0.5s;
+  font-weight: bold;
+}
+.btn1:hover {
+  background-color: #e67e22;
+  z-index: 30;
+  border: 1px solid;
+  color: black;
+}
