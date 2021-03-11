@@ -144,12 +144,12 @@ func LogControl(c *fiber.Ctx) error {
 	return c.Redirect("/admin")
 }
 
-var deger int = 0
+var sayac int = 0
 
 func DownPage(c *fiber.Ctx) error {
-	deger++
-	if deger >= 3 {
-		deger = 0
+	sayac++
+	if sayac >= 3 {
+		sayac = 0
 		c.Redirect("/singup")
 	}
 	conn := "Your Login Failed"
@@ -215,6 +215,9 @@ func EditUser(c *fiber.Ctx) error {
 	var request models.RequestSingUp
 
 	err := c.BodyParser(&request)
+	if request.FullName == "" && request.Password == "" && request.Email == "" {
+		return c.Redirect("/admin")
+	}
 	if err != nil {
 		fmt.Println(err)
 	}
