@@ -201,13 +201,19 @@ func Restricted(c *fiber.Ctx) error {
 }*/
 
 func AdminPage(c *fiber.Ctx) error {
-	var temp []models.User
-	err := database.DB().Find(&temp).Error
+	var user []models.User
+	inf := service.GetUser("omer faruk")
+	topbar := service.GetTopBar("ÖmFar.")
+	err := database.DB().Find(&user).Error
 	if err != nil {
 		fmt.Println(err)
 	}
-	//fmt.Println(temp)
-	return c.Render("admin", temp)
+	admin := models.AdminPage{
+		Topbar: topbar,
+		Info:   inf,
+		User:   user,
+	}
+	return c.Render("admin", admin)
 }
 
 func EditUser(c *fiber.Ctx) error {
@@ -261,6 +267,5 @@ func InfoRender(c *fiber.Ctx) error {
 		User:   user,
 		Footer: footer,
 	}
-	fmt.Println(I.Footer.InstaSrc)
 	return c.Render("info", I)
 }
