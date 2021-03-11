@@ -42,6 +42,11 @@ type Instructions struct {
 	MidDesc   string `json:"mid_desc"`
 	RghtDesc  string `json:"rght_desc"`
 }
+type AdminPage struct {
+	Topbar Topbar
+	Info   User
+	User   []User
+}
 
 type Anasayfa struct {
 	Portfolio []Portfolio
