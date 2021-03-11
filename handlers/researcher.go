@@ -74,12 +74,12 @@ func Login(c *fiber.Ctx) error {
 	if err != nil {
 		fmt.Println(err)
 	}
+	//eger session acık ise girilecek yer
 	if sess.Get("temp") != nil {
-		fmt.Println("girdi")
-	} else {
-		fmt.Println("gelmedi")
+		return c.Redirect("/admin")
+	} else { //sessions açık değilse girilecek  method
+		return c.Render("login", true)
 	}
-	return c.Render("login", true)
 }
 
 //gingup render
@@ -100,7 +100,7 @@ func SingUpPost(c *fiber.Ctx) error {
 }
 
 var store = session.New(session.Config{
-	Expiration:   1 * time.Minute,
+	Expiration:   5 * time.Minute,
 	CookieName:   "session_id",
 	KeyGenerator: utils.UUID,
 
@@ -126,7 +126,7 @@ func LogControl(c *fiber.Ctx) error {
 	}
 	err = database.DB().Where("mail = ? and password = ?", request.Email, request.Password).First(&temp).Error
 	if err != nil {
-		return c.SendStatus(fiber.StatusUnauthorized)
+		return c.Redirect("down")
 	}
 
 	sess, err := store.Get(c)
@@ -145,7 +145,20 @@ func LogControl(c *fiber.Ctx) error {
 	return c.SendString(fmt.Sprintf("Welcome %v", name))
 }
 
-// jwt token olusturuldu uretimi
+var deger int = 0
+
+func DownPage(c *fiber.Ctx) error {
+	deger++
+	if deger >= 3 {
+		c.Redirect("/singup")
+	}
+	conn := "Your Login Failed"
+	fmt.Println(deger)
+	return c.Render("down", conn)
+
+}
+
+// jwt uretimi
 /*func LogControl(c *fiber.Ctx) error {
 	var request models.RequestBody
 	var temp models.User
