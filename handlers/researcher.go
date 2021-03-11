@@ -139,10 +139,9 @@ func LogControl(c *fiber.Ctx) error {
 
 	fmt.Println(sess)
 	sess.Set("temp", temp.Fullname)
-	name := sess.Get("temp")
 	sess.Get("temp")
 
-	return c.SendString(fmt.Sprintf("Welcome %v", name))
+	return c.Redirect("/admin")
 }
 
 var deger int = 0
@@ -150,10 +149,10 @@ var deger int = 0
 func DownPage(c *fiber.Ctx) error {
 	deger++
 	if deger >= 3 {
+		deger = 0
 		c.Redirect("/singup")
 	}
 	conn := "Your Login Failed"
-	fmt.Println(deger)
 	return c.Render("down", conn)
 
 }
