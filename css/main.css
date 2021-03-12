@@ -328,6 +328,18 @@ textarea {
   padding-right: 9px;
   color: #fff;
 }
+.fa-instagram:hover {
+  color: #b814f8;
+}
+.fa-facebook:hover {
+  color: #4267b2;
+}
+.fa-github:hover {
+  color: #e67e22;
+}
+.fa-twitter:hover {
+  color: #1da1f2;
+}
 .social-icon a,
 .social-icon .fab {
   width: 40px;

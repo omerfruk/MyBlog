@@ -13,10 +13,12 @@ type Topbar struct {
 	Contact string
 	Login   string
 }
+
 type RequestBody struct {
 	Email    string `json:"email"`
 	Password string `json:"password"`
 }
+
 type RequestSingUp struct {
 	FullName string `json:"full_name"`
 	Phone    string `json:"phone"`
@@ -31,6 +33,7 @@ type Entry struct {
 	Text       string `json:"text"`
 	ButtonText string `json:"button_text"`
 }
+
 type Instructions struct {
 	gorm.Model
 	Title     string `json:"title"`
@@ -42,6 +45,7 @@ type Instructions struct {
 	MidDesc   string `json:"mid_desc"`
 	RghtDesc  string `json:"rght_desc"`
 }
+
 type AdminPage struct {
 	Topbar Topbar
 	Info   User
@@ -79,6 +83,7 @@ type FooterBar struct {
 	GitSrc     string `json:"git_src"`
 	TwSrec     string `json:"tw_srec"`
 }
+
 type Research struct {
 	gorm.Model
 	Area  string `json:"area"`
