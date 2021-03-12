@@ -76,7 +76,11 @@ func Login(c *fiber.Ctx) error {
 	}
 	//eger session acık ise girilecek yer
 	if sess.Get("temp") != nil {
-		return c.Redirect("/admin")
+		// Destroy session
+		if err := sess.Destroy(); err != nil {
+			panic(err)
+		}
+		return c.Redirect("/")
 	} else { //sessions açık değilse girilecek  method
 		return c.Render("login", true)
 	}
@@ -99,6 +103,7 @@ func SingUpPost(c *fiber.Ctx) error {
 	return c.Redirect("/login")
 }
 
+// session olusturma
 var store = session.New(session.Config{
 	Expiration:   5 * time.Minute,
 	CookieName:   "session_id",
@@ -116,6 +121,7 @@ var store = session.New(session.Config{
 	}),*/
 })
 
+//login kontrol
 func LogControl(c *fiber.Ctx) error {
 	var request models.RequestBody
 	var temp models.User
@@ -144,6 +150,7 @@ func LogControl(c *fiber.Ctx) error {
 	return c.Redirect("/admin")
 }
 
+//yanlıs giris ekrani
 var sayac int = 0
 
 func DownPage(c *fiber.Ctx) error {
@@ -158,7 +165,7 @@ func DownPage(c *fiber.Ctx) error {
 }
 
 // jwt uretimi
-/*func LogControl(c *fiber.Ctx) error {
+/*func LogControlJWT(c *fiber.Ctx) error {
 	var request models.RequestBody
 	var temp models.User
 	app := fiber.New()
@@ -200,6 +207,7 @@ func Restricted(c *fiber.Ctx) error {
 	return c.SendString("Welcome " + name)
 }*/
 
+//admin sayfasi
 func AdminPage(c *fiber.Ctx) error {
 	var user []models.User
 	inf := service.GetUser("omer faruk")
@@ -216,6 +224,7 @@ func AdminPage(c *fiber.Ctx) error {
 	return c.Render("admin", admin)
 }
 
+//admin sayfasindan kullanicilari editlemek icin
 func EditUser(c *fiber.Ctx) error {
 	key := c.Params("key")
 	var request models.RequestSingUp
@@ -231,6 +240,7 @@ func EditUser(c *fiber.Ctx) error {
 	return c.Redirect("/admin")
 }
 
+//admin sayfasindan kullanici silmek icin
 func DltUSer(c *fiber.Ctx) error {
 	key := c.Params("key")
 	fmt.Println(key)
@@ -240,12 +250,34 @@ func DltUSer(c *fiber.Ctx) error {
 	return c.Redirect("/admin")
 }
 
+//admin sayufasidan  kullanici silmek icin
+func CreateUser(c *fiber.Ctx) error {
+	var temp models.RequestSingUp
+	err := c.BodyParser(&temp)
+	if err != nil {
+		fmt.Println(err)
+	}
+	service.SingUPUser(temp.Phone, temp.FullName, temp.Email, "")
+	return c.Redirect("/admin")
+}
+
+//index sayfasnini renderlemek icin
 func IndexRender(c *fiber.Ctx) error {
+
 	topbar := service.GetTopBar("ÖmFar.")
 	entry := service.GetEntry("WELCOME TO MY PAGE")
 	intro := service.GetInstructions("Let's learn something about technology")
 	footer := service.GetFooter("OMER FARUK TASDEMIR")
 	portfolio := service.GetPortfolio()
+	sess, err := store.Get(c)
+	if err != nil {
+		fmt.Println(err)
+	}
+	if sess.Get("temp") != nil {
+		topbar.Login = "Logout"
+	} else {
+		topbar.Login = "Login"
+	}
 	a := models.Anasayfa{
 		Portfolio: portfolio,
 		Entry:     entry,
