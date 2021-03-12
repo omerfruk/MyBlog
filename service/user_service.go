@@ -38,10 +38,11 @@ func SingUPUser(phone string, name string, email string, pass string) {
 		database.DB().Create(&temp)
 	}
 }
-func CreateUser(img string, header string, name string, info string, isAdmin bool) {
+func CreateUser(img string, header string, name string, mail string, info string, isAdmin bool) {
 	temp := new(models.User)
 	temp.Header = header
 	temp.ImgSrc = img
+	temp.Mail = mail
 	temp.Fullname = name
 	temp.Information = info
 	if isAdmin == true {
