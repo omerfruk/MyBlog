@@ -52,6 +52,10 @@ type AdminPage struct {
 	User   []User
 }
 
+type FotoStruct struct {
+	FotoGallery []FotoGallery
+	FooterBar   FooterBar
+}
 type Anasayfa struct {
 	Portfolio []Portfolio
 	Entry     Entry
@@ -83,7 +87,12 @@ type FooterBar struct {
 	GitSrc     string `json:"git_src"`
 	TwSrec     string `json:"tw_srec"`
 }
-
+type FotoGallery struct {
+	gorm.Model
+	ImgSrc string `json:"img_src"`
+	Title  string `json:"title"`
+	Text   string `json:"text"`
+}
 type Research struct {
 	gorm.Model
 	Area  string `json:"area"`
