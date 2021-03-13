@@ -48,5 +48,6 @@ func Migrate() {
 	db.AutoMigrate(&models.Portfolio{})
 	db.AutoMigrate(&models.Entry{})
 	db.AutoMigrate(&models.Research{})
+	db.AutoMigrate(&models.FotoGallery{})
 
 }
