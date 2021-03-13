@@ -262,7 +262,18 @@ func CreateUser(c *fiber.Ctx) error {
 }
 
 func Gallery(c *fiber.Ctx) error {
-	return c.Render("gallery", true)
+	var tempPhoto []models.FotoGallery
+	var tempFooter models.FooterBar
+	database.DB().Find(&tempPhoto)
+	fmt.Println(tempPhoto)
+	database.DB().Find(&tempFooter)
+	fmt.Println(tempFooter)
+	f := models.FotoStruct{
+		FotoGallery: tempPhoto,
+		FooterBar:   tempFooter,
+	}
+	return c.Render("gallery", f)
+
 }
 
 //index sayfasnini renderlemek icin
