@@ -52,7 +52,7 @@
           <span class="badge badge-danger navbar-badge">3</span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
+          <a href="/info" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
               <img
@@ -205,7 +205,7 @@
           />
         </div>
         <div class="info">
-          <a href="#" class="d-block">Ömer Faruk Tasdemir</a>
+          <a href="/info" class="d-block">Ömer Faruk Tasdemir</a>
         </div>
       </div>
 
@@ -276,35 +276,26 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Admin Panel</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a
-                  href="pages/layout/top-nav-sidebar.html"
-                  class="nav-link"
-                >
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Top Navigation</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/boxed.html" class="nav-link">
+                <a href="#Report_go" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Interactve Area</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/fixed-sidebar.html" class="nav-link">
+                <a href="#map_go" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Map</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a
-                  href="pages/layout/fixed-sidebar-custom.html"
+                  href="#chat_go"
                   class="nav-link"
                 >
                   <i class="far fa-circle nav-icon"></i>
@@ -312,26 +303,12 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/fixed-topnav.html" class="nav-link">
+                <a href="#User_go" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Latest Orders</p>
+                  <p>User</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="pages/layout/fixed-footer.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Footer</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a
-                  href="pages/layout/collapsed-sidebar.html"
-                  class="nav-link"
-                >
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Collapsed Sidebar</p>
-                </a>
-              </li>
+            
             </ul>
           </li>
           <li class="nav-item">
@@ -527,7 +504,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">Monthly Recap Report</h5>
+                <h5 class="card-title" id="Report_go">Monthly Recap Report</h5>
 
                 <div class="card-tools">
                   <button
@@ -717,7 +694,7 @@
             <!-- MAP & BOX PANE -->
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">US-Visitors Report</h3>
+                <h3 class="card-title" id="map_go">US-Visitors Report</h3>
 
                 <div class="card-tools">
                   <button
@@ -788,7 +765,7 @@
                 <!-- DIRECT CHAT -->
                 <div class="card direct-chat direct-chat-warning">
                   <div class="card-header">
-                    <h3 class="card-title">Direct Chat</h3>
+                    <h3 class="card-title" id="chat_go">Direct Chat</h3>
 
                     <div class="card-tools">
                       <span
@@ -1101,7 +1078,7 @@
               <div class="col-md-6">
                 <!-- USERS LIST -->
                 <div class="card">
-                  <div class="card-header">
+                  <div class="card-header" >
                     <h3 class="card-title">Latest Members</h3>
 
                     <div class="card-tools">
@@ -1191,7 +1168,7 @@
             <!-- TABLE: LATEST ORDERS -->
             <div class="card">
               <div class="card-header border-transparent">
-                <h3 class="card-title">Latest Orders</h3>
+                <h3 class="card-title" id="User_go">User</h3>
 
                 <div class="card-tools">
                   <button
@@ -1223,14 +1200,14 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {{range $index,$deger:=.}}
+                      {{range $index,$deger:=.User}}
                       <tr>
                         <td>{{$index}}</td>
                         <td>{{$deger.Fullname}}</td>
                         <td>{{$deger.Information}}</td>
                         <td>{{$deger.Mail}}</td>
                       </tr> 
-                      </tr>
+                      {{end}}
                     </tbody>
                   </table>
                 </div>
