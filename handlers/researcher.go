@@ -261,6 +261,10 @@ func CreateUser(c *fiber.Ctx) error {
 	return c.Redirect("/admin")
 }
 
+func Gallery(c *fiber.Ctx) error {
+	return c.Render("gallery", true)
+}
+
 //index sayfasnini renderlemek icin
 func IndexRender(c *fiber.Ctx) error {
 
