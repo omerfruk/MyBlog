@@ -266,9 +266,7 @@ func Gallery(c *fiber.Ctx) error {
 	var tempPhoto []models.FotoGallery
 	var tempFooter models.FooterBar
 	database.DB().Find(&tempPhoto)
-	fmt.Println(tempPhoto)
 	database.DB().Find(&tempFooter)
-	fmt.Println(tempFooter)
 	f := models.FotoStruct{
 		FotoGallery: tempPhoto,
 		FooterBar:   tempFooter,
