@@ -81,7 +81,8 @@ func Login(c *fiber.Ctx) error {
 			panic(err)
 		}
 		return c.Redirect("/")
-	} else { //sessions açık değilse girilecek  method
+	} else {
+		//sessions açık değilse girilecek  method
 		return c.Render("login", true)
 	}
 }

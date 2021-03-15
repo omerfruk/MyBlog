@@ -40,6 +40,18 @@ func main() {
 	service.CreateUser("","senden naber","emrullah","055412351",false)
 	service.CreateUser("","iyilik","osman","055412351",false)*/
 	//service.CreatePortfolio("../img/game.jpg","Game","Of course, the game everyone wants!")
+	/*service.CreateFoto("../img/gallery/gallery1.jpg","Boş Sokaklar","Yanlızliğin en çok benzediği şeydir boş sokaklar")
+	service.CreateFoto("../img/gallery/gallery2.jpg","Doğal mı Afet mi ?","Normal şartlarda bu fotoğrafın güzel gözükmesi gerekirken aslında odaklanmamız gerekn yer güzellik insan elinden mi yoksa doğal olarak olması gerektiği degilmi")
+	service.CreateFoto("../img/gallery/gallery3.jpg","Doğ","Her kim olursa olsun insan Doğada kendini rahat hisseder çünki insanın DOĞAsında var ")
+	service.CreateFoto("../img/gallery/gallery4.jpg","Yamaçlar","Kimi için ürkütücü kimi için ise bir heyecan kaynağı olan bu yamaçlar gerçekten de insana \"Vayyy\" dedirtiyor")
+	service.CreateFoto("../img/gallery/gallery5.jpg","Soluk bir ilk bahar","insanın şöyle bir yerde yıllarını kaybetse acaba kim bulabilir")
+	service.CreateFoto("../img/gallery/gallery6.jpg","Dağlar Dumanlı Dağlar","Kendimi şöyle güzel bir dağ yamacına bırakıpğ gidesim var hem kendimi kaybedeyim hem kendimi buliyim süper değilmi ?")
+	service.CreateFoto("../img/gallery/gallery7.jpg","Yıldızların Altında","Düşünsen yıldızlı bir gece herşeyi geride bırakıyorsun ve bir an olsun sadece anın tadını çıkartıyorsun		\n++Yapılacaklar listesinde")
+	service.CreateFoto("../img/gallery/gallery8.jpg","Kanyon","Sundan şüphem yok ki ben bir doğa hayranıyım")
+	service.CreateFoto("../img/gallery/gallery9.jpg","Tarihi Yapıtlar","Aslında bakarsanız çagımız ilerledikçe pek çok şey geride kalıyor \n-Mimari yapılar\n-Hoşgörü\n-Aaa bir de insanlık")
+	service.CreateFoto("../img/gallery/gallery10.jpg","Uretgenlik","insanlar öyele varlıklar ki istedikleri zaman sadece adi bir hareketleriyle dünya güzelleşirken bir hareketle daha da güzel olabiliyor")
+
+*/
 	log.Fatal(app.Listen(":4747"))
 
 }
