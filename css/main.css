@@ -73,7 +73,7 @@ header ul li a {
   margin: 0 15px;
   text-decoration: none;
   letter-spacing: 2px;
-  font-weight: 500px;
+  font-weight: 500;
 }
 header ul li a:hover {
   color: #e67e22;
@@ -324,7 +324,7 @@ textarea {
 }
 .social-icon {
   display: inline;
-  padding-left: 9x;
+  padding-left: 9px;
   padding-right: 9px;
   color: #fff;
 }
