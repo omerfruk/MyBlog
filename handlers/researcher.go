@@ -252,7 +252,13 @@ func CommentCreate(c *fiber.Ctx) error {
 	service.CommentCreate(temp.Fullname, temp.Phone, temp.Mail, temp.Title, temp.Text, "")
 	return c.Redirect("/comment")
 }
-
+func GetUser(c *fiber.Ctx) error {
+	key:=c.Params("key")
+	fmt.Println(key)
+	var temp models.User
+	database.DB().Where("id = ?",key).Find(&temp)
+	return c.Render("user",temp)
+}
 //admin sayfasindan kullanicilari editlemek icin
 func EditUser(c *fiber.Ctx) error {
 	key := c.Params("key")
@@ -279,7 +285,7 @@ func DltUSer(c *fiber.Ctx) error {
 	return c.Redirect("/admin")
 }
 
-//admin sayufasidan  kullanici silmek icin
+//admin sayufasidan  kullanici olusturmak icin
 func CreateUser(c *fiber.Ctx) error {
 	var temp models.RequestSingUp
 	err := c.BodyParser(&temp)
