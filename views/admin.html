@@ -1156,12 +1156,15 @@
                     </thead>
                     <tbody>
                       {{range $index,$deger:=.User}}
+                      <form action="/user">
                       <tr>
                         <td>{{$index}}</td>
                         <td>{{$deger.Fullname}}</td>
                         <td>{{$deger.Information}}</td>
                         <td>{{$deger.Mail}}</td>
-                      </tr> 
+                        <td><button class="btn btn-nm btn-info float-right">Get</button></td>
+                      </tr>
+                      </form>
                       {{end}}
                     </tbody>
                   </table>
@@ -1171,7 +1174,7 @@
               <!-- /.card-body -->
               <div class="card-footer clearfix">
                 <a
-                  href="javascript:void(0)"
+                  href="#"
                   class="btn btn-sm btn-info float-left"
                   >Create New User</a
                 >
