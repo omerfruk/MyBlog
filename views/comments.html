@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!-- Bootstrap CSS -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+            crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../css/formcreate.css"/>
+    <title>Create Form Massage</title>
+</head>
+<body>
+<section class="Form my-4 mx-5">
+    <div class="container">
+        <div class="row bodyRow no-gutters">
+            <div class="col-lg-5 p-0">
+                <img src="../img/crateform.jpg" class="img-fluid" alt=""/>
+            </div>
+            <div class="col-lg-7 px-5 pt-5">
+                <h1 class="font-weight-bold py-3">Create Form Massage</h1>
+                <h4>What is your opinion</h4>
+                <form method="POST" action="/form">
+                    <div class="form-row">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <input
+                                        name="Fullname"
+                                        type="text"
+                                        placeholder="Full Name"
+                                        class="form-control my-3 p-4"
+                                />
+                            </div>
+                            <div class="col-lg-6">
+                                <input
+                                        name="phone"
+                                        type="text"
+                                        placeholder="Phone Number"
+                                        class="form-control my-3 p-4"
+                                />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <input
+                                        name="mail"
+                                        type="email"
+                                        placeholder="Email Adress"
+                                        class="form-control my-3 p-4"
+                                />
+                            </div>
+                            <div class="col-lg-6">
+                                <input
+                                        name="title"
+                                        type="text"
+                                        placeholder="Title"
+                                        class="form-control my-3 p-4"
+                                />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Leave a comment here"
+                                              id="floatingTextarea2" style="height: 100px"></textarea>
+                                    <label for="floatingTextarea2">Comments</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="form-row">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <button type="submit" class="btn1 mt-3 mb-5">Submit opinion</button>
+                            </div>
+                            <div class="col md 3"></div>
+                        </div>
+                        <div class="row mt-3 mb-0">
+                            <div class="col md 9"></div>
+                            <div class="col-md-3">
+                                <button type="submit" href="/form" class="btn1 mt-3 mb-5">See opinions</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"
+></script>
+
+</body>
+</html>
