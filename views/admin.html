@@ -1156,7 +1156,7 @@
                     </thead>
                     <tbody>
                       {{range $index,$deger:=.User}}
-                      <form action="/user">
+                      <form action="/user/{{$deger.ID}}">
                       <tr>
                         <td>{{$index}}</td>
                         <td>{{$deger.Fullname}}</td>
