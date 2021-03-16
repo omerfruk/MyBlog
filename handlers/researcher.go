@@ -235,6 +235,24 @@ func AdminPage(c *fiber.Ctx) error {
 	return c.Render("admin", admin)
 }
 
+func Comments(c *fiber.Ctx) error {
+	temp := service.GetAllComments()
+	return c.Render("comments", temp)
+}
+func Comment(c *fiber.Ctx) error {
+	return c.Render("comment", true)
+}
+func CommentCreate(c *fiber.Ctx) error {
+	var temp models.Comment
+	err := c.BodyParser(&temp)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(temp.Text)
+	service.CommentCreate(temp.Fullname, temp.Phone, temp.Mail, temp.Title, temp.Text, "")
+	return c.Redirect("/comment")
+}
+
 //admin sayfasindan kullanicilari editlemek icin
 func EditUser(c *fiber.Ctx) error {
 	key := c.Params("key")
