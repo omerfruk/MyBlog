@@ -121,3 +121,12 @@ type User struct {
 	Information string    `json:"information"`
 	Authority   Authority `json:"authority"`
 }
+type Comment struct {
+	gorm.Model
+	Fullname string `json:"fullname"`
+	Phone    string `json:"phone"`
+	Mail     string `json:"mail"`
+	Title    string `json:"title"`
+	Text     string `json:"text"`
+	Imgsrc   string `json:"imgsrc"`
+}
