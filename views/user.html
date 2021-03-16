@@ -22,14 +22,14 @@
             <div class=" mt-5"><h1>hello</h1></div>
             <div class="col-md-1"></div>
             <div class="col-md-4 pr-0">
-                <img src="../img/fotom.jpg" class="img-fluid" alt=""/>
+                <img src="{{.ImgSrc}}" class="img-fluid" alt=""/>
             </div>
             <div class="col-md-7 px-5 pt-5">
                 <div class="form-row">
                     <div class="row">
                         <div class="col-md-6 p-0  mt-2">
                             <h4>Name-Surname</h4>
-                            <p>Lorem ipsum </p>
+                            <p>{{.Fullname}}</p>
                         </div>
                         <div class="col-md-6  ">
                             <input
@@ -43,7 +43,7 @@
                     <div class="row">
                         <div class="col-md-6  p-0  mt-2">
                             <h4>Phone Number</h4>
-                            <p>Lorem ipsum dolor </p>
+                            <p>{{.Information}}</p>
                         </div>
                         <div class="col-md-6 ">
                             <input
@@ -57,7 +57,7 @@
                     <div class="row">
                         <div class="col-md-6 p-0 mt-2">
                             <h4>Mail</h4>
-                            <p>Lorem ipsum voluptatem?</p>
+                            <p>{{.Mail}}</p>
                         </div>
                         <div class="col-md-6">
                             <input
@@ -71,7 +71,7 @@
                     <div class="row">
                         <div class="col-md-6 p-0  mt-2">
                             <h4>Image Src</h4>
-                            <p>Lorem voluptatem?</p>
+                            <p>{{.ImgSrc}}</p>
                         </div>
                         <div class="col-md-6 ">
                             <input
