@@ -49,5 +49,6 @@ func Migrate() {
 	db.AutoMigrate(&models.Entry{})
 	db.AutoMigrate(&models.Research{})
 	db.AutoMigrate(&models.FotoGallery{})
+	db.AutoMigrate(&models.Comment{})
 
 }
