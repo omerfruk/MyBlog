@@ -58,12 +58,13 @@ func DeleteUser(id string) {
 	temp := new(models.User)
 	database.DB().Where("id=?", id).Delete(&temp)
 }
-func UpdateUser(id string, mail string, name string, info string) {
+func UpdateUser(id uint, mail string, name string, info string, img string) {
 	var temp models.User
 
 	database.DB().Where("id=?", id).Find(&temp)
 	temp.Information = info
 	temp.Fullname = name
+	temp.ImgSrc = img
 	temp.Mail = mail
 	database.DB().Save(&temp)
 
