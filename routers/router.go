@@ -25,7 +25,7 @@ func Router(app *fiber.App) {
 	app.Post("/comment", handlers.CommentCreate)
 	app.Get("/user/:key", handlers.GetUser)
 	app.Post("/user/update", handlers.EditUser)
-	app.Get("/user/delete", handlers.DltUSer)
+	app.Get("/user/delete/:key", handlers.DltUSer)
 
 	res := app.Group("/researcher/:key", handlers.ResearchersAll) // /researcher
 	res.Get("/Computer", handlers.ResearchersAll)                 // /researcher/Computer
