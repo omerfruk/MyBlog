@@ -24,78 +24,80 @@
             <div class="col-md-4 pr-0">
                 <img src="{{.ImgSrc}}" class="img-fluid" alt=""/>
             </div>
-            <div class="col-md-7 px-5 pt-5">
-                <div class="form-row">
-                    <div class="row">
-                        <div class="col-md-6 p-0  mt-2">
-                            <h4>Name-Surname</h4>
-                            <p>{{.Fullname}}</p>
+                <div class="col-md-7 px-5 pt-5">
+                    <div class="form-row">
+                        <div class="row">
+                            <div class="col-md-6 p-0  mt-2">
+                                <h4>Name-Surname</h4>
+                                <p>{{.Fullname}}</p>
+                            </div>
+                            <div class="col-md-6  ">
+                                <form action="/user/update" method="post">
+                                <input
+                                        name="Fullname"
+                                        type="text"
+                                        placeholder="Full Name"
+                                        class="form-control my-3 p-4"
+                                />
+                            </div>
                         </div>
-                        <div class="col-md-6  ">
-                            <input
-                                    name="Fullname"
-                                    type="text"
-                                    placeholder="Full Name"
-                                    class="form-control my-3 p-4"
-                            />
+                        <div class="row">
+                            <div class="col-md-6  p-0  mt-2">
+                                <h4>Phone Number</h4>
+                                <p>{{.Information}}</p>
+                            </div>
+                            <div class="col-md-6 ">
+                                <input
+                                        name="Information"
+                                        type="text"
+                                        placeholder="Phone Number"
+                                        class="form-control my-3 p-4"
+                                />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 p-0 mt-2">
+                                <h4>Mail</h4>
+                                <p>{{.Mail}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <input
+                                        name="Mail"
+                                        type="email"
+                                        placeholder="Email Adress"
+                                        class="form-control my-3 p-4"
+                                />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 p-0  mt-2">
+                                <h4>Image Src</h4>
+                                <p>{{.ImgSrc}}</p>
+                            </div>
+                            <div class="col-md-6 ">
+                                <input
+                                        name="ImgSrc"
+                                        type="text"
+                                        placeholder="Image Src"
+                                        class="form-control my-3 p-4"
+                                />
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6  p-0  mt-2">
-                            <h4>Phone Number</h4>
-                            <p>{{.Information}}</p>
-                        </div>
-                        <div class="col-md-6 ">
-                            <input
-                                    name="phone"
-                                    type="text"
-                                    placeholder="Phone Number"
-                                    class="form-control my-3 p-4"
-                            />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 p-0 mt-2">
-                            <h4>Mail</h4>
-                            <p>{{.Mail}}</p>
-                        </div>
-                        <div class="col-md-6">
-                            <input
-                                    name="mail"
-                                    type="email"
-                                    placeholder="Email Adress"
-                                    class="form-control my-3 p-4"
-                            />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 p-0  mt-2">
-                            <h4>Image Src</h4>
-                            <p>{{.ImgSrc}}</p>
-                        </div>
-                        <div class="col-md-6 ">
-                            <input
-                                    name="ImgSrc"
-                                    type="text"
-                                    placeholder="Image Src"
-                                    class="form-control my-3 p-4"
-                            />
-                        </div>
-                    </div>
+                    <div class="form-row">
+                        <div class="row">
+                            <div class="col-md-5 p-0">
+                                <button type="submit" class="btn1 mt-3 mb-5">Update</button>
+                            </div>
+            </form>
+                <div class="col-md-5">
+                    <a href="/user/delete/{{.ID}}"><button href="/user/delete" class="btn2 mt-3 mb-5">Delete</button></a>
                 </div>
-                <div class="form-row">
-                    <div class="row">
-                        <div class="col-md-5 p-0">
-                            <button type="submit" class="btn1 mt-3 mb-5">Update</button>
-                        </div>
-
-                        <div class="col-md-5">
-                            <button type="submit" class="btn2 mt-3 mb-5">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+    </div>
+    </div>
+
+    </div>
     </div>
 </section>
 <script
