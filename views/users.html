@@ -1,161 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <link rel="stylesheet" href="../css/admin.css" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="../css/users.css"/>
     <!-- Bootstrap CSS -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
-      crossorigin="anonymous"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+            crossorigin="anonymous"
     />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <title>Login</title>
+</head>
+<body>
+<section class="Form my-4 mx-5">
+    <div class="container">
+        <div class="card-body rowBody pb-0">
+            <div class="row d-flex align-items-stretch">
+                {{range $index, $deger := .}}
+                <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+                    <div class="card bg-light">
+                        <div class="card-header text-muted border-bottom-0">
+                            ÖmFar.
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="lead"><b>{{$deger.Fullname}}</b></h2>
+                                    <p class="text-muted text-sm"><b>About: </b> {{$deger.Header}}</p>
+                                    <ul class="ml-4 mb-0 fa-ul text-muted">
+                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>
+                                            Phone #: {{$deger.Information}}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-5 text-center">
+                                    <img src="{{$deger.ImgSrc}}" alt="user-avatar"
+                                         class="img-circle img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="text-right">
+                                <a href="#" class="btn btn-sm bg-teal">
+                                    <i class="fas fa-comments"></i>
+                                </a>
+                                <a href="/user/{{$deger.ID}}" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-user"></i> View Profile
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+        </div>
+    </div>
+</section>
 
-    <title>Admin</title>
-  </head>
-  <body>
-    <header>
-      <a href="/" class="logo text-center">{{.Topbar.Logo}}</a>
-      <nav class="top-nav">
-        <ul>
-          <li><a class="kapan" href="/#cover">{{.Topbar.Home}}</a></li>
-          <li><a class="kapan1" href="/#future">{{.Topbar.Future}}</a></li>
-          <li><a class="kapan2" href="/#portfolio">{{.Topbar.Port}}</a></li>
-          <li><a class="kapan3" href="/#contact">{{.Topbar.Contact}}</a></li>
-        </ul>
-      </nav>
-      <div class="hamburger">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </header>
-    <section>
-      <!--for demo wrap-->
-      <h1>Users</h1>
-      <div class="tbl-header">
-        <table cellpadding="0" cellspacing="0" border="0">
-          <thead>
-            <tr>
-              <th>Index</th>
-              <th>Name</th>
-              <th>Phone</th>
-              <th>Mail</th>
-              <th>Info</th>
-              <th>Edit-Delete</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
-      {{range $indis, $deger:= .User}}
-      <div class="tbl-content">
-        <table cellpadding="0" cellspacing="0" border="0">
-          <tbody>
-            <tr>
-              <td>{{$indis}}</td>
-              <td>{{$deger.Fullname}}</td>
-              <td>{{$deger.Information}}</td>
-              <td>{{$deger.Mail}}</td>
-              
-              <form action="/edit/{{$deger.ID}}"method="POST">
-                <td>
-                  <div class="col-md-4">
-                    <input
-                      name="Fullname"
-                      type="text"
-                      class="formControl my-1 p-1"
-                      placeholder="Full Name"
-                    />
-                  </div>
-                  <div class="col-md-4">
-                    <input
-                      name="phone"
-                      type="text"
-                      class="formControl my-1 p-1"
-                      placeholder="Phone Number"
-                    />
-                  </div>
-                  <div class="col-md-4">
-                    <input
-                      name="email"
-                      type="email"
-                      class="formControl my-1 p-1"
-                      placeholder="Email Adress"
-                    />
-                  </div>
-                </td>
-                <td>
-                  <div class="col-md-6">
-                    <button type="submit" class="btn1 mt-1">Edit</button>
-                  </div>
-                </form>
-                <form action="/delete/{{$deger.ID}}" method="post">
-                  <div class="col-md-6">
-                    <button type="submit" class="btn1 mt-3 mb-1">Delete</button>
-                  </div>
-                </form>
-                </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      {{end}}
-      <form action="/create"method="POST">
-      <div class="row">
-        <div class="col-md-8 createArea">
-       <div class="row">
-         <div class="col-md-4">
-          <input
-          name="Fullname"
-          type="text"
-          class="formControl my-1 p-1"
-          placeholder="Full Name"
-          />  
-        </div> 
-          <div class="col-md-4">     
-          <input
-           name="phone"
-           type="text"
-            class="formControl my-1 p-1"
-           placeholder="Phone Number"
-         />
-        </div> 
-         <div class="col-md-4">
-         <input
-            name="email"
-            type="email"
-            class="formControl my-1 p-1"
-            placeholder="Email Adress"
-          />
-        </div>
-        </div>
-        </div>
-        <div class="col-md-4">
-          <button type="submit" class="btn1 mt-3 mb-1">Create</button>
-        </div>
-      </div>
-    </form>
-    </section>
-    <!-- follow me template -->
-    <div class="made-with-love">&copy; copyRyt oft</div>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-      crossorigin="anonymous"
-    ></script>
-    <script type="text/javascript">
-      window.addEventListener("scroll", function () {
-        var header = document.querySelector("header");
-        header.classList.toggle("sticky", window.scrollY > 0);
-        hamburger.classList.toggle("sticky", window.scrollY > 0);
-      });
-    </script>
-    <script type="text/javascript">$(window).on("load resize ", function() {
-      var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
-      $('.tbl-header').css({'padding-right':scrollWidth});
-    }).resize();</script>
-  </body>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"
+></script>
+</body>
 </html>
