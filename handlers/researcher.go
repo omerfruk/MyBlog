@@ -144,9 +144,18 @@ func LogControl(c *fiber.Ctx) error {
 	defer sess.Save()
 
 	sess.Set("temp", temp.Fullname)
-	sess.Get("temp")
+	fmt.Println(sess.Get("temp"))
 
 	return c.Redirect("/admin")
+}
+
+func GetUsers(c *fiber.Ctx) error {
+	var user []models.User
+	err := database.DB().Find(&user).Error
+	if err != nil {
+		fmt.Println(err)
+	}
+	return c.Render("users", user)
 }
 
 //yanlıs giris ekrani
@@ -213,6 +222,7 @@ func AdminPage(c *fiber.Ctx) error {
 	if err != nil {
 		fmt.Println(err)
 	}
+	fmt.Println(sess.Get("temp"))
 	if sess.Get("temp") == nil {
 		c.Redirect("/login")
 	} else {
