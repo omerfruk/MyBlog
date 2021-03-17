@@ -106,7 +106,7 @@ func SingUpPost(c *fiber.Ctx) error {
 
 // session olusturma
 var store = session.New(session.Config{
-	Expiration:   5 * time.Minute,
+	Expiration:   24 * time.Hour,
 	CookieName:   "session_id",
 	KeyGenerator: utils.UUID,
 
@@ -248,37 +248,36 @@ func CommentCreate(c *fiber.Ctx) error {
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(temp.Text)
 	service.CommentCreate(temp.Fullname, temp.Phone, temp.Mail, temp.Title, temp.Text, "")
 	return c.Redirect("/comment")
 }
 func GetUser(c *fiber.Ctx) error {
-	key:=c.Params("key")
-	fmt.Println(key)
+	key := c.Params("key")
 	var temp models.User
-	database.DB().Where("id = ?",key).Find(&temp)
-	return c.Render("user",temp)
+	database.DB().Where("id = ?", key).Find(&temp)
+	return c.Render("user", temp)
 }
+
 //admin sayfasindan kullanicilari editlemek icin
 func EditUser(c *fiber.Ctx) error {
-	key := c.Params("key")
-	var request models.RequestSingUp
-
+	var request, temp models.User
 	err := c.BodyParser(&request)
-	if request.FullName == "" && request.Password == "" && request.Email == "" {
-		return c.Redirect("/admin")
-	}
 	if err != nil {
 		fmt.Println(err)
 	}
-	service.UpdateUser(key, request.Email, request.FullName, request.Phone)
-	return c.Redirect("/admin")
+	database.DB().Where("mail = ?", request.Mail).First(&temp)
+	url := fmt.Sprintf("/user/%d", temp.ID)
+	if request.Mail == "" && request.Fullname == "" {
+		fmt.Println("degerler bos olamaz")
+		return c.Redirect(url)
+	}
+	service.UpdateUser(temp.ID, request.Mail, request.Fullname, request.Information, request.ImgSrc)
+	return c.Redirect(url)
 }
 
 //admin sayfasindan kullanici silmek icin
 func DltUSer(c *fiber.Ctx) error {
 	key := c.Params("key")
-	fmt.Println(key)
 
 	service.DeleteUser(key)
 
