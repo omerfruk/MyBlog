@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="../css/admin.css" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+
+    <title>Admin</title>
+  </head>
+  <body>
+    <header>
+      <a href="/" class="logo text-center">{{.Topbar.Logo}}</a>
+      <nav class="top-nav">
+        <ul>
+          <li><a class="kapan" href="/#cover">{{.Topbar.Home}}</a></li>
+          <li><a class="kapan1" href="/#future">{{.Topbar.Future}}</a></li>
+          <li><a class="kapan2" href="/#portfolio">{{.Topbar.Port}}</a></li>
+          <li><a class="kapan3" href="/#contact">{{.Topbar.Contact}}</a></li>
+        </ul>
+      </nav>
+      <div class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </header>
+    <section>
+      <!--for demo wrap-->
+      <h1>Users</h1>
+      <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <thead>
+            <tr>
+              <th>Index</th>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Mail</th>
+              <th>Info</th>
+              <th>Edit-Delete</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      {{range $indis, $deger:= .User}}
+      <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tbody>
+            <tr>
+              <td>{{$indis}}</td>
+              <td>{{$deger.Fullname}}</td>
+              <td>{{$deger.Information}}</td>
+              <td>{{$deger.Mail}}</td>
+              
+              <form action="/edit/{{$deger.ID}}"method="POST">
+                <td>
+                  <div class="col-md-4">
+                    <input
+                      name="Fullname"
+                      type="text"
+                      class="formControl my-1 p-1"
+                      placeholder="Full Name"
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <input
+                      name="phone"
+                      type="text"
+                      class="formControl my-1 p-1"
+                      placeholder="Phone Number"
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <input
+                      name="email"
+                      type="email"
+                      class="formControl my-1 p-1"
+                      placeholder="Email Adress"
+                    />
+                  </div>
+                </td>
+                <td>
+                  <div class="col-md-6">
+                    <button type="submit" class="btn1 mt-1">Edit</button>
+                  </div>
+                </form>
+                <form action="/delete/{{$deger.ID}}" method="post">
+                  <div class="col-md-6">
+                    <button type="submit" class="btn1 mt-3 mb-1">Delete</button>
+                  </div>
+                </form>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      {{end}}
+      <form action="/create"method="POST">
+      <div class="row">
+        <div class="col-md-8 createArea">
+       <div class="row">
+         <div class="col-md-4">
+          <input
+          name="Fullname"
+          type="text"
+          class="formControl my-1 p-1"
+          placeholder="Full Name"
+          />  
+        </div> 
+          <div class="col-md-4">     
+          <input
+           name="phone"
+           type="text"
+            class="formControl my-1 p-1"
+           placeholder="Phone Number"
+         />
+        </div> 
+         <div class="col-md-4">
+         <input
+            name="email"
+            type="email"
+            class="formControl my-1 p-1"
+            placeholder="Email Adress"
+          />
+        </div>
+        </div>
+        </div>
+        <div class="col-md-4">
+          <button type="submit" class="btn1 mt-3 mb-1">Create</button>
+        </div>
+      </div>
+    </form>
+    </section>
+    <!-- follow me template -->
+    <div class="made-with-love">&copy; copyRyt oft</div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript">
+      window.addEventListener("scroll", function () {
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+        hamburger.classList.toggle("sticky", window.scrollY > 0);
+      });
+    </script>
+    <script type="text/javascript">$(window).on("load resize ", function() {
+      var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+      $('.tbl-header').css({'padding-right':scrollWidth});
+    }).resize();</script>
+  </body>
+</html>
