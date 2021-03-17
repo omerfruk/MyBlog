@@ -141,10 +141,8 @@ func LogControl(c *fiber.Ctx) error {
 		fmt.Println(err)
 	}
 
-	fmt.Println(sess.ID())
 	defer sess.Save()
 
-	fmt.Println(sess)
 	sess.Set("temp", temp.Fullname)
 	sess.Get("temp")
 
