@@ -35,6 +35,15 @@ img {
     border-radius: 4px;
     font-weight: bold;
 }
+#documen{
+    background: #00A7AA;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
 
 .btn1:hover {
     background-color: white;
