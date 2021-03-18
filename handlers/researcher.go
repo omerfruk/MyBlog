@@ -95,12 +95,20 @@ func SingUp(c *fiber.Ctx) error {
 
 //sing up post render
 func SingUpPost(c *fiber.Ctx) error {
-	var request models.RequestSingUp
+	var request models.User
 	err := c.BodyParser(&request)
 	if err != nil {
 		fmt.Println(err)
 	}
-	service.SingUPUser(request.Phone, request.FullName, request.Email, request.Password)
+	file, err := c.FormFile("document")
+	if err == nil {
+		Fileurl := fmt.Sprintf("../img/kullanicilar/%s", file.Filename)
+		c.SaveFile(file, fmt.Sprintf("./img/kullanicilar/%s", file.Filename))
+		service.SingUPUser(request.Information, request.Fullname, request.Mail, request.Password, Fileurl)
+	} else {
+		fmt.Println(err)
+		service.SingUPUser(request.Information, request.Fullname, request.Mail, request.Password, "")
+	}
 	return c.Redirect("/login")
 }
 
@@ -243,13 +251,18 @@ func AdminPage(c *fiber.Ctx) error {
 	return c.Render("admin", admin)
 }
 
+//dusunceler sayfasi
 func Comments(c *fiber.Ctx) error {
 	temp := service.GetAllComments()
 	return c.Render("comments", temp)
 }
+
+//dusunce sayfasi get
 func Comment(c *fiber.Ctx) error {
 	return c.Render("comment", true)
 }
+
+//dusunce sayfasi olusturmna
 func CommentCreate(c *fiber.Ctx) error {
 	var temp models.Comment
 	err := c.BodyParser(&temp)
@@ -259,6 +272,8 @@ func CommentCreate(c *fiber.Ctx) error {
 	service.CommentCreate(temp.Fullname, temp.Phone, temp.Mail, temp.Title, temp.Text, "")
 	return c.Redirect("/comment")
 }
+
+//user sayfasi get
 func GetUser(c *fiber.Ctx) error {
 	key := c.Params("key")
 	var temp models.User
@@ -312,7 +327,7 @@ func CreateUser(c *fiber.Ctx) error {
 	if err != nil {
 		fmt.Println(err)
 	}
-	service.SingUPUser(temp.Phone, temp.FullName, temp.Email, "")
+	service.SingUPUser(temp.Phone, temp.FullName, temp.Email, "", "")
 	return c.Redirect("/admin")
 }
 
