@@ -268,6 +268,7 @@ func GetUser(c *fiber.Ctx) error {
 
 //admin sayfasindan kullanicilari editlemek icin
 func EditUser(c *fiber.Ctx) error {
+	key := c.Params("key")
 	var request, temp models.User
 	err := c.BodyParser(&request)
 	if err != nil {
@@ -276,13 +277,12 @@ func EditUser(c *fiber.Ctx) error {
 	fmt.Println(request)
 
 	file, err := c.FormFile("document")
-	c.FormValue("document")
 	if err != nil {
 		fmt.Println(err)
 	}
 	fileurl := fmt.Sprintf("../img/kullanicilar/%s", file.Filename)
 	c.SaveFile(file, fmt.Sprintf("./img/kullanicilar/%s", file.Filename))
-	database.DB().Where("mail = ?", request.Mail).First(&temp)
+	database.DB().Where("id = ?", key).First(&temp)
 
 	url := fmt.Sprintf("/user/%d", temp.ID)
 	if request.Mail == "" && request.Fullname == "" {
