@@ -29,6 +29,7 @@
                     <form action="/user/update/{{.ID}}" method="post" enctype="multipart/form-data" name="document"
                           id="document">
                         <div class="row">
+                            <div class="row">
                             <div class="col-md-6  p-0  mt-2">
                                 <h4>Fullname</h4>
                                 <p>{{.Fullname}}</p>
@@ -41,12 +42,13 @@
                                         class="form-control my-3 p-4"
                                 />
                             </div>
-
+                            </div>
                             <div class="row">
                                 <div class="col-md-6  p-0  mt-2">
                                     <h4>Phone Number</h4>
                                     <p>{{.Information}}</p>
                                 </div>
+
                                 <div class="col-md-6 ">
                                     <input
                                             name="Information"
