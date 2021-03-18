@@ -27,10 +27,11 @@ func GetUserAll() models.User {
 	}
 	return user
 }
-func SingUPUser(phone string, name string, email string, pass string) {
+func SingUPUser(phone string, name string, email string, pass string, img string) {
 	temp := new(models.User)
 	temp.Information = phone
 	temp.Fullname = name
+	temp.ImgSrc = img
 	temp.Mail = email
 	temp.Password = pass
 	temp.Authority = models.Basic
