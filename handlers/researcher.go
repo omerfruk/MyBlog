@@ -273,13 +273,23 @@ func EditUser(c *fiber.Ctx) error {
 	if err != nil {
 		fmt.Println(err)
 	}
+	fmt.Println(request)
+
+	file, err := c.FormFile("document")
+	c.FormValue("document")
+	if err != nil {
+		fmt.Println(err)
+	}
+	fileurl := fmt.Sprintf("../img/kullanicilar/%s", file.Filename)
+	c.SaveFile(file, fmt.Sprintf("./img/kullanicilar/%s", file.Filename))
 	database.DB().Where("mail = ?", request.Mail).First(&temp)
+
 	url := fmt.Sprintf("/user/%d", temp.ID)
 	if request.Mail == "" && request.Fullname == "" {
 		fmt.Println("degerler bos olamaz")
 		return c.Redirect(url)
 	}
-	service.UpdateUser(temp.ID, request.Mail, request.Fullname, request.Information, request.ImgSrc)
+	service.UpdateUser(temp.ID, request.Mail, request.Fullname, request.Information, fileurl)
 	return c.Redirect(url)
 }
 
