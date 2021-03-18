@@ -24,7 +24,7 @@ func Router(app *fiber.App) {
 	app.Get("/comment", handlers.Comment)
 	app.Post("/comment", handlers.CommentCreate)
 	app.Get("/user/:key", handlers.GetUser)
-	app.Post("/user/update", handlers.EditUser)
+	app.Post("/user/update/:key", handlers.EditUser)
 	app.Get("/user/delete/:key", handlers.DltUSer)
 	app.Get("/users", handlers.GetUsers)
 
