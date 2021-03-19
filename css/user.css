@@ -16,7 +16,7 @@ h1{
 }
 
 body {
-    background-color: rgb(219, 226, 226);
+    background: url("../img/boxed-bg.jpg");
 }
 
 .bodyRow {
