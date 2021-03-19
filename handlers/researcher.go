@@ -139,7 +139,8 @@ func LogControl(c *fiber.Ctx) error {
 	if err != nil {
 		fmt.Println(err)
 	}
-	err = database.DB().Where("mail = ? and password = ?", request.Email, request.Password).First(&temp).Error
+	pass := service.Sha256String(request.Password)
+	err = database.DB().Where("mail = ? and password = ?", request.Email, pass).First(&temp).Error
 	if err != nil {
 		return c.Redirect("down")
 	}
