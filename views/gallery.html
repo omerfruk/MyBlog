@@ -5,75 +5,81 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-  <head>
+<head>
     <title>Gallery</title>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
+            name="viewport"
+            content="width=device-width, initial-scale=1, user-scalable=no"
     />
-    <link rel="stylesheet" href="../css/assets/css/main.css" />
+    <link rel="stylesheet" href="../css/assets/css/main.css"/>
     <noscript
-      ><link rel="stylesheet" href="../css/assets/css/noscript.css"
-    /></noscript>
-  </head>
-  <body class="is-preload-0 is-preload-1 is-preload-2">
-    <!-- Main -->
-    <div id="main">
-      <!-- Header -->
-      <header id="header">
+    >
+        <link rel="stylesheet" href="../css/assets/css/noscript.css"
+        />
+    </noscript>
+</head>
+<body class="is-preload-0 is-preload-1 is-preload-2">
+<!-- Main -->
+<div id="main">
+    <!-- Header -->
+    <header id="header">
         <h1>ÖmFar.</h1>
         <p>
-          Just just do not make excuses <br>
-          <a href="/info">Ömer Faruk</a>
+            Just just do not make excuses <br>
+            <a href="/info">Ömer Faruk</a>
         </p>
         <ul class="icons">
-          <li>
-            <a href="{{.FooterBar.TwSrec}}" class="icon brands fa-twitter"
-              ><span class="label">Twitter</span></a
-            >
-          </li>
-          <li>
-            <a href="{{.FooterBar.InstaSrc}}" class="icon brands fa-instagram"
-              ><span class="label">Instagram</span></a
-            >
-          </li>
-          <li>
-            <a href="{{.FooterBar.GitSrc}}" class="icon brands fa-github"
-              ><span class="label">Github</span></a
-            >
-          </li>
+            <li>
+                <a href="{{.FooterBar.TwSrec}}" class="icon brands fa-twitter"
+                ><span class="label">Twitter</span></a
+                >
+            </li>
+            <li>
+                <a href="{{.FooterBar.InstaSrc}}" class="icon brands fa-instagram"
+                ><span class="label">Instagram</span></a
+                >
+            </li>
+            <li>
+                <a href="{{.FooterBar.GitSrc}}" class="icon brands fa-github"
+                ><span class="label">Github</span></a
+                >
+            </li>
         </ul>
-      </header>
+    </header>
 
-      <!-- Thumbnail -->
-      <section id="thumbnails">
+    <!-- Thumbnail -->
+    <section id="thumbnails">
         {{range $index, $deger:=.FotoGallery}}
         <article>
-          <a class="thumbnail" href="{{$deger.ImgSrc}}"
+            <a class="thumbnail" href="{{$deger.ImgSrc}}"
             ><img src="{{$deger.ImgSrc}}" alt=""
-          /></a>
-          <h2>{{$deger.Title}}</h2>
-          <p>{{$deger.Text}}</p>
+            /></a>
+            <h2>{{$deger.Title}}</h2>
+            <p>{{$deger.Text}}</p>
         </article>
         {{end}}
-      </section>
+    </section>
 
-      <!-- Footer -->
-      <footer id="footer">
+    <!-- Footer -->
+    <footer id="footer">
         <ul class="copyright">
-          <li>
-            <strong>Copyright &copy; 2021 <a href="/">OFT</a>.</strong> All
-            rights reserved.
-          </li>
+            <li>
+                <a href="/galleryAdd"style=" text-decoration: none;">
+                    <button type="button" href="/galleryAdd">Add Photo</button>
+                </a>
+            </li>
+            <li>
+                <strong>Copyright &copy; 2021 <a href="/">OFT</a>.</strong> All
+                rights reserved.
+            </li>
         </ul>
-      </footer>
-    </div>
-
-    <!-- Scripts -->
-    <script src="../css/assets/js/jquery.min.js"></script>
-    <script src="../css/assets/js/browser.min.js"></script>
-    <script src="../css/assets/js/breakpoints.min.js"></script>
-    <script src="../css/assets/js/main.js"></script>
-  </body>
+    </footer>
+</div>
+<!-- Scripts -->
+<script src="../css/assets/js/jquery.min.js"></script>
+<script src="../css/assets/js/browser.min.js"></script>
+<script src="../css/assets/js/breakpoints.min.js"></script>
+<script src="../css/assets/js/main.js"></script>
+</body>
 </html>
