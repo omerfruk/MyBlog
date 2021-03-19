@@ -28,12 +28,13 @@ func GetUserAll() models.User {
 	return user
 }
 func SingUPUser(phone string, name string, email string, pass string, img string) {
+	password := Sha256String(pass)
 	temp := new(models.User)
 	temp.Information = phone
 	temp.Fullname = name
 	temp.ImgSrc = img
 	temp.Mail = email
-	temp.Password = pass
+	temp.Password = password
 	temp.Authority = models.Basic
 	if UserTemp := database.DB().Where("email=?", temp.Mail).First(&temp); UserTemp.Error != nil {
 		database.DB().Create(&temp)
