@@ -130,6 +130,25 @@ var store = session.New(session.Config{
 	}),*/
 })
 
+func GalleryAddPost(c *fiber.Ctx) error {
+	var request models.FotoGallery
+	c.BodyParser(&request)
+	file, err := c.FormFile("document")
+	if err != nil {
+		fmt.Println(err)
+		c.Redirect("/gallery")
+	} else {
+		Fileurl := fmt.Sprintf("../img/gallery/%s", file.Filename)
+		c.SaveFile(file, fmt.Sprintf("./img/gallery/%s", file.Filename))
+		service.CreateFoto(Fileurl, request.Title, request.Text)
+		return c.Redirect("/gallery")
+	}
+	return c.Redirect("/gallery")
+}
+func GalleryAddGet(c *fiber.Ctx) error {
+	return c.Render("galleryAdd", true)
+}
+
 //login kontrol
 func LogControl(c *fiber.Ctx) error {
 	var request models.RequestBody
@@ -290,7 +309,6 @@ func EditUser(c *fiber.Ctx) error {
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(request)
 	database.DB().Where("id = ?", key).First(&temp)
 
 	file, err := c.FormFile("document")
