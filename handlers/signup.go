@@ -23,12 +23,13 @@ func SingUpPost(c *fiber.Ctx) error {
 	}
 	file, err := c.FormFile("document")
 	if err == nil {
-		Fileurl := fmt.Sprintf("../img/kullanicilar/%s", file.Filename)
+		request.ImgSrc = fmt.Sprintf("../img/kullanicilar/%s", file.Filename)
 		c.SaveFile(file, fmt.Sprintf("./img/kullanicilar/%s", file.Filename))
-		service.SingUPUser(request.Information, request.Fullname, request.Mail, request.Password, Fileurl)
+		service.CreateUser(request, false)
 	} else {
 		fmt.Println(err)
-		service.SingUPUser(request.Information, request.Fullname, request.Mail, request.Password, "")
+		request.ImgSrc = ""
+		service.CreateUser(request, false)
 	}
 	return c.Redirect("/login")
 }
