@@ -51,14 +51,14 @@ func CreateUser(user models.User, isAdmin bool) {
 	} else {
 		fmt.Println("bu maile ait bir hesab zaten var")
 	}
-
-}
-func DeleteUser(id string) {
-	temp := new(models.User)
-	database.DB().Where("id=?", id).Delete(&temp)
 }
 
 func UpdateUser(user models.User, Olduser models.User) {
 	Olduser = user
 	database.DB().Save(&Olduser)
+}
+
+func DeleteUser(id string) {
+	var temp models.User
+	database.DB().Where("id=?", id).Delete(&temp)
 }
