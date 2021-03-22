@@ -8,6 +8,15 @@ import (
 	"gorm.io/gorm"
 )
 
+func GetEntry(header string) models.Entry {
+	var entry models.Entry
+	err := database.DB().Where("header = ?", header).First(&entry).Error
+	if err != nil {
+		fmt.Println(err)
+	}
+	return entry
+}
+
 func CreateEntry(entry models.Entry) {
 	err := database.DB().Where("header = ? and text = ?", entry.Header, entry.Text).First(&entry).Error
 	if errors.Is(err, gorm.ErrRecordNotFound) {
@@ -19,18 +28,7 @@ func CreateEntry(entry models.Entry) {
 		fmt.Println("boyle bilgi database de bulunmakta")
 	}
 }
-func GetEntry(header string) models.Entry {
-	var entry models.Entry
-	err := database.DB().Where("header = ?", header).First(&entry).Error
-	if err != nil {
-		fmt.Println(err)
-	}
-	return entry
-}
-func DeleteEntry(header string) {
-	temp := new(models.Entry)
-	database.DB().Where("header = ?", header).Delete(&temp)
-}
+
 func UpdateEntry(oldHeader string, img string, header string, text string, button string) {
 	var temp models.Entry
 	database.DB().Where("header = ?", header).Find(&temp)
@@ -39,4 +37,9 @@ func UpdateEntry(oldHeader string, img string, header string, text string, butto
 	temp.Text = text
 	temp.ButtonText = button
 	database.DB().Save(&temp)
+}
+
+func DeleteEntry(header string) {
+	temp := new(models.Entry)
+	database.DB().Where("header = ?", header).Delete(&temp)
 }
