@@ -17,21 +17,21 @@ func AdminPage(c *fiber.Ctx) error {
 	}
 	fmt.Println(sess.Get("temp"))
 	if sess.Get("temp") == nil {
-		c.Redirect("/login")
-	} else {
-		var user []models.User
-		inf := service.GetUser("omer faruk")
-		topbar := service.GetTopBar("ÖmFar.")
-		err = database.DB().Find(&user).Error
-		if err != nil {
-			fmt.Println(err)
-		}
-		admin = models.AdminPage{
-			Topbar: topbar,
-			Info:   inf,
-			User:   user,
-		}
-		return c.Render("admin", admin)
+		return c.Redirect("/login")
+	}
+
+	var user []models.User
+	inf := service.GetUser("omer faruk")
+	topbar := service.GetTopBar("ÖmFar.")
+	err = database.DB().Find(&user).Error
+	if err != nil {
+		fmt.Println(err)
+	}
+	admin = models.AdminPage{
+		Topbar: topbar,
+		Info:   inf,
+		User:   user,
 	}
 	return c.Render("admin", admin)
+
 }
