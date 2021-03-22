@@ -28,8 +28,19 @@ func Getadmin(c *fiber.Ctx) error {
 	return c.Render("user", temp)
 }
 
+//admin sayufasidan  kullanici olusturmak icin
+func CreateUser(c *fiber.Ctx) error {
+	var temp models.User
+	err := c.BodyParser(&temp)
+	if err != nil {
+		fmt.Println(err)
+	}
+	service.CreateUser(temp, false)
+	return c.Redirect("/admin")
+}
+
 //admin sayfasindan kullanicilari editlemek icin
-func EditUser(c *fiber.Ctx) error {
+func UpdateUser(c *fiber.Ctx) error {
 	key := c.Params("key")
 	var request, temp models.User
 	err := c.BodyParser(&request)
@@ -48,30 +59,18 @@ func EditUser(c *fiber.Ctx) error {
 	if err == nil {
 		request.ImgSrc = fmt.Sprintf("../img/kullanicilar/%s", file.Filename)
 		c.SaveFile(file, fmt.Sprintf("./img/kullanicilar/%s", file.Filename))
-		service.UpdateUser(request, temp)
 
 	} else {
 		request.ImgSrc = temp.ImgSrc
 		fmt.Println(err)
-		service.UpdateUser(request, temp)
 	}
+	service.UpdateUser(request, temp)
 	return c.Redirect(url)
 }
 
 //admin sayfasindan kullanici silmek icin
-func DltUSer(c *fiber.Ctx) error {
+func DeletUser(c *fiber.Ctx) error {
 	key := c.Params("key")
 	service.DeleteUser(key)
-	return c.Redirect("/admin")
-}
-
-//admin sayufasidan  kullanici olusturmak icin
-func CreateUser(c *fiber.Ctx) error {
-	var temp models.User
-	err := c.BodyParser(&temp)
-	if err != nil {
-		fmt.Println(err)
-	}
-	service.CreateUser(temp, false)
 	return c.Redirect("/admin")
 }
