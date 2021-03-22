@@ -1,19 +1,22 @@
 package service
 
 import (
+	"errors"
 	"fmt"
 	"github.com/omerfruk/my-blog/database"
 	"github.com/omerfruk/my-blog/models"
+	"gorm.io/gorm"
 )
 
-func CreatePortfolio(imgsrc string, title string, desc string) {
-	temp := models.Portfolio{
-		ImgSrc:       imgsrc,
-		Title:        title,
-		Descriptions: desc,
-	}
-	if tempCont := database.DB().Where("img_src = ? ", temp.ImgSrc).First(&temp); tempCont.Error != nil {
-		database.DB().Create(&temp)
+func CreatePortfolio(portfolio models.Portfolio) {
+	err := database.DB().Where("img_src = ? ", portfolio.ImgSrc).First(&portfolio).Error
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		err = database.DB().Create(&portfolio).Error
+		if err != nil {
+			fmt.Println(err)
+		}
+	} else {
+		fmt.Println("boyle bir portfolio bulunmakta")
 	}
 }
 
