@@ -25,6 +25,6 @@ func CommentCreate(c *fiber.Ctx) error {
 	if err != nil {
 		fmt.Println(err)
 	}
-	service.CommentCreate(temp.Fullname, temp.Phone, temp.Mail, temp.Title, temp.Text, "")
+	service.CommentCreate(temp)
 	return c.Redirect("/comment")
 }
