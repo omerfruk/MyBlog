@@ -1,23 +1,22 @@
 package service
 
 import (
+	"errors"
 	"fmt"
 	"github.com/omerfruk/my-blog/database"
 	"github.com/omerfruk/my-blog/models"
+	"gorm.io/gorm"
 )
 
-func CreateFooter(imgsrc string, name string, emp string, inst string, fac string, git string, tw string) {
-	temp := models.FooterBar{
-		ImgSrc:     imgsrc,
-		FullName:   name,
-		Employment: emp,
-		InstaSrc:   inst,
-		FaccSrc:    fac,
-		GitSrc:     git,
-		TwSrec:     tw,
-	}
-	if tempCont := database.DB().Where("img_src = ? ", temp.ImgSrc).First(&temp); tempCont.Error != nil {
-		database.DB().Create(&temp)
+func CreateFooter(bar models.FooterBar) {
+	err := database.DB().Where("img_src = ? ", bar.ImgSrc).First(&bar).Error
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		err = database.DB().Create(&bar).Error
+		if err != nil {
+			fmt.Println(err)
+		}
+	} else {
+		fmt.Println("boyle bir top bar vardir")
 	}
 }
 func GetFooter(name string) models.FooterBar {
