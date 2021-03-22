@@ -19,9 +19,12 @@ func GetUsers(c *fiber.Ctx) error {
 
 //user sayfasi get
 func GetUser(c *fiber.Ctx) error {
-	key := c.Params("key")
-	var temp models.User
-	database.DB().Where("id = ?", key).Find(&temp)
+	temp := service.GetUser(c.Params("key"))
+	return c.Render("user", temp)
+}
+
+func Getadmin(c *fiber.Ctx) error {
+	temp := service.GetAdmin("omer faruk")
 	return c.Render("user", temp)
 }
 
@@ -34,7 +37,7 @@ func EditUser(c *fiber.Ctx) error {
 		fmt.Println(err)
 	}
 	database.DB().Where("id = ?", key).First(&temp)
-
+	request.ID = temp.ID
 	file, err := c.FormFile("document")
 
 	url := fmt.Sprintf("/user/%d", temp.ID)
@@ -43,13 +46,14 @@ func EditUser(c *fiber.Ctx) error {
 		return c.Redirect(url)
 	}
 	if err == nil {
-		Fileurl := fmt.Sprintf("../img/kullanicilar/%s", file.Filename)
+		request.ImgSrc = fmt.Sprintf("../img/kullanicilar/%s", file.Filename)
 		c.SaveFile(file, fmt.Sprintf("./img/kullanicilar/%s", file.Filename))
-		service.UpdateUser(temp.ID, request.Mail, request.Fullname, request.Information, Fileurl)
+		service.UpdateUser(request, temp)
 
 	} else {
+		request.ImgSrc = temp.ImgSrc
 		fmt.Println(err)
-		service.UpdateUser(temp.ID, request.Mail, request.Fullname, request.Information, temp.ImgSrc)
+		service.UpdateUser(request, temp)
 	}
 	return c.Redirect(url)
 }
@@ -57,19 +61,17 @@ func EditUser(c *fiber.Ctx) error {
 //admin sayfasindan kullanici silmek icin
 func DltUSer(c *fiber.Ctx) error {
 	key := c.Params("key")
-
 	service.DeleteUser(key)
-
 	return c.Redirect("/admin")
 }
 
 //admin sayufasidan  kullanici olusturmak icin
 func CreateUser(c *fiber.Ctx) error {
-	var temp models.RequestSingUp
+	var temp models.User
 	err := c.BodyParser(&temp)
 	if err != nil {
 		fmt.Println(err)
 	}
-	service.SingUPUser(temp.Phone, temp.FullName, temp.Email, "", "")
+	service.CreateUser(temp, false)
 	return c.Redirect("/admin")
 }
