@@ -8,6 +8,13 @@ import (
 	"gorm.io/gorm"
 )
 
+func GetAllComments() []models.Comment {
+	var temp []models.Comment
+	database.DB().Find(&temp)
+
+	return temp
+}
+
 func CommentCreate(comment models.Comment) {
 	err := database.DB().Where("fullname = ? and title = ?", comment.Fullname, comment.Title).First(&comment).Error
 	if errors.Is(err, gorm.ErrRecordNotFound) {
@@ -18,10 +25,4 @@ func CommentCreate(comment models.Comment) {
 	} else {
 		fmt.Println("boytle bi kayıt var")
 	}
-}
-func GetAllComments() []models.Comment {
-	var temp []models.Comment
-	database.DB().Find(&temp)
-
-	return temp
 }

@@ -27,10 +27,7 @@ func GetFooter(name string) models.FooterBar {
 	}
 	return temp
 }
-func DeleteFooter(name string) {
-	var temp models.FooterBar
-	database.DB().Where("full_name = ? ", name).Delete(&temp)
-}
+
 func UpdateFooter(oldName string, imgsrc string, name string, emp string, inst string, fac string, git string, tw string) {
 	var temp models.FooterBar
 	database.DB().Where("full_name = ?", oldName).Find(&temp)
@@ -42,4 +39,9 @@ func UpdateFooter(oldName string, imgsrc string, name string, emp string, inst s
 	temp.GitSrc = git
 	temp.TwSrec = tw
 	database.DB().Save(&temp)
+}
+
+func DeleteFooter(name string) {
+	var temp models.FooterBar
+	database.DB().Where("full_name = ? ", name).Delete(&temp)
 }
