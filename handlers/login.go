@@ -38,14 +38,14 @@ func Login(c *fiber.Ctx) error {
 	//eger session acık ise girilecek yer
 	if sess.Get("temp") != nil {
 		// Destroy session
-		if err := sess.Destroy(); err != nil {
-			panic(err)
+		if err = sess.Destroy(); err != nil {
+			fmt.Println(err)
 		}
 		return c.Redirect("/")
-	} else {
-		//sessions açık değilse girilecek  method
-		return c.Render("login", true)
 	}
+	//sessions açık değilse girilecek  method
+	return c.Render("login", true)
+
 }
 
 //login kontrol
