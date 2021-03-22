@@ -8,6 +8,16 @@ import (
 	"gorm.io/gorm"
 )
 
+func GetTopBar(logo string) models.Topbar {
+	var temp models.Topbar
+	err := database.DB().Where("logo = ? ", logo).Find(&temp).Error
+	if err != nil {
+		fmt.Println(err)
+	}
+	return temp
+
+}
+
 func CreateTopBar(topbar models.Topbar) {
 	err := database.DB().Where("Logo = ? ", topbar.Logo).First(&topbar).Error
 	if errors.Is(err, gorm.ErrRecordNotFound) {
@@ -18,20 +28,6 @@ func CreateTopBar(topbar models.Topbar) {
 	} else {
 		fmt.Println("boyle bir tobbar mevcud")
 	}
-
-}
-func DeleteTopBar(logo string) {
-	var temp models.Topbar
-	database.DB().Where("logo = ?", logo).Delete(&temp)
-}
-
-func GetTopBar(logo string) models.Topbar {
-	var temp models.Topbar
-	err := database.DB().Where("logo = ? ", logo).Find(&temp).Error
-	if err != nil {
-		fmt.Println(err)
-	}
-	return temp
 
 }
 
@@ -46,4 +42,9 @@ func UpdateTopBar(oldLogo string, logo string, home string, future string, port 
 	temp.Login = logo
 
 	database.DB().Save(&temp)
+}
+
+func DeleteTopBar(logo string) {
+	var temp models.Topbar
+	database.DB().Where("logo = ?", logo).Delete(&temp)
 }
