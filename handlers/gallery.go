@@ -3,7 +3,6 @@ package handlers
 import (
 	"fmt"
 	"github.com/gofiber/fiber/v2"
-	"github.com/omerfruk/my-blog/database"
 	"github.com/omerfruk/my-blog/models"
 	"github.com/omerfruk/my-blog/service"
 )
@@ -16,9 +15,9 @@ func GalleryAddPost(c *fiber.Ctx) error {
 		fmt.Println(err)
 		c.Redirect("/gallery")
 	} else {
-		Fileurl := fmt.Sprintf("../img/gallery/%s", file.Filename)
+		request.ImgSrc = fmt.Sprintf("../img/gallery/%s", file.Filename)
 		c.SaveFile(file, fmt.Sprintf("./img/gallery/%s", file.Filename))
-		service.CreateFoto(Fileurl, request.Title, request.Text)
+		service.CreateFoto(request)
 		return c.Redirect("/gallery")
 	}
 	return c.Redirect("/gallery")
@@ -28,10 +27,8 @@ func GalleryAddGet(c *fiber.Ctx) error {
 	return c.Render("galleryAdd", true)
 }
 func Gallery(c *fiber.Ctx) error {
-	var tempPhoto []models.FotoGallery
-	var tempFooter models.FooterBar
-	database.DB().Find(&tempPhoto)
-	database.DB().Find(&tempFooter)
+	tempPhoto := service.GetFotoAll()
+	tempFooter := service.GetFooter("OMER FARUK TASDEMIR")
 	f := models.FotoStruct{
 		FotoGallery: tempPhoto,
 		FooterBar:   tempFooter,
