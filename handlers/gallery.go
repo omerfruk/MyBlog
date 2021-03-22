@@ -13,14 +13,14 @@ func GalleryAddPost(c *fiber.Ctx) error {
 	file, err := c.FormFile("document")
 	if err != nil {
 		fmt.Println(err)
-		c.Redirect("/gallery")
-	} else {
-		request.ImgSrc = fmt.Sprintf("../img/gallery/%s", file.Filename)
-		c.SaveFile(file, fmt.Sprintf("./img/gallery/%s", file.Filename))
-		service.CreateFoto(request)
 		return c.Redirect("/gallery")
 	}
+
+	request.ImgSrc = fmt.Sprintf("../img/gallery/%s", file.Filename)
+	c.SaveFile(file, fmt.Sprintf("./img/gallery/%s", file.Filename))
+	service.CreateFoto(request)
 	return c.Redirect("/gallery")
+
 }
 
 func GalleryAddGet(c *fiber.Ctx) error {
