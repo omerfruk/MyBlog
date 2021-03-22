@@ -8,6 +8,15 @@ import (
 	"gorm.io/gorm"
 )
 
+func GetPortfolio() []models.Portfolio {
+	var temp []models.Portfolio
+	err := database.DB().Find(&temp).Error
+	if err != nil {
+		fmt.Println(err)
+	}
+	return temp
+}
+
 func CreatePortfolio(portfolio models.Portfolio) {
 	err := database.DB().Where("img_src = ? ", portfolio.ImgSrc).First(&portfolio).Error
 	if errors.Is(err, gorm.ErrRecordNotFound) {
@@ -20,19 +29,6 @@ func CreatePortfolio(portfolio models.Portfolio) {
 	}
 }
 
-func GetPortfolio() []models.Portfolio {
-	var temp []models.Portfolio
-	err := database.DB().Find(&temp).Error
-	if err != nil {
-		fmt.Println(err)
-	}
-	return temp
-}
-
-func DeletePortfolio(title string) {
-	var temp models.Portfolio
-	database.DB().Where("title = ?", title).Delete(&temp)
-}
 func UpdatePortfolio(oldTitle string, imgsrc string, title string, desc string) {
 	var temp models.Portfolio
 	database.DB().Where("title = ?", oldTitle).Find(&temp)
@@ -40,4 +36,9 @@ func UpdatePortfolio(oldTitle string, imgsrc string, title string, desc string) 
 	temp.Title = title
 	temp.Descriptions = desc
 	database.DB().Save(&temp)
+}
+
+func DeletePortfolio(title string) {
+	var temp models.Portfolio
+	database.DB().Where("title = ?", title).Delete(&temp)
 }
