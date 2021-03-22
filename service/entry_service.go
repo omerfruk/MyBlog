@@ -1,23 +1,22 @@
 package service
 
 import (
+	"errors"
 	"fmt"
 	"github.com/omerfruk/my-blog/database"
 	"github.com/omerfruk/my-blog/models"
+	"gorm.io/gorm"
 )
 
-func CreateEntry(img string, header string, text string, buton string) {
-	temp := models.Entry{
-		ImgSrc:     img,
-		Header:     header,
-		Text:       text,
-		ButtonText: buton,
-	}
-	if tempCont := database.DB().Where("header = ? and text = ?", temp.Header, temp.Text).First(&temp); tempCont.Error != nil {
-		err := database.DB().Create(&temp)
+func CreateEntry(entry models.Entry) {
+	err := database.DB().Where("header = ? and text = ?", entry.Header, entry.Text).First(&entry).Error
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		err = database.DB().Create(&entry).Error
 		if err != nil {
 			fmt.Println(err)
 		}
+	} else {
+		fmt.Println("boyle bilgi database de bulunmakta")
 	}
 }
 func GetEntry(header string) models.Entry {
