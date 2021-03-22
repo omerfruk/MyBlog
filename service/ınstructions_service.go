@@ -9,6 +9,15 @@ import (
 	"github.com/omerfruk/my-blog/models"
 )
 
+func GetInstructions(title string) models.Instructions {
+	var temp models.Instructions
+	err := database.DB().Where("title = ? ", title).Find(&temp).Error
+	if err != nil {
+		fmt.Println(err)
+	}
+	return temp
+}
+
 func CreateInstructions(instructions models.Instructions) {
 	err := database.DB().Where("title = ? and info = ?", instructions.Title, instructions.Info).First(&instructions).Error
 	if errors.Is(err, gorm.ErrRecordNotFound) {
@@ -20,18 +29,7 @@ func CreateInstructions(instructions models.Instructions) {
 		fmt.Println("boyle bir giris bulunmaktadir")
 	}
 }
-func DeleteInstructions(title string) {
-	var temp models.Instructions
-	database.DB().Where("title = ? ", title).Delete(&temp)
-}
-func GetInstructions(title string) models.Instructions {
-	var temp models.Instructions
-	err := database.DB().Where("title = ? ", title).Find(&temp).Error
-	if err != nil {
-		fmt.Println(err)
-	}
-	return temp
-}
+
 func UpdateInstructions(oldTitle string, title string, info string, LeftOpt string, MidOpt string, RghtOpt string, LeftDesc string, MidDesc string, RghtDesc string) {
 	var temp models.Instructions
 	database.DB().Where("title = ?", oldTitle).Find(&temp)
@@ -46,4 +44,9 @@ func UpdateInstructions(oldTitle string, title string, info string, LeftOpt stri
 	temp.MidDesc = MidDesc
 
 	database.DB().Save(&temp)
+}
+
+func DeleteInstructions(title string) {
+	var temp models.Instructions
+	database.DB().Where("title = ? ", title).Delete(&temp)
 }
