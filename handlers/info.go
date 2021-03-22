@@ -9,7 +9,7 @@ import (
 //info Render bolumu
 func InfoRender(c *fiber.Ctx) error {
 	topbar := service.GetTopBar("ÖmFar.")
-	user := service.GetUser("Ömer Faruk")
+	user := service.GetAdmin("omer faruk")
 	footer := service.GetFooter("OMER FARUK TASDEMIR")
 
 	I := models.Info{
