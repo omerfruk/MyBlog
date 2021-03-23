@@ -15,7 +15,7 @@ func IndexRender(c *fiber.Ctx) error {
 	intro := service.GetInstructions("Let's learn something about technology")
 	footer := service.GetFooter("OMER FARUK TASDEMIR")
 	portfolio := service.GetPortfolio()
-	sess, err := store.Get(c)
+	sess, err := SessionStore.Get(c)
 	if err != nil {
 		fmt.Println(err)
 	}
