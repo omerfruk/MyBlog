@@ -9,6 +9,7 @@ require (
 	github.com/jackc/pgproto3/v2 v2.0.7 // indirect
 	github.com/klauspost/compress v1.11.12 // indirect
 	github.com/lib/pq v1.8.0
+	github.com/thedevsaddam/renderer v1.2.0
 	github.com/valyala/fasthttp v1.22.0 // indirect
 	golang.org/x/sys v0.0.0-20210309074719-68d13333faf2 // indirect
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
