@@ -19,7 +19,7 @@ func GetUsers(c *fiber.Ctx) error {
 
 //user sayfasi get
 func GetUser(c *fiber.Ctx) error {
-	temp := service.GetUser(c.Params("key"))
+	temp := service.GetUserId(c.Params("key"))
 	return c.Render("user", temp)
 }
 
