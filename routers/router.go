@@ -12,6 +12,7 @@ func Router(app *fiber.App) {
 	app.Get("/info", handlers.InfoRender)
 	app.Get("/login", handlers.Login)
 	app.Post("/login", handlers.LogControl)
+	app.Get("/logout", handlers.Logout)
 	app.Get("/singup", handlers.SingUp)
 	app.Post("/singup", handlers.SingUpPost)
 	app.Get("/admin", handlers.AdminPage)
