@@ -19,17 +19,13 @@ func IndexRender(c *fiber.Ctx) error {
 	if err != nil {
 		fmt.Println(err)
 	}
-	if sess.Get("temp") != nil {
-		topbar.Login = "Logout"
-	} else {
-		topbar.Login = "Login"
-	}
 	a := models.Anasayfa{
 		Portfolio: portfolio,
 		Entry:     entry,
 		Topbar:    topbar,
 		Intro:     intro,
 		Footer:    footer,
+		Bool:      sess.Fresh(),
 	}
 	return c.Render("index", a)
 }
