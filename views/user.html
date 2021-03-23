@@ -12,7 +12,7 @@
             integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
             crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../assets/css/user.css"/>
+    <link rel="stylesheet" href="../../assets/css/user.css"/>
     <title>User</title>
 </head>
 <body>
@@ -22,11 +22,11 @@
             <div class=" mt-5"><h1>hello</h1></div>
             <div class="col-md-1"></div>
             <div class="col-md-4 pr-0">
-                <img src="{{.ImgSrc}}" class="img-fluid" alt=""/>
+                <img src="../{{.ImgSrc}}" class="img-fluid" alt=""/>
             </div>
             <div class="col-md-7 px-5 pt-5">
                 <div class="form-row">
-                    <form action="/user/update/{{.ID}}" method="post" enctype="multipart/form-data" name="document"
+                    <form action="/admin/user/update/{{.ID}}" method="post" enctype="multipart/form-data" name="document"
                           id="document">
                         <div class="row">
                             <div class="row">
@@ -90,8 +90,8 @@
                                     <button type="submit" class="btn1 mt-3 mb-5">Update</button>
                                 </div>
                                 <div class="col-md-5">
-                                    <a href="/user/delete/{{.ID}}">
-                                        <button href="/user/delete" class="btn2 mt-3 mb-5">Delete</button>
+                                    <a href="/admin/user/delete/{{.ID}}">
+                                        <button href="/admin/user/delete/{{.ID}}" class="btn2 mt-3 mb-5">Delete</button>
                                     </a>
                                 </div>
                             </div>
