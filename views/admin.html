@@ -282,7 +282,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/comment" class="nav-link">
+                <a href="/admin/comment" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Commit in Forms</p>
                 </a>
@@ -314,7 +314,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/galleryAdd" class="nav-link">
+                <a href="/admin/galleryAdd" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add photo in gallery</p>
                 </a>
@@ -375,6 +375,18 @@
                 <a href="/dashboard" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>dashboard</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/comments" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Comments</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/gallery" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Gallery</p>
                 </a>
               </li>
             </ul>
@@ -1186,7 +1198,7 @@
                     </thead>
                     <tbody>
                       {{range $index,$deger:=.User}}
-                      <form action="/user/{{$deger.ID}}">
+                      <form action="/admin/user/{{$deger.ID}}">
                       <tr>
                         <td>{{$index}}</td>
                         <td>{{$deger.Fullname}}</td>
