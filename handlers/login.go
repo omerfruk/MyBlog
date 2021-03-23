@@ -31,19 +31,6 @@ var store = session.New(session.Config{
 
 //login sayfasının renderi
 func Login(c *fiber.Ctx) error {
-	sess, err := store.Get(c)
-	if err != nil {
-		fmt.Println(err)
-	}
-	//eger session acık ise girilecek yer
-	if sess.Get("temp") != nil {
-		// Destroy session
-		if err = sess.Destroy(); err != nil {
-			fmt.Println(err)
-		}
-		return c.Redirect("/")
-	}
-	//sessions açık değilse girilecek  method
 	return c.Render("login", true)
 
 }
@@ -71,9 +58,18 @@ func LogControl(c *fiber.Ctx) error {
 	defer sess.Save()
 
 	sess.Set("temp", temp.Fullname)
-	fmt.Println(sess.Get("temp"))
+	sess.Set("mail", temp.Mail)
 
 	return c.Redirect("/admin")
+}
+
+func Logout(c *fiber.Ctx) error {
+	sess, err := store.Get(c)
+	if err != nil {
+		fmt.Println(err)
+	}
+	sess.Destroy()
+	return c.Redirect("/")
 }
 
 //yanlıs giris sayaci
