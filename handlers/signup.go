@@ -25,12 +25,11 @@ func SingUpPost(c *fiber.Ctx) error {
 	if err == nil {
 		request.ImgSrc = fmt.Sprintf("../assets/img/kullanicilar/%s", file.Filename)
 		c.SaveFile(file, fmt.Sprintf("./assets/img/kullanicilar/%s", file.Filename))
-		service.CreateUser(request, false)
-		return c.Redirect("/login")
-	}
 
-	fmt.Println(err)
-	request.ImgSrc = ""
+	} else {
+		fmt.Println(err)
+		request.ImgSrc = ""
+	}
 	service.CreateUser(request, false)
 	return c.Redirect("/login")
 }
