@@ -3,7 +3,6 @@ package handlers
 import (
 	"fmt"
 	"github.com/gofiber/fiber/v2"
-	"github.com/omerfruk/my-blog/database"
 	"github.com/omerfruk/my-blog/models"
 	"github.com/omerfruk/my-blog/service"
 )
@@ -15,18 +14,13 @@ func AdminPage(c *fiber.Ctx) error {
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(sess.Get("temp"))
 	if sess.Get("temp") == nil {
 		return c.Redirect("/login")
 	}
 
-	var user []models.User
-	inf := service.GetUser("omer faruk")
+	inf := service.GetUser(sess.Get("mail"))
 	topbar := service.GetTopBar("ÖmFar.")
-	err = database.DB().Find(&user).Error
-	if err != nil {
-		fmt.Println(err)
-	}
+	user, _ := service.Find()
 	admin = models.AdminPage{
 		Topbar: topbar,
 		Info:   inf,
