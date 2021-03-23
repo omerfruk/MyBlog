@@ -36,23 +36,29 @@
         <ul>
           <li><a class="kapan" href="/gallery">{{.Topbar.Home}}</a></li>
           <li>
-            <a class="kapan1" class="kapan1" href="#future"
+            <a class="kapan1"  href="#future"
               >{{.Topbar.Future}}</a
             >
           </li>
           <li>
-            <a class="kapan2" class="kapan2" href="#portfolio"
+            <a class="kapan2"  href="#portfolio"
               >{{.Topbar.Port}}</a
             >
           </li>
           <li>
-            <a class="kapan3" class="kapan3" href="#contact"
+            <a class="kapan3" href="#contact"
               >{{.Topbar.Contact}}</a
             >
           </li>
+          {{if .Bool}}
           <li>
-            <a class="kapan4" class="kapan4" href="/login">{{.Topbar.Login}}</a>
+            <a  class="kapan4" href="/login">Login</a>
           </li>
+          {{else}}
+          <li>
+            <a href="/logout"class="kapan4">Logout</a>
+          </li>
+          {{end}}
         </ul>
       </nav>
       <div class="hamburger">
