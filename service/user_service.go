@@ -8,9 +8,9 @@ import (
 	"gorm.io/gorm"
 )
 
-func GetUser(id string) models.User {
+func GetUser(mail interface{}) models.User {
 	var user models.User
-	err := database.DB().Where("id = ?", id).First(&user).Error
+	err := database.DB().Where("mail = ?", mail).First(&user).Error
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -61,4 +61,13 @@ func UpdateUser(user models.User, Olduser models.User) {
 func DeleteUser(id string) {
 	var temp models.User
 	database.DB().Where("id=?", id).Delete(&temp)
+}
+
+func Find() ([]models.User, error) {
+	var user []models.User
+	err := database.DB().Find(&user).Error
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		fmt.Println(err)
+	}
+	return user, err
 }
