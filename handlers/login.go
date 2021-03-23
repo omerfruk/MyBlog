@@ -12,7 +12,7 @@ import (
 )
 
 // session olusturma
-var store = session.New(session.Config{
+var SessionStore = session.New(session.Config{
 	Expiration:   24 * time.Hour,
 	CookieName:   "session_id",
 	KeyGenerator: utils.UUID,
@@ -50,7 +50,7 @@ func LogControl(c *fiber.Ctx) error {
 		return c.Redirect("down")
 	}
 
-	sess, err := store.Get(c)
+	sess, err := SessionStore.Get(c)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -64,7 +64,7 @@ func LogControl(c *fiber.Ctx) error {
 }
 
 func Logout(c *fiber.Ctx) error {
-	sess, err := store.Get(c)
+	sess, err := SessionStore.Get(c)
 	if err != nil {
 		fmt.Println(err)
 	}
