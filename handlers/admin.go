@@ -10,15 +10,11 @@ import (
 //admin sayfasi
 func AdminPage(c *fiber.Ctx) error {
 	var admin models.AdminPage
-	sess, err := store.Get(c)
+	sess, err := SessionStore.Get(c)
 	if err != nil {
 		fmt.Println(err)
 	}
-	if sess.Get("temp") == nil {
-		return c.Redirect("/login")
-	}
-
-	inf := service.GetUser(sess.Get("mail"))
+	inf := service.GetUserMail(sess.Get("mail"))
 	topbar := service.GetTopBar("ÖmFar.")
 	user, _ := service.Find()
 	admin = models.AdminPage{
