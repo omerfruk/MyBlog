@@ -9,7 +9,6 @@ type Topbar struct {
 	Future  string
 	Port    string
 	Contact string
-	Login   string
 }
 
 type Entry struct {
@@ -38,6 +37,7 @@ type Anasayfa struct {
 	Topbar    Topbar
 	Intro     Instructions
 	Footer    FooterBar
+	Bool      bool
 }
 
 type FooterBar struct {
