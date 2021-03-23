@@ -39,7 +39,6 @@ func UpdateTopBar(oldLogo string, logo string, home string, future string, port 
 	temp.Future = future
 	temp.Port = port
 	temp.Contact = contact
-	temp.Login = logo
 
 	database.DB().Save(&temp)
 }
