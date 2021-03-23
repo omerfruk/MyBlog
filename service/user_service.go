@@ -8,9 +8,17 @@ import (
 	"gorm.io/gorm"
 )
 
-func GetUser(mail interface{}) models.User {
+func GetUserMail(mail interface{}) models.User {
 	var user models.User
 	err := database.DB().Where("mail = ?", mail).First(&user).Error
+	if err != nil {
+		fmt.Println(err)
+	}
+	return user
+}
+func GetUserId(id string) models.User {
+	var user models.User
+	err := database.DB().Where("id = ?", id).First(&user).Error
 	if err != nil {
 		fmt.Println(err)
 	}
