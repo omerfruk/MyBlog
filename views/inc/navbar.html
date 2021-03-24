@@ -1,10 +1,10 @@
 <header>
-    <a href="#" class="logo text-center">{{.Topbar.Logo}}</a>
+    <a href="/" class="logo text-center">{{.Topbar.Logo}}</a>
     <nav class="top-nav">
         <ul>
             <li><a class="kapan" href="/gallery">{{.Topbar.Home}}</a></li>
             <li>
-                <a class="kapan1"  href="#future"
+                <a class="kapan1"  href="/#future"
                 >{{.Topbar.Future}}</a
                 >
             </li>
@@ -35,3 +35,11 @@
         <div></div>
     </div>
 </header>
+
+<script type="text/javascript">
+    window.addEventListener("scroll", function () {
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+        hamburger.classList.toggle("sticky", window.scrollY > 0);
+    });
+</script>
