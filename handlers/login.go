@@ -31,7 +31,13 @@ var SessionStore = session.New(session.Config{
 
 //login sayfasının renderi
 func Login(c *fiber.Ctx) error {
-	return c.Render("login", true)
+
+	temp := models.Template{
+		Topbar: service.GetTopBar("ÖmFar."),
+		Footer: models.FooterBar{},
+		Bool:   true,
+	}
+	return c.Render("login", temp)
 
 }
 
