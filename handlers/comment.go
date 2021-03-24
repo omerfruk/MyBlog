@@ -10,12 +10,23 @@ import (
 //dusunceler sayfasi
 func Comments(c *fiber.Ctx) error {
 	temp := service.GetAllComments()
+
 	return c.Render("comments", temp)
 }
 
 //dusunce sayfasi get
 func Comment(c *fiber.Ctx) error {
-	return c.Render("comment", true)
+	topbar := service.GetTopBar("ÖmFar.")
+	sess, err := SessionStore.Get(c)
+	fmt.Println(err)
+
+	template := models.Template{
+		Topbar: topbar,
+		Footer: models.FooterBar{},
+		Bool:   sess.Fresh(),
+	}
+
+	return c.Render("comment", template)
 }
 
 //dusunce sayfasi olusturmna
