@@ -10,8 +10,12 @@ import (
 
 //gingup render
 func SingUp(c *fiber.Ctx) error {
-
-	return c.Render("singup", true)
+	temp := models.Template{
+		Topbar: service.GetTopBar("ÖmFar."),
+		Footer: models.FooterBar{},
+		Bool:   true,
+	}
+	return c.Render("singup", temp)
 }
 
 //sing up post render
