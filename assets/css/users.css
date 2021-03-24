@@ -8,8 +8,13 @@
 h1, h2, h3, h4, h5, h6, p {
     text-transform: uppercase;
 }
+nav{
+  display: inline-flex;
+    align-items: end !important;
 
+}
 body {
+    margin-top: 7%;
     background-color: rgb(219, 226, 226);
 }
 
@@ -22,30 +27,4 @@ body {
 img {
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
-}
-
-.btn1 {
-    text-transform: uppercase;
-    border: none;
-    outline: none;
-    height: 50px;
-    width: 100%;
-    background-color: black;
-    color: white;
-    border-radius: 4px;
-    font-weight: bold;
-}
-
-.btn1:hover {
-    background-color: white;
-    border: 1px solid;
-    color: black;
-}
-
-@media (max-width: 953px) {
-    img {
-        border-top-left-radius: 30px;
-        border-top-right-radius: 30px;
-        border-bottom-left-radius: 0px;
-    }
 }
