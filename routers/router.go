@@ -27,15 +27,19 @@ func Router(app *fiber.App) {
 
 	adm := app.Group("/admin", sessionControl)
 	adm.Get("/", handlers.AdminPage)
+
 	adm.Get("/comment", handlers.Comment)
 	adm.Post("/delete/:key", handlers.DeletUser)
 	adm.Post("/edit/:key", handlers.UpdateUser)
 	adm.Post("/create", handlers.CreateUser)
+
 	adm.Get("/galleryAdd", handlers.GalleryAddGet)
 	adm.Post("/galleryAdd", handlers.GalleryAddPost)
+
 	adm.Get("/user/:key", handlers.GetUser)
-	adm.Post("/user/update/:key", handlers.UpdateUser)
+
 	adm.Get("/user/delete/:key", handlers.DeletUser)
+	adm.Post("/user/update/:key", handlers.UpdateUser)
 
 	res := app.Group("/researcher/:key", handlers.ResearchersAll) // /researcher
 	res.Get("/Computer", handlers.ResearchersAll)                 // /researcher/Computer
