@@ -51,7 +51,7 @@ func UpdateUser(c *fiber.Ctx) error {
 	request.ID = temp.ID
 	file, err := c.FormFile("document")
 
-	url := fmt.Sprintf("/user/%d", temp.ID)
+	url := fmt.Sprintf("/admin/user/%d", temp.ID)
 	if request.Mail == "" && request.Fullname == "" {
 		fmt.Println("degerler bos olamaz")
 		return c.Redirect(url)
@@ -62,7 +62,7 @@ func UpdateUser(c *fiber.Ctx) error {
 
 	} else {
 		request.ImgSrc = temp.ImgSrc
-		fmt.Println(err)
+		fmt.Println("fotograf bulunmadigi icin eski fotografla kullanilacak")
 	}
 	service.UpdateUser(request, temp)
 	return c.Redirect(url)
