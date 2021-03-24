@@ -1,3 +1,42 @@
-{{ define "footer" }}
+<section id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="box">
+                <a href="/info"><img src="{{.Footer.ImgSrc}}" /></a>
+                <h1>{{.Footer.FullName}}</h1>
+                <h5>{{.Footer.Employment}}</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4 text-center">
+                <p>&copy; copyRyt oft</p>
+            </div>
+            <div class="col-sm-4 text-center">
+                <ul class="social-icons">
+                    <li class="social-icon">
+                        <a href="{{.Footer.InstaSrc}}" target="_blank"
+                        ><i class="fab fa-instagram"></i
+                        ></a>
+                    </li>
+                    <li class="social-icon">
+                        <a href="{{.Footer.FaccSrc}}" target="_blank"
+                        ><i class="fab fa-facebook"></i
+                        ></a>
+                    </li>
+                    <li class="social-icon">
+                        <a href="{{.Footer.GitSrc}}" target="_blank"
+                        ><i class="fab fa-github"></i
+                        ></a>
+                    </li>
+                    <li class="social-icon">
+                        <a href="{{.Footer.TwSrec}}" target="_blank"
+                        ><i class="fab fa-twitter"></i
+                        ></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 
-{{end}}
