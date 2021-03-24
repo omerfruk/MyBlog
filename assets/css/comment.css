@@ -10,7 +10,8 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 body {
-    background-color: rgb(219, 226, 226);
+    margin-top: 7%;
+    background: url("../img/boxed-bg.jpg");
 }
 
 .bodyRow {
