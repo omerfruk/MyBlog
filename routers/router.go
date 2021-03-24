@@ -25,14 +25,6 @@ func Router(app *fiber.App) {
 
 	app.Get("/users", handlers.GetUsers)
 
-	res := app.Group("/researcher/:key", handlers.ResearchersAll) // /researcher
-	res.Get("/Computer", handlers.ResearchersAll)                 // /researcher/Computer
-	res.Get("/User", handlers.ResearchersAll)                     // /researcher/User
-	res.Get("/Network", handlers.ResearchersAll)                  // /researcher/Network
-	res.Get("/Developer", handlers.ResearchersAll)                // /researcher/Developer
-	res.Get("/Hardware", handlers.ResearchersAll)                 // /researcher/Hardware
-	res.Get("/Security", handlers.ResearchersAll)                 // /researcher/Security
-
 	adm := app.Group("/admin", sessionControl)
 	adm.Get("/", handlers.AdminPage)
 	adm.Get("/comment", handlers.Comment)
@@ -44,6 +36,14 @@ func Router(app *fiber.App) {
 	adm.Get("/user/:key", handlers.GetUser)
 	adm.Post("/user/update/:key", handlers.UpdateUser)
 	adm.Get("/user/delete/:key", handlers.DeletUser)
+
+	res := app.Group("/researcher/:key", handlers.ResearchersAll) // /researcher
+	res.Get("/Computer", handlers.ResearchersAll)                 // /researcher/Computer
+	res.Get("/User", handlers.ResearchersAll)                     // /researcher/User
+	res.Get("/Network", handlers.ResearchersAll)                  // /researcher/Network
+	res.Get("/Developer", handlers.ResearchersAll)                // /researcher/Developer
+	res.Get("/Hardware", handlers.ResearchersAll)                 // /researcher/Hardware
+	res.Get("/Security", handlers.ResearchersAll)                 // /researcher/Security
 
 }
 
