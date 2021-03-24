@@ -30,44 +30,9 @@
     />
   </head>
   <body>
-    <header>
-      <a href="#" class="logo text-center">{{.Topbar.Logo}}</a>
-      <nav class="top-nav">
-        <ul>
-          <li><a class="kapan" href="/gallery">{{.Topbar.Home}}</a></li>
-          <li>
-            <a class="kapan1"  href="#future"
-              >{{.Topbar.Future}}</a
-            >
-          </li>
-          <li>
-            <a class="kapan2"  href="#portfolio"
-              >{{.Topbar.Port}}</a
-            >
-          </li>
-          <li>
-            <a class="kapan3" href="#contact"
-              >{{.Topbar.Contact}}</a
-            >
-          </li>
-          {{if .Bool}}
-          <li>
-            <a  class="kapan4" href="/login">Login</a>
-          </li>
-          {{else}}
-          <li>
-            <a href="/logout"class="kapan4">Logout</a>
-          </li>
-          {{end}}
-        </ul>
-      </nav>
-      <div class="hamburger">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </header>
-    <section id="cover">
+  {{template "inc/navbar" .}}
+
+  <section id="cover">
       <div class="row text-center">
         <div class="col-sm-12">
           <h1>{{.Entry.Header}}</h1>
