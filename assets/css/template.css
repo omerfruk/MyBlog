@@ -1,0 +1,195 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.6s;
+    padding: 40px 50px;
+    z-index: 100000;
+}
+header.sticky {
+    padding: 5px 100px;
+    height: 60px;
+    background: #fff;
+}
+header.sticky .logo,
+header.sticky ul li a {
+    color: #000;
+}
+
+header .logo {
+    position: relative;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    font-size: 3em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.6s;
+}
+header .logo:hover {
+    color: #e67e22;
+}
+
+header ul {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header ul li {
+    position: relative;
+    list-style: none;
+}
+
+header ul li a {
+    position: relative;
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: #2c3e50;
+    font-weight: bold;
+    transition: color 0.6s ease;
+    -webkit-transition: color 0.6s ease;
+    -moz-transition: color 0.6s ease;
+    -o-transition: color 0.6s ease;
+    margin: 0 15px;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-weight: 500;
+}
+header ul li a:hover {
+    color: #e67e22;
+}
+.hamburger {
+    display: none;
+}
+.hamburger div :hover {
+    color: #e67e22;
+}
+
+@media (max-width: 768px) {
+    header {
+        height: 60px !important;
+    }
+    .logo {
+        padding-top: 5px;
+        position: fixed !important;
+        left: 20px;
+        top: 15px;
+    }
+    .top-nav {
+        width: 50%;
+        height: 50%;
+    }
+    .hamburger {
+        position: fixed !important;
+        right: 15px !important;
+        top: 15px !important;
+        padding-top: 10px;
+        padding-right: 10px;
+        display: unset;
+    }
+    .hamburger div {
+        width: 1.5rem;
+        height: 0.2rem;
+        margin: 0.2rem;
+        background-color: #fff;
+    }
+    .top-nav ul {
+        display: block;
+        transform: translateX(160%);
+    }
+    .top-nav ul li {
+        margin: 5rem;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    .show {
+        transform: translateX(-15%) !important;
+    }
+    .uzunluk {
+        height: 100% !important;
+        background-color: #fff;
+    }
+    .uzunluk a {
+        color: #000 !important;
+    }
+    .siyah div {
+        background-color: #000 !important;
+    }
+    .sticky div div {
+        background-color: #000 !important;
+    }
+}
+
+#footer {
+    padding: 5px 0;
+}
+#footer p {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 40px;
+    color: #555555;
+}
+.social-icons {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.social-icon {
+    display: inline;
+    padding-left: 9px;
+    padding-right: 9px;
+    color: #fff;
+}
+.fa-instagram:hover {
+    color: #b814f8;
+}
+.fa-facebook:hover {
+    color: #4267b2;
+}
+.fa-github:hover {
+    color: #e67e22;
+}
+.fa-twitter:hover {
+    color: #1da1f2;
+}
+.social-icon a,
+.social-icon .fab {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    background-color: #000;
+    line-height: 40px;
+}
+.box {
+    width: 150px;
+    padding: 5px;
+    text-align: center;
+    margin: auto;
+    margin-top: 5%;
+}
+.box img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    transition: 0.6s;
+    cursor: pointer;
+}
+.box img:hover {
+    transform: scale(0.9);
+}
+.box h1 {
+    font-size: 13px;
+    letter-spacing: 4px;
+    font-weight: bold;
+}
+.box h5 {
+    font-size: 13px;
+}
