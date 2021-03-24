@@ -26,7 +26,8 @@
             </div>
             <div class="col-md-7 px-5 pt-5">
                 <div class="form-row">
-                    <form action="/admin/user/update/{{.ID}}" method="post" enctype="multipart/form-data" name="document"
+                    <form action="/admin/user/update/{{.ID}}" method="post" enctype="multipart/form-data"
+                          name="document"
                           id="document">
                         <div class="row">
                             <div class="row">
@@ -84,22 +85,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="row">
-                                <div class="col-md-5 p-0">
-                                    <button type="submit" class="btn1 mt-3 mb-5">Update</button>
-                                </div>
-                                <div class="col-md-5">
-                                    <a href="/admin/user/delete/{{.ID}}">
-                                        <button href="/admin/user/delete/{{.ID}}" class="btn2 mt-3 mb-5">Delete</button>
-                                    </a>
-                                </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="submit" class="btn1 mt-3 mb-5">Update</button>
                             </div>
-                        </div>
                     </form>
+                    <div class="col-6">
+                        <form action="/admin/user/delete/{{.ID}}" method="get">
+                            <button href="/admin/user/delete/{{.ID}}" class="btn2 mt-3 mb-5">Delete</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
+    </div>
     </div>
     </div>
 </section>
