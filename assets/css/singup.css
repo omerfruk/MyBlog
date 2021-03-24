@@ -9,11 +9,13 @@ h1, h2, h3, h4, h5, h6, p {
     text-transform: uppercase;
 }
 
+
 body {
     background: url("../img/boxed-bg.jpg");
 }
 
 .row {
+    margin-top: 7%;
     background-color: white;
     border-radius: 30px;
     box-shadow: 12px 12px 22px grey;
