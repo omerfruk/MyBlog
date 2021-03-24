@@ -27,5 +27,6 @@ func IndexRender(c *fiber.Ctx) error {
 		Footer:    footer,
 		Bool:      sess.Fresh(),
 	}
+
 	return c.Render("index", a)
 }
