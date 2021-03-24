@@ -1,51 +1,42 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{{template "inc/header"}}
+<link rel="stylesheet" href="../assets/css/comments.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../assets/css/comments.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
+<title>Hello, world!</title>
 </head>
 <body>
-
+{{template "inc/navbar" .}}
 <div class="container">
     <div class="row">
         {{range $index,$deger:=.}}
         <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <div class="media g-mb-30 media-comment">
-                        <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15"
-                             src="{{$deger.Imgsrc}}" alt="Image Description">
-                        <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
-                            <div class="g-mb-15">
-                                <h5 class="h5 g-color-gray-dark-v1 mb-0">{{$deger.Fullname}}</h5>
-                                <span class="g-color-gray-dark-v4 g-font-size-12">{{$deger.CreatedAt}}</span>
-                            </div>
-                            <h4>{{$deger.Title}}</h4>
-                            <p>{{$deger.Text}}</p>
+        <div class="col-md-8">
+            <div class="media g-mb-30 media-comment">
+                <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15"
+                     src="{{$deger.Imgsrc}}" alt="Image Description">
+                <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
+                    <div class="g-mb-15">
+                        <h5 class="h5 g-color-gray-dark-v1 mb-0">{{$deger.Fullname}}</h5>
+                        <span class="g-color-gray-dark-v4 g-font-size-12">{{$deger.CreatedAt}}</span>
+                    </div>
+                    <h4>{{$deger.Title}}</h4>
+                    <p>{{$deger.Text}}</p>
 
-                            <ul class="list-inline d-sm-flex my-0">
-                                <li class="list-inline-item g-mr-20">
-                                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
-                                        <i class="fa fa-thumbs-up g-pos-rel g-top-1 g-mr-3"></i>
-                                        178
-                                    </a>
-                                </li>
-                                <li class="list-inline-item g-mr-20">
-                                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
-                                        <i class="fa fa-thumbs-down g-pos-rel g-top-1 g-mr-3"></i>
-                                        34
-                                    </a>
-                                </li>
-                                <li class="list-inline-item ml-auto">
+                    <ul class="list-inline d-sm-flex my-0">
+                        <li class="list-inline-item g-mr-20">
+                            <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                                <i class="fa fa-thumbs-up g-pos-rel g-top-1 g-mr-3"></i>
+                                178
+                            </a>
+                        </li>
+                        <li class="list-inline-item g-mr-20">
+                            <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                                <i class="fa fa-thumbs-down g-pos-rel g-top-1 g-mr-3"></i>
+                                34
+                            </a>
+                        </li>
+                        <li class="list-inline-item ml-auto">
                             <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
                                 <i class="fa fa-reply g-pos-rel g-top-1 g-mr-3"></i>
                                 Reply
@@ -55,9 +46,13 @@
                 </div>
             </div>
         </div>
-        <!--bosluklar olusturuldu-->
-        <div class="col-md-2"></div>
-        {{end}}
+    </div>
+</div>
+
+<!--bosluklar olusturuldu-->
+<div class="col-md-2"></div>
+{{end}}
+{{template "inc/footer" .}}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
         crossorigin="anonymous"></script>
