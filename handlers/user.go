@@ -14,7 +14,13 @@ func GetUsers(c *fiber.Ctx) error {
 	if err != nil {
 		fmt.Println(err)
 	}
-	return c.Render("users", user)
+	temp := models.Template{
+		Topbar: service.GetTopBar("ÖmFar."),
+		Footer: service.GetFooter("OMER FARUK TASDEMIR"),
+		Bool:   false,
+		User:   user,
+	}
+	return c.Render("users", temp)
 }
 
 //user sayfasi get
